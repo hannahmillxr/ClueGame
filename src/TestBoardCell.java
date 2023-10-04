@@ -1,5 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class TestBoardCell {
@@ -7,23 +5,21 @@ public class TestBoardCell {
 	private int col;
 	private boolean room;
 	private boolean occupied;
-	private Map <TestBoardCell, Set<TestBoardCell>> adjacencyList;
+	private Set<TestBoardCell> adjacencyList;
 	
 	
 	public TestBoardCell(int row, int col) {
 		super();
 		this.row = row;
 		this.col = col;
-		this.adjacencyList = new HashMap <TestBoardCell, Set<TestBoardCell>>();
 	}
 
 	void addAdjacency(TestBoardCell cell) {
-		Set<TestBoardCell> val = adjacencyList.get(cell);
-		val.add(this);
+		
 	}
 	
 	Set <TestBoardCell> getAdjList(TestBoardCell cell){
-		return adjacencyList.get(cell);
+		return adjacencyList;
 	}
 	
 	void setOccupied(boolean occupied) {
