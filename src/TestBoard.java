@@ -1,7 +1,11 @@
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class TestBoard {
-	private Set<TestBoardCell> adjacencyList;
+	Map <TestBoardCell, Set<TestBoardCell>> adjMtx;
+	private Set<TestBoardCell> adjacencyList= new HashSet<TestBoardCell>();
+	//private TestBoardCell [][] boardArray;
 	
 	
 	void calcTargets(TestBoardCell startCell, int pathlength) {

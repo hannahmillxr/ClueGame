@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Set;
 
 public class TestBoardCell {
@@ -5,7 +6,7 @@ public class TestBoardCell {
 	private int col;
 	private boolean room;
 	private boolean occupied;
-	private Set<TestBoardCell> adjacencyList;
+	private Set<TestBoardCell> adjacencyList = new HashSet<TestBoardCell>();
 	
 	
 	public TestBoardCell(int row, int col) {
@@ -30,7 +31,7 @@ public class TestBoardCell {
 		return this.occupied;
 	}
 	
-	void setRoom(boolean room) {
+	void setIsRoom(boolean room) {
 		this.room = room;
 	}
 	
