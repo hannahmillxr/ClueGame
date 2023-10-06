@@ -16,7 +16,7 @@ public class TestBoardCell {
 	}
 
 	void addAdjacency(TestBoardCell cell) {
-		
+		adjacencyList.add(cell);
 	}
 	
 	Set <TestBoardCell> getAdjList(TestBoardCell cell){
