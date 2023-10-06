@@ -5,7 +5,7 @@ import java.util.Set;
 public class TestBoard {
 	Map <TestBoardCell, Set<TestBoardCell>> adjMtx;
 	private Set<TestBoardCell> adjacencyList= new HashSet<TestBoardCell>();
-	//private TestBoardCell [][] boardArray;
+	/**private TestBoardCell [][] boardArray;**/
 	
 	
 	void calcTargets(TestBoardCell startCell, int pathlength) {
