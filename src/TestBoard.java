@@ -14,6 +14,19 @@ public class TestBoard {
 	
 	
 	public TestBoard(Map<TestBoardCell, Set<TestBoardCell>> adjMtx, Set<TestBoardCell> adjacencyList) {
+		super();
+		TestBoardCell [][] grid= new TestBoardCell[ROWS][COLS];
+		
+		for(int i = 0; i<ROWS;i++) {
+			for(int j = 0; j<COLS;j++) {
+				grid[i][j] = new TestBoardCell(i,j);
+			}
+		}
+		for (int i = 0; i < ROWS;i++) {
+			for(int j = 0; j< COLS;j++) {
+			//create an if statement that will go through each up,down,left,right of the statement if not then will add cell to adjectency list.	
+				
+		
 		
 	}
 
