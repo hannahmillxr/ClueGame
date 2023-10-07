@@ -46,8 +46,10 @@ public class TestBoard {
 					cell.addAdjacency(grid[i][j+1]);
 				}
 				
-				//Set<TestBoardCell>adjacencyList = getAdjList(cell);
-				//adjMtx.put(cell, adjacencyList);
+				
+				//getAdjList cant be accessed and I'm not sure why
+				Set<TestBoardCell>adjacencyList =  cell.getAdjList();
+				adjMtx.put(cell, adjacencyList);
 			}
 		}
 			

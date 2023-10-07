@@ -15,7 +15,7 @@ class BoardTestExp {
 	@Test
 	public void testTopLeftCornerAdjacency() {
 		TestBoardCell cell = board.getCell(0, 0);
-		Set<TestBoardCell> testList = cell.getAdjList(cell);
+		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(1,0)));
 		Assert.assertTrue(testList.contains(board.getCell(0,1)));
 		Assert.assertEquals(2, testList.size());
@@ -25,7 +25,7 @@ class BoardTestExp {
 	@Test
 	public void testBottomRightCornerAdjacency() {
 		TestBoardCell cell = board.getCell(3, 3);
-		Set<TestBoardCell> testList = cell.getAdjList(cell);
+		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(3,2)));
 		Assert.assertTrue(testList.contains(board.getCell(2,3)));
 		Assert.assertEquals(2, testList.size());
@@ -35,7 +35,7 @@ class BoardTestExp {
 	@Test
 	public void testRightEdgeAdjacency() {
 		TestBoardCell cell = board.getCell(1, 3);
-		Set<TestBoardCell> testList = cell.getAdjList(cell);
+		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(0,3)));
 		Assert.assertTrue(testList.contains(board.getCell(2,1)));
 		Assert.assertTrue(testList.contains(board.getCell(2,3)));
@@ -47,7 +47,7 @@ class BoardTestExp {
 	@Test
 	public void testBottomLeftEdgeAdjacency() {
 		TestBoardCell cell = board.getCell(3, 0);
-		Set<TestBoardCell> testList = cell.getAdjList(cell);
+		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(2,0)));
 		Assert.assertTrue(testList.contains(board.getCell(3,1)));
 		Assert.assertEquals(2, testList.size());
@@ -58,7 +58,7 @@ class BoardTestExp {
 	@Test
 	public void testLeftEdgeAdjacency() {
 		TestBoardCell cell = board.getCell(2, 0);
-		Set<TestBoardCell> testList = cell.getAdjList(cell);
+		Set<TestBoardCell> testList = cell.getAdjList();
 		Assert.assertTrue(testList.contains(board.getCell(2,1)));
 		Assert.assertTrue(testList.contains(board.getCell(1,0)));
 		Assert.assertTrue(testList.contains(board.getCell(3,0)));
