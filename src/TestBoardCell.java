@@ -13,14 +13,15 @@ public class TestBoardCell {
 		super();
 		this.row = row;
 		this.col = col;
+		this.adjacencyList = new HashSet<TestBoardCell>();
 	}
 
 	void addAdjacency(TestBoardCell cell) {
 		adjacencyList.add(cell);
 	}
 	
-	Set <TestBoardCell> getAdjList(TestBoardCell cell){
-		return adjacencyList;
+	public static Set <TestBoardCell> getAdjList(TestBoardCell cell){
+		return cell.adjacencyList;
 	}
 	
 	void setOccupied(boolean occupied) {

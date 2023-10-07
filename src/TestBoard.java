@@ -1,10 +1,11 @@
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+
 public class TestBoard {
 	Map <TestBoardCell, Set<TestBoardCell>> adjMtx;
-	private Set<TestBoardCell> adjacencyList = new HashSet<TestBoardCell>();
 	private TestBoardCell [][] grid;
 	private Set<TestBoardCell> targets;
 	private Set<TestBoardCell> visited;
@@ -13,20 +14,43 @@ public class TestBoard {
 	final static int ROWS = 4;
 	
 	
-	public TestBoard(Map<TestBoardCell, Set<TestBoardCell>> adjMtx, Set<TestBoardCell> adjacencyList) {
+	public TestBoard() {
 		super();
 		TestBoardCell [][] grid= new TestBoardCell[ROWS][COLS];
+		this.targets = new HashSet<TestBoardCell>();
+		this.adjMtx = new HashMap<TestBoardCell, Set<TestBoardCell>>();
 		
+		
+		//build board
 		for(int i = 0; i<ROWS;i++) {
 			for(int j = 0; j<COLS;j++) {
 				grid[i][j] = new TestBoardCell(i,j);
 			}
 		}
+		
+		//build adjacency list, look up down left right and make sure its within the bounds
 		for (int i = 0; i < ROWS;i++) {
 			for(int j = 0; j< COLS;j++) {
-			//create an if statement that will go through each up,down,left,right of the statement if not then will add cell to adjectency list.	
+				TestBoardCell cell = grid[i][j];
+
+				if (i-1 >= 0) {
+					cell.addAdjacency(grid[i-1][j]);
+				}
+				if (j-1 >= 0) {
+					cell.addAdjacency(grid[i][j-1]);
+				}
+				if (i+1 <COLS) {
+					cell.addAdjacency(grid[i+1][j]);
+				}
+				if (j+1 < ROWS) {
+					cell.addAdjacency(grid[i][j+1]);
+				}
 				
-		
+				//Set<TestBoardCell>adjacencyList = getAdjList(cell);
+				//adjMtx.put(cell, adjacencyList);
+			}
+		}
+			
 		
 	}
 
@@ -41,7 +65,7 @@ public class TestBoard {
 	}
 	
 	Set<TestBoardCell> getTargets(){
-		return adjacencyList;
+		return targets;
 		
 	}
 }
