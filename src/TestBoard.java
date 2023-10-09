@@ -24,8 +24,21 @@ public class TestBoard {
 		}
 		for (int i = 0; i < ROWS;i++) {
 			for(int j = 0; j< COLS;j++) {
-			//create an if statement that will go through each up,down,left,right of the statement if not then will add cell to adjectency list.	
+			
+				//create an if statement that will go through each up,down,left,right of the statement if not then will add cell to adjectency list.	
+			//get the cls and rows and chenck -1 if it is in bounds if it is set ad to the location.
+				if() {
+				//Send cell
+			}else if(){
 				
+			}else if(){
+				
+			}else if(){
+				
+			}else {
+				
+			}
+			}
 		
 		
 	}
