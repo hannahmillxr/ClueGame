@@ -5,8 +5,11 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import experiment.TestBoard;
 import experiment.TestBoardCell;
+
+import experiment.*;
 
 class BoardTestExp {
 	TestBoard board;

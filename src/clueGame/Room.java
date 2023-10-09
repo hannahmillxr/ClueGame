@@ -1,11 +1,9 @@
-package cluegame;
+package clueGame;
 
 public class Room {
 	private String name;
 	BoardCell centerCell;
 	BoardCell labelCell;
-	
-	
 	
 	public Room(String name, BoardCell centerCell, BoardCell labelCell) {
 		super();

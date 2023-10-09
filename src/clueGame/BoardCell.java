@@ -1,4 +1,4 @@
-package cluegame;
+package clueGame;
 import java.util.Set;
 
 import experiment.TestBoardCell;
@@ -14,6 +14,6 @@ public class BoardCell {
 	Set<TestBoardCell> adjacencyList;
 	
 	public void addAdjacency(TestBoardCell cell) {
-		adjacencyList.add(cell);
+		//adjacencyList.add(cell);
 	}
 }

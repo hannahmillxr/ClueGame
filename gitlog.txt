@@ -1,3 +1,45 @@
+commit 7474553b4401e723e7609220af18d19b87bf2ec4
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Mon Oct 9 14:15:19 2023 -0600
+
+    Readme updated
+
+commit 12b061b97e6a87b8990ac924838fcf453597aad5
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Mon Oct 9 12:16:42 2023 -0600
+
+    All tests are passing, calcTargets() done.
+
+commit 9d5626724b47d7d022d6a60196fdf7d47fb67839
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sun Oct 8 18:47:05 2023 -0600
+
+    Adding and accessing an adjacency list is working!
+
+commit 2c958fb729c0023ffc73b8537a7470bc749fe198
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Oct 7 17:53:55 2023 -0600
+
+    Fixed adjacency list error but adj list tests are still failing
+
+commit 29377d6dec7dbbab4c3b7a3bcd12aa0f8eba0f62
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Oct 7 12:14:47 2023 -0600
+
+    Added adjancecy list inside constructor, still trying to figure out how to add that to the adjMtx
+
+commit d3e0da406177379b06889d2de495f9326b53a99b
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Oct 6 15:50:56 2023 -0600
+
+    Added for loops and if statments to the TestBoard
+
+commit 2ec6a6f2534220191130b36e49133add608a90d4
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Fri Oct 6 15:03:38 2023 -0600
+
+    added instances started C14A1
+
 commit d27f0f87614308d1f9b11ef2e5177e94a707955e
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Fri Oct 6 14:33:22 2023 -0600
