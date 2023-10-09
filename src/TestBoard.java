@@ -1,60 +1,104 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.Assert;
+
+
 public class TestBoard {
 	Map <TestBoardCell, Set<TestBoardCell>> adjMtx;
-	private Set<TestBoardCell> adjacencyList = new HashSet<TestBoardCell>();
 	private TestBoardCell [][] grid;
-	private Set<TestBoardCell> targets;
-	private Set<TestBoardCell> visited;
+	private Set<TestBoardCell> targets = new HashSet <TestBoardCell>();
+	private Set<TestBoardCell> visited = new HashSet <TestBoardCell>();
 	
 	final static int COLS = 4;
 	final static int ROWS = 4;
 	
 	
-	public TestBoard(Map<TestBoardCell, Set<TestBoardCell>> adjMtx, Set<TestBoardCell> adjacencyList) {
+	public TestBoard() {
 		super();
-		TestBoardCell [][] grid= new TestBoardCell[ROWS][COLS];
+		this.grid= new TestBoardCell[ROWS][COLS];
+		this.adjMtx = new HashMap<TestBoardCell, Set<TestBoardCell>>();
 		
+		
+		//build board
 		for(int i = 0; i<ROWS;i++) {
 			for(int j = 0; j<COLS;j++) {
 				grid[i][j] = new TestBoardCell(i,j);
 			}
 		}
+		
+		//build adjacency list, look up down left right and make sure its within the bounds
 		for (int i = 0; i < ROWS;i++) {
 			for(int j = 0; j< COLS;j++) {
+				TestBoardCell cell = this.getCell(i, j);
+
+				if (i-1 >= 0) {
+					cell.addAdjacency(this.getCell(i-1, j));
+				}
+				if (j-1 >= 0) {
+					cell.addAdjacency(this.getCell(i, j-1));
+				}
+				if (i+1 <COLS) {
+					cell.addAdjacency(this.getCell(i+1, j));
+				}
+				if (j+1 < ROWS) {
+					cell.addAdjacency(this.getCell(i, j+1));
+				}
+				
+				Set<TestBoardCell> currentAdjacencyList =  cell.getAdjList();		
+				adjMtx.put(cell, currentAdjacencyList);
+			}
+		}
 			
-				//create an if statement that will go through each up,down,left,right of the statement if not then will add cell to adjectency list.	
-			//get the cls and rows and chenck -1 if it is in bounds if it is set ad to the location.
-				if() {
-				//Send cell
-			}else if(){
-				
-			}else if(){
-				
-			}else if(){
-				
-			}else {
-				
-			}
-			}
-		
 		
 	}
 
-	void calcTargets(TestBoardCell startCell, int pathlength) {
-		TestBoardCell [] visited;
+	void calcTargets(TestBoardCell startCell, int pathlength) { 
+		int numSteps = pathlength;
+		
+		visited.add(startCell);
+		
+		for (TestBoardCell cell : startCell.getAdjList()) {
+			if (!visited.contains(cell)) {
+				
+				visited.add(cell);
+				
+				if (cell.getOccupied()) {
+					continue;
+				}
+				
+				else if (cell.isRoom()){
+					targets.add(cell);
+				}
+				
+				else if (numSteps == 1) {
+					targets.add(cell);
+				}	
+				
+				else {
+					calcTargets(cell, numSteps-1);
+				}	
+				
+				visited.remove(cell);
+			}
+			
+			
+
+			
+		}
 		
 	}
 	
 	TestBoardCell getCell(int row, int col) {
-		TestBoardCell cell = new TestBoardCell(row, col);
-		return cell;
+		return grid[row][col];
 	}
 	
 	Set<TestBoardCell> getTargets(){
-		return adjacencyList;
+		return targets;
 		
 	}
+
 }
