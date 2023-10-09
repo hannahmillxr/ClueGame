@@ -10,7 +10,6 @@ import experiment.TestBoard;
 import experiment.TestBoardCell;
 
 import experiment.*;
-
 class BoardTestExp {
 	TestBoard board;
 	

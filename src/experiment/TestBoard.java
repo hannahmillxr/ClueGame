@@ -57,7 +57,7 @@ public class TestBoard {
 		
 	}
 
-	void calcTargets(TestBoardCell startCell, int pathlength) { 
+	public void calcTargets(TestBoardCell startCell, int pathlength) { 
 		int numSteps = pathlength;
 		
 		visited.add(startCell);
@@ -93,11 +93,11 @@ public class TestBoard {
 		
 	}
 	
-	TestBoardCell getCell(int row, int col) {
+	public TestBoardCell getCell(int row, int col) {
 		return grid[row][col];
 	}
 	
-	Set<TestBoardCell> getTargets(){
+	public Set<TestBoardCell> getTargets(){
 		return targets;
 		
 	}

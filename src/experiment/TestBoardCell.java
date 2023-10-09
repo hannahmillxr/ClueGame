@@ -25,27 +25,27 @@ public class TestBoardCell {
 		return this.adjacencyList;
 	}
 	
-	void setOccupied(boolean occupied) {
+	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
 	
-	boolean getOccupied() {
+	public boolean getOccupied() {
 		return this.occupied;
 	}
 	
-	void setIsRoom(boolean room) {
+	public void setIsRoom(boolean room) {
 		this.room = room;
 	}
 	
-	boolean isRoom() {
+	public boolean isRoom() {
 		return this.room;
 	}
 	
-	int getRow(){
+	public int getRow(){
 		return this.row;
 	}
 	
-	int getCol(){
+	public int getCol(){
 		return this.col;
 	}
 }

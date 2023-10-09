@@ -8,8 +8,8 @@ import experiment.TestBoardCell;
 
 public class Board {
 
-	Map <TestBoardCell, Set<TestBoardCell>> roomMap;
-	private TestBoardCell [][] grid;
+	Map <BoardCell, Set<BoardCell>> roomMap;//wrong type other side should be room, cell or char
+	private BoardCell [][] grid;
 	String layoutConfigFile;
 	String setupConfigFile;
 	static int numColumns = 4;
@@ -45,6 +45,37 @@ public class Board {
     public void loadLayoutConfig() throws BadConfigFormatException{
     	
     }
+
+	public void setConfigFiles(String string, String string2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Room getRoom(char c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getNumRows() {
+		// TODO Auto-generated method stub
+		return numRows;
+	}
+
+	public int getNumColumns() {
+		// TODO Auto-generated method stub
+		return numColumns;
+	}
+
+	public BoardCell getCell(int i, int j) {
+		// TODO Auto-generated method stub
+		return grid[i][j];
+	}
+
+	public Room getRoom(BoardCell cell) {
+		// TODO Auto-generated method stub
+		return cell.isRoom();
+	}
+    
     
     
 }
