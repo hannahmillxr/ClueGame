@@ -6,7 +6,7 @@ public class TestBoardCell {
 	private int col;
 	private boolean room;
 	private boolean occupied;
-	private Set<TestBoardCell> adjacencyList = new HashSet<TestBoardCell>();
+	Set<TestBoardCell> adjacencyList;
 	
 	
 	public TestBoardCell(int row, int col) {
@@ -16,11 +16,11 @@ public class TestBoardCell {
 		this.adjacencyList = new HashSet<TestBoardCell>();
 	}
 
-	void addAdjacency(TestBoardCell cell) {
-		this.adjacencyList.add(cell);
+	public void addAdjacency(TestBoardCell cell) {
+		adjacencyList.add(cell);
 	}
 	
-	public Set <TestBoardCell> getAdjList(){
+	public Set<TestBoardCell> getAdjList(){
 		return this.adjacencyList;
 	}
 	

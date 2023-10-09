@@ -3,6 +3,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.Assert;
+
 
 public class TestBoard {
 	Map <TestBoardCell, Set<TestBoardCell>> adjMtx;
@@ -16,7 +18,7 @@ public class TestBoard {
 	
 	public TestBoard() {
 		super();
-		TestBoardCell [][] grid= new TestBoardCell[ROWS][COLS];
+		this.grid= new TestBoardCell[ROWS][COLS];
 		this.targets = new HashSet<TestBoardCell>();
 		this.adjMtx = new HashMap<TestBoardCell, Set<TestBoardCell>>();
 		
@@ -31,25 +33,25 @@ public class TestBoard {
 		//build adjacency list, look up down left right and make sure its within the bounds
 		for (int i = 0; i < ROWS;i++) {
 			for(int j = 0; j< COLS;j++) {
-				TestBoardCell cell = grid[i][j];
+				TestBoardCell cell = this.getCell(i, j);
 
 				if (i-1 >= 0) {
-					cell.addAdjacency(grid[i-1][j]);
+					cell.addAdjacency(this.getCell(i-1, j));
 				}
 				if (j-1 >= 0) {
-					cell.addAdjacency(grid[i][j-1]);
+					cell.addAdjacency(this.getCell(i, j-1));
 				}
 				if (i+1 <COLS) {
-					cell.addAdjacency(grid[i+1][j]);
+					cell.addAdjacency(this.getCell(i+1, j));
+					//cell.addAdjacency(grid[i+1][j]);
 				}
 				if (j+1 < ROWS) {
-					cell.addAdjacency(grid[i][j+1]);
+					cell.addAdjacency(this.getCell(i, j+1));
+					//cell.addAdjacency(grid[i][j+1]);
 				}
 				
-				
-				//getAdjList cant be accessed and I'm not sure why
-				Set<TestBoardCell>adjacencyList =  cell.getAdjList();
-				adjMtx.put(cell, adjacencyList);
+				Set<TestBoardCell> currentAdjacencyList =  cell.getAdjList();		
+				adjMtx.put(cell, currentAdjacencyList);
 			}
 		}
 			
@@ -62,12 +64,20 @@ public class TestBoard {
 	}
 	
 	TestBoardCell getCell(int row, int col) {
-		TestBoardCell cell = new TestBoardCell(row, col);
-		return cell;
+		return grid[row][col];
 	}
 	
 	Set<TestBoardCell> getTargets(){
 		return targets;
 		
 	}
+
+	
+	
+	public static void main(String[] args) {
+        TestBoard board = new TestBoard();
+        TestBoardCell cell = board.getCell(1, 3);
+		Set<TestBoardCell> testList = cell.getAdjList();
+		System.out.println(testList.size());
+    }
 }
