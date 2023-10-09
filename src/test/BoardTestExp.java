@@ -1,8 +1,12 @@
+package test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Set;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import experiment.TestBoard;
+import experiment.TestBoardCell;
 
 class BoardTestExp {
 	TestBoard board;
