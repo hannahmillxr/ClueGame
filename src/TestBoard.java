@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,8 +10,8 @@ import org.junit.Assert;
 public class TestBoard {
 	Map <TestBoardCell, Set<TestBoardCell>> adjMtx;
 	private TestBoardCell [][] grid;
-	private Set<TestBoardCell> targets;
-	private Set<TestBoardCell> visited;
+	private Set<TestBoardCell> targets = new HashSet <TestBoardCell>();
+	private Set<TestBoardCell> visited = new HashSet <TestBoardCell>();
 	
 	final static int COLS = 4;
 	final static int ROWS = 4;
@@ -19,7 +20,6 @@ public class TestBoard {
 	public TestBoard() {
 		super();
 		this.grid= new TestBoardCell[ROWS][COLS];
-		this.targets = new HashSet<TestBoardCell>();
 		this.adjMtx = new HashMap<TestBoardCell, Set<TestBoardCell>>();
 		
 		
@@ -43,11 +43,9 @@ public class TestBoard {
 				}
 				if (i+1 <COLS) {
 					cell.addAdjacency(this.getCell(i+1, j));
-					//cell.addAdjacency(grid[i+1][j]);
 				}
 				if (j+1 < ROWS) {
 					cell.addAdjacency(this.getCell(i, j+1));
-					//cell.addAdjacency(grid[i][j+1]);
 				}
 				
 				Set<TestBoardCell> currentAdjacencyList =  cell.getAdjList();		
@@ -58,8 +56,39 @@ public class TestBoard {
 		
 	}
 
-	void calcTargets(TestBoardCell startCell, int pathlength) {
-		TestBoardCell [] visited;
+	void calcTargets(TestBoardCell startCell, int pathlength) { 
+		int numSteps = pathlength;
+		
+		visited.add(startCell);
+		
+		for (TestBoardCell cell : startCell.getAdjList()) {
+			if (!visited.contains(cell)) {
+				
+				visited.add(cell);
+				
+				if (cell.getOccupied()) {
+					continue;
+				}
+				
+				else if (cell.isRoom()){
+					targets.add(cell);
+				}
+				
+				else if (numSteps == 1) {
+					targets.add(cell);
+				}	
+				
+				else {
+					calcTargets(cell, numSteps-1);
+				}	
+				
+				visited.remove(cell);
+			}
+			
+			
+
+			
+		}
 		
 	}
 	
@@ -72,12 +101,4 @@ public class TestBoard {
 		
 	}
 
-	
-	
-	public static void main(String[] args) {
-        TestBoard board = new TestBoard();
-        TestBoardCell cell = board.getCell(1, 3);
-		Set<TestBoardCell> testList = cell.getAdjList();
-		System.out.println(testList.size());
-    }
 }

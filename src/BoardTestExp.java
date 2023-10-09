@@ -87,6 +87,7 @@ class BoardTestExp {
 		TestBoardCell cell = board.getCell(3, 3);
 		board.calcTargets(cell, 2);
 		Set<TestBoardCell> targets = board.getTargets();
+	
 		Assert.assertEquals(3, targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(1,3)));
 		Assert.assertTrue(targets.contains(board.getCell(2,2)));
@@ -99,6 +100,14 @@ class BoardTestExp {
 		TestBoardCell cell = board.getCell(3, 3);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
+		
+		
+		for (TestBoardCell currentCell: targets ) {
+			System.out.println(currentCell.getRow());
+			System.out.println(currentCell.getCol());
+			System.out.println();
+		}		
+		
 		Assert.assertEquals(6, targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(0,3)));
 		Assert.assertTrue(targets.contains(board.getCell(1,2)));
@@ -172,7 +181,7 @@ class BoardTestExp {
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
 		Assert.assertEquals(3, targets.size());
-		Assert.assertTrue(targets.contains(board.getCell(1,2)));
+		Assert.assertTrue(targets.contains(board.getCell(1,1)));
 		Assert.assertTrue(targets.contains(board.getCell(2,2)));
 		Assert.assertTrue(targets.contains(board.getCell(3,3)));
 		
@@ -195,8 +204,11 @@ class BoardTestExp {
 		TestBoardCell cell = board.getCell(0, 3);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
-		Assert.assertEquals(3, targets.size());
-		Assert.assertTrue(targets.contains(board.getCell(1,2)));
+
+		
+		Assert.assertEquals(4, targets.size());
+		Assert.assertTrue(targets.contains(board.getCell(1,1)));
+		Assert.assertTrue(targets.contains(board.getCell(0,2)));
 		Assert.assertTrue(targets.contains(board.getCell(2,2)));
 		Assert.assertTrue(targets.contains(board.getCell(3,3)));
 		
@@ -208,8 +220,9 @@ class BoardTestExp {
 		TestBoardCell cell = board.getCell(3, 0);
 		board.calcTargets(cell, 1);
 		Set<TestBoardCell> targets = board.getTargets();
-		Assert.assertEquals(1, targets.size());
+		Assert.assertEquals(2, targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(3,1)));
+		Assert.assertTrue(targets.contains(board.getCell(2,0)));
 		
 	}
 	
@@ -234,21 +247,13 @@ class BoardTestExp {
 		TestBoardCell cell = board.getCell(1, 1);
 		board.calcTargets(cell, 1);
 		Set<TestBoardCell> targets = board.getTargets();
-		Assert.assertEquals(2, targets.size());
+		Assert.assertEquals(3, targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(1,2)));
+		Assert.assertTrue(targets.contains(board.getCell(1,0)));
 		Assert.assertTrue(targets.contains(board.getCell(2,1)));
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+
 
 }

@@ -39,4 +39,12 @@ public class TestBoardCell {
 	boolean isRoom() {
 		return this.room;
 	}
+	
+	int getRow(){
+		return this.row;
+	}
+	
+	int getCol(){
+		return this.col;
+	}
 }
