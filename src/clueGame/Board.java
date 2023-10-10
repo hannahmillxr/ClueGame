@@ -8,12 +8,12 @@ import experiment.TestBoardCell;
 
 public class Board {
 
-	Map <BoardCell, Set<BoardCell>> roomMap;//wrong type other side should be room, cell or char
+	Map <BoardCell, Set<BoardCell>> roomMap;
 	private BoardCell [][] grid;
 	String layoutConfigFile;
 	String setupConfigFile;
-	static int numColumns = 4;
-	static int numRows = 4;
+	private static int numColumns = 4;
+	private static int numRows = 4;
 	
     /*
     * variable and methods used for singleton pattern
@@ -38,6 +38,32 @@ public class Board {
     	
     }
     
+    public int getNumRows() {
+		return numRows;
+	}
+
+	public int getNumColumns() {
+		return numColumns;
+	}
+	
+	public Room getRoom(char symbol) {
+		Room room = new Room();
+		return room;
+	}
+    
+    public BoardCell getCell(int row, int col) {
+		return grid[row][col];
+	}
+    
+    public Room getRoom(BoardCell cell) {
+    	Room room = new Room();
+		return room;
+	}
+    
+    public void setConfigFiles(String csvFile, String txtFile) {
+
+	}
+    
     public void loadSetupConfig() throws BadConfigFormatException {
     	
     }
@@ -45,36 +71,7 @@ public class Board {
     public void loadLayoutConfig() throws BadConfigFormatException{
     	
     }
-
-	public void setConfigFiles(String string, String string2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Room getRoom(char c) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int getNumRows() {
-		// TODO Auto-generated method stub
-		return numRows;
-	}
-
-	public int getNumColumns() {
-		// TODO Auto-generated method stub
-		return numColumns;
-	}
-
-	public BoardCell getCell(int i, int j) {
-		// TODO Auto-generated method stub
-		return grid[i][j];
-	}
-
-	public Room getRoom(BoardCell cell) {
-		// TODO Auto-generated method stub
-		return cell.isRoom();
-	}
+    
     
     
     
