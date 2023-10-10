@@ -2,8 +2,8 @@ package clueGame;
 
 public class Room {
 	private String name;
-	BoardCell centerCell;
-	BoardCell labelCell;
+	private BoardCell centerCell;
+	private BoardCell labelCell;
 	
 	
 	
@@ -11,12 +11,20 @@ public class Room {
 		super();
 	}
 	
-	public Room(String name, BoardCell centerCell, BoardCell labelCell) {
+	public Room(String name) {
 		super();
 		this.name = name;
+
+	}
+	
+	public void setCenterCell(BoardCell centerCell) {
 		this.centerCell = centerCell;
+	}
+
+	public void setLabelCell(BoardCell labelCell) {
 		this.labelCell = labelCell;
 	}
+
 	public String getName() {
 		return name;
 	}

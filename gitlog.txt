@@ -1,3 +1,21 @@
+commit cc7b94197709d3a293f984f309af8edad3ef1850
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Mon Oct 9 22:33:05 2023 -0600
+
+    Tests are running with no errors, only failing
+
+commit 8f4b6ab80faa4ea4f28d6668cfa0429a6b22c8bf
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Mon Oct 9 22:22:51 2023 -0600
+
+    Changed the FileInitTest class to match our board design
+
+commit 1eec0df98822513bb303e7d4f117252bdc36b8f0
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Mon Oct 9 22:06:18 2023 -0600
+
+    All errors are fixed
+
 commit 0431a980da05500ae1b325e8083329a42b8baf2a
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Mon Oct 9 17:02:08 2023 -0600
