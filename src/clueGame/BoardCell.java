@@ -8,7 +8,7 @@ public class BoardCell {
 	private int row;
 	private int col;
 	private char initial;
-	Set<DoorDirection> doorDirection;
+	private DoorDirection doorDirection;
 	private Boolean roomLabel;
 	private Boolean roomCenter;
 	private Boolean doorway;
@@ -24,6 +24,7 @@ public class BoardCell {
 		this.col = col;
 		this.roomLabel = false;
 		this.roomCenter = false;
+		this.doorway = false;
 		this.adjacencyList = new HashSet<TestBoardCell>();
 	}
 	
@@ -32,9 +33,54 @@ public class BoardCell {
 		this.row = row;
 		this.col = col;
 		
-		//check what second character is 
-		this.roomLabel = false;
-		this.roomCenter = false;
+		//check what second character is
+		
+		if (secondCharacter == '#') {
+			this.roomLabel = true;
+			this.roomCenter = false;
+			this.doorway = false;
+		}
+		else if (secondCharacter == '*') {
+			this.roomCenter = true;
+			this.roomLabel = false;
+			this.doorway = false;
+		}
+		else if(secondCharacter == '^'){
+			this.doorway = true;
+			this.doorDirection = DoorDirection.UP;
+			this.roomLabel = false;
+			this.roomCenter = false;
+			
+		}
+		else if(secondCharacter == '>'){
+			this.doorway = true;
+			this.doorDirection = DoorDirection.RIGHT;
+			this.roomLabel = false;
+			this.roomCenter = false;
+			
+		}
+		else if(secondCharacter == '<'){
+			this.doorway = true;
+			this.doorDirection = DoorDirection.LEFT;
+			this.roomLabel = false;
+			this.roomCenter = false;
+			
+		}
+		else if(secondCharacter == 'v'){
+			this.doorway = true;
+			this.doorDirection = DoorDirection.DOWN;
+			this.roomLabel = false;
+			this.roomCenter = false;
+			
+		}
+		//secret passage
+		else {
+			this.roomLabel = false;
+			this.roomCenter = false;
+			this.doorway = false;
+			
+		}
+
 		this.adjacencyList = new HashSet<TestBoardCell>();
 	}
 

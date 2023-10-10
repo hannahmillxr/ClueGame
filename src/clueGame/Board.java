@@ -39,9 +39,18 @@ public class Board {
      * initialize the board (since we are using singleton pattern)
      */
     
-    public void initialize()
-    {
-    	
+    public void initialize () {
+    	try {
+    		loadSetupConfig();
+    		loadLayoutConfig();
+    		//build rooms
+    		
+    		
+
+    	} catch(BadConfigFormatException e)  {
+			System.out.println(e);
+			System.out.println(e.getMessage());
+		}	
     }
     
     public int getNumRows() {
@@ -89,17 +98,24 @@ public class Board {
 		} catch(FileNotFoundException e) {
 			System.out.println(e);
 			System.out.println(e.getMessage());
-		}	
+		}
 		
-		//text file has structure: [Room, name, initial] can be room or space 
+		
+		//text file has structure: [Room, name, initial] can be room or space ELSE THROW EXCEPTION
 		for (String line : textFile) {
 			String[] word = line.split(", ");
 			
 			//make sure you are not adding comment line from txt file
 			if (word[0].equals("Room") || word[0].equals("Space")) {
-				Room room = new Room(word[1]);
-				Character initial = word[2].charAt(0);
-				roomMap.put(initial, room);
+				
+				if (word.length>3) {
+					throw new BadConfigFormatException();
+				}
+				else {
+					Room room = new Room(word[1]);
+					Character initial = word[2].charAt(0);
+					roomMap.put(initial, room);
+				}
 			}
 		}
     	
@@ -109,7 +125,7 @@ public class Board {
     //reads in csv file
     public void loadLayoutConfig() throws BadConfigFormatException{
     	ArrayList<String> csvFile = new ArrayList<String>();
-    	grid = new BoardCell[numRows][numColumns];
+    	
     	try {
     		FileReader reader = new FileReader(layoutConfigFile);
 			Scanner in = new Scanner(reader);
@@ -119,18 +135,37 @@ public class Board {
 			}
 			in.close();
 			
-			//if there is a room that is not in our legend, throw throw new BadConfigFormatException("Room found that is not in legend")
+			String[] firstList = csvFile.get(0).split(",");
+			int colNum = firstList.length;
+			int rowNum = csvFile.size();
 			
 			
+			grid = new BoardCell[rowNum][colNum];
 			//if rows are different lengths each time, throw new BadConfigFormatException("Rows have varying lengths")
-			
-			
-			//make sure format is correct, if there are two characters in one index, then pass in the second character in the paramaterized constructer
-			
-			
-			
-			
-			
+			for (int i =0; i< csvFile.size(); i++) {
+				String[] squares = csvFile.get(i).split(",");
+				if (squares.length != colNum) {
+					throw new BadConfigFormatException("Rows have varying lengths");
+				}
+				for (int j = 0; j< squares.length; j++) {
+					if (squares[j].length()> 1) {
+						BoardCell cell = new BoardCell(i, j, squares[0].charAt(1));
+						grid[i][j] = cell;
+					}
+					else {
+						BoardCell cell = new BoardCell(i, j);
+						grid[i][j] = cell;
+					}
+					
+					//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
+					
+					if (!roomMap.containsKey(squares[0].charAt(0))) {
+						throw new BadConfigFormatException("Room found that is not in legend");
+					}
+				}
+					
+				
+			}	
 			
 		} catch(FileNotFoundException e) {
 			System.out.println(e);
