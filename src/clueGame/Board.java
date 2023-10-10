@@ -52,7 +52,8 @@ public class Board {
 	}
     
     public BoardCell getCell(int row, int col) {
-		return grid[row][col];
+    	BoardCell cell = new BoardCell();
+		return cell;
 	}
     
     public Room getRoom(BoardCell cell) {
