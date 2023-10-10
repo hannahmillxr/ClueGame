@@ -119,13 +119,13 @@ public class Board {
 			}
 			in.close();
 			
-			//if there is a room that is not in our legend, throw exception 
+			//if there is a room that is not in our legend, throw throw new BadConfigFormatException("Room found that is not in legend")
 			
 			
-			//if rows are different lengths each time, throw exception
+			//if rows are different lengths each time, throw new BadConfigFormatException("Rows have varying lengths")
 			
 			
-			//make sure format is correct, if there is two 
+			//make sure format is correct, if there are two characters in one index, then pass in the second character in the paramaterized constructer
 			
 			
 			
