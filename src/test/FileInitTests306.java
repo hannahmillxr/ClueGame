@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 /*
  * This program tests that config files are loaded properly.
@@ -17,11 +17,11 @@ import clueGame.BoardCell;
 import clueGame.DoorDirection;
 import clueGame.Room;
 
-public class FileInitTests306{
+public class FileInitTests306 {
 	// Constants that I will use to test whether the file was loaded correctly
-	public static final int LEGEND_SIZE = 13;
-	public static final int NUM_ROWS = 24;
-	public static final int NUM_COLUMNS = 29;
+	public static final int LEGEND_SIZE = 11;
+	public static final int NUM_ROWS = 25;
+	public static final int NUM_COLUMNS = 24;
 
 	// NOTE: I made Board static because I only want to set it up one
 	// time (using @BeforeAll), no need to do setup before each test.
@@ -32,7 +32,7 @@ public class FileInitTests306{
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("clueBoardcsv.csv", "ClueSetup.txt");
+		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
 	}
@@ -41,16 +41,11 @@ public class FileInitTests306{
 	public void testRoomLabels() {
 		// To ensure data is correctly loaded, test retrieving a few rooms
 		// from the hash, including the first and last in the file and a few others
-		assertEquals("Kitchen", board.getRoom('K').getName() );
-		assertEquals("Cort yard", board.getRoom('Y').getName() );
-		assertEquals("Bedrooms", board.getRoom('B').getName() );
-		assertEquals("Armory", board.getRoom('A').getName() );
-		assertEquals("Meditation", board.getRoom('M').getName() );
-		assertEquals("Dojo room", board.getRoom('D').getName() );
-		assertEquals("Scroll room", board.getRoom('S').getName() );
-		assertEquals("Cherry Bloose Room", board.getRoom('C').getName() );
-		assertEquals("Tea Room", board.getRoom('T').getName() );
-	
+		assertEquals("Conservatory", board.getRoom('C').getName() );
+		assertEquals("Ballroom", board.getRoom('B').getName() );
+		assertEquals("Billiard Room", board.getRoom('R').getName() );
+		assertEquals("Dining Room", board.getRoom('D').getName() );
+		assertEquals("Walkway", board.getRoom('W').getName() );
 	}
 
 	@Test
@@ -65,29 +60,27 @@ public class FileInitTests306{
 	// These cells are white on the planning spreadsheet
 	@Test
 	public void FourDoorDirections() {
-		BoardCell cell = board.getCell(1, 6);
+		BoardCell cell = board.getCell(8, 7);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
-		cell = board.getCell(6, 3);
+		cell = board.getCell(7, 12);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
-		cell = board.getCell(5, 17);
+		cell = board.getCell(4, 8);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
-		cell = board.getCell(14, 1);
+		cell = board.getCell(16, 9);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
-		
-		
 		// Test that walkways are not doors
-		cell = board.getCell(6, 17);
+		cell = board.getCell(12, 14);
 		assertFalse(cell.isDoorway());
 	}
 	
 
 	// Test that we have the correct number of doors
 	@Test
-	public void testNumberOfDoorways() {//need to change from here on
+	public void testNumberOfDoorways() {
 		int numDoors = 0;
 		for (int row = 0; row < board.getNumRows(); row++)
 			for (int col = 0; col < board.getNumColumns(); col++) {
@@ -95,14 +88,14 @@ public class FileInitTests306{
 				if (cell.isDoorway())
 					numDoors++;
 			}
-		Assert.assertEquals(14, numDoors);
+		Assert.assertEquals(17, numDoors);
 	}
 
 	// Test a few room cells to ensure the room initial is correct.
 	@Test
 	public void testRooms() {
 		// just test a standard room location
-		BoardCell cell = board.getCell( 0, 0);
+		BoardCell cell = board.getCell( 23, 23);
 		Room room = board.getRoom( cell ) ;
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Kitchen" ) ;

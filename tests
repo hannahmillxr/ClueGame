@@ -1,0 +1,15 @@
+NUM_COLUMNS was changed to 30, as our gam board is wider than the example game board.
+
+The testRoomLabels() function was changed to reflect our room titles and symbols,
+for example we test to make sure an Armory cell has the initial 'A', or the 
+Dojo has the initial 'D', etc. 
+
+The FourDoorDirections function was changed to reflect the doors in our game board,
+the door into the bedrooms at cell (8,6) opens left, the cell at (6,3) opens up 
+into the kitchen, the cell at (9,18) opens right into the court yard, and the cell
+at (19, 8) opens down into the dojo.
+
+The number of doorways was changed to reflect that we have 12 doors in our board game.
+
+Finally, test rooms was altered to correspond to the rooms in our game, and the locations
+of their secret passages, center, and label. 
