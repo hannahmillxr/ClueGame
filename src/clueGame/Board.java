@@ -2,8 +2,6 @@ package clueGame;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,7 +14,7 @@ import experiment.TestBoardCell;
 
 public class Board {
 
-	Map <Character, Room> roomMap;
+	Map <Character, Room> roomMap = new HashMap<Character, Room>();
 	private BoardCell [][] grid;
 	String layoutConfigFile;
 	String setupConfigFile;
@@ -73,8 +71,7 @@ public class Board {
 	}
     
     public BoardCell getCell(int row, int col) {
-    	BoardCell cell = new BoardCell(row, col);
-		return cell;
+		return grid[row][col];
 	}
     
     public void setConfigFiles(String csv, String txt) {
@@ -85,7 +82,6 @@ public class Board {
     
     //reads in text file 
     public void loadSetupConfig() throws BadConfigFormatException {
-    	roomMap = new HashMap<Character, Room>();
 		ArrayList<String> textFile = new ArrayList<String>();
 		
 		try {
@@ -121,7 +117,7 @@ public class Board {
 			else if (!word[0].startsWith("//")){
 				throw new BadConfigFormatException("Text file is improperly formated");
 			}
-		}
+		}		
     	
     }
     
@@ -131,10 +127,11 @@ public class Board {
     	ArrayList<String> csvFile = new ArrayList<String>();
     	
     	try {
-    		FileReader reader = new FileReader(layoutConfigFile, StandardCharsets.UTF_8); // Replace UTF-8 with the actual encoding of your file
-    		Scanner in = new Scanner(reader);
+    		FileReader reader = new FileReader(layoutConfigFile);
+			Scanner in = new Scanner(reader);
 			while (in.hasNextLine()) {
 				String readInNext = in.nextLine();
+				
 				csvFile.add(readInNext);
 				System.out.println(readInNext);
 			}
@@ -158,31 +155,35 @@ public class Board {
 				}
 				for (int j = 0; j< squares.length; j++) {
 					if (squares[j].length()> 1) {
-						BoardCell cell = new BoardCell(i, j, squares[0].charAt(1));
-						grid[i][j] = cell;
+						BoardCell cell = new BoardCell(i, j, squares[j].charAt(1));
+						
+						
+						cell.setInitial(squares[j].charAt(0));
 						
 						if (cell.isRoomCenter()) {
-							roomMap.get(cell.getInitial()).setCenterCell(cell);
+							Room temproom = roomMap.get(cell.getInitial());
+							temproom.setCenterCell(cell);
 						}
-						if (cell.isRoomCenter()) {
+						if (cell.isLabel()) {
 							roomMap.get(cell.getInitial()).setLabelCell(cell);
 						}
+						grid[i][j] = cell;
 							
 					}
 					else {
 						BoardCell cell = new BoardCell(i, j);
-						grid[i][j] = cell;
+						cell.setInitial(squares[j].charAt(0));
 						
 						if (cell.isRoomCenter()) {
 							roomMap.get(cell.getInitial()).setCenterCell(cell);
 						}
-						if (cell.isRoomCenter()) {
+						if (cell.isLabel()) {
 							roomMap.get(cell.getInitial()).setLabelCell(cell);
 						}
+						grid[i][j] = cell;
 					}
 										
 					//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
-					
 					
 					if (!roomMap.containsKey(squares[0].charAt(0))) {
 						throw new BadConfigFormatException("Room found that is not in legend");
@@ -196,9 +197,6 @@ public class Board {
 			System.out.println(e);
 			System.out.println(e.getMessage());
 		}
-    	catch (IOException e) {
-    	    System.out.println("An error occurred while reading the file: " + e.getMessage());
-    	}
     }
     
     

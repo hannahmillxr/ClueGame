@@ -128,4 +128,9 @@ public class BoardCell {
 		return initial;
 	}
 	
+	public void setInitial(char symbol) {
+		// TODO Auto-generated method stub
+		this.initial = symbol;
+	}
+	
 }

@@ -33,7 +33,7 @@ public class FileInitTests{
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("clueBoardcsv.csv", "ClueSetup.txt");
+		board.setConfigFiles("newClueBoardcsv.csv", "ClueSetup.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
 	}
@@ -74,7 +74,7 @@ public class FileInitTests{
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
 		
-		cell = board.getCell(9, 18);
+		cell = board.getCell(5, 11);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
 		
@@ -97,7 +97,7 @@ public class FileInitTests{
 				if (cell.isDoorway())
 					numDoors++;
 			}
-		Assert.assertEquals(12, numDoors);
+		Assert.assertEquals(13, numDoors);
 	}
 
 	// Test a few room cells to ensure the room initial is correct.
@@ -121,10 +121,10 @@ public class FileInitTests{
 		assertTrue( room.getLabelCell() == cell );
 		
 		// this is a room center cell to test
-		cell = board.getCell(20, 3);
+		cell = board.getCell(20, 2);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
-		assertEquals( room.getName(), "Scrool Room" ) ;
+		assertEquals( room.getName(), "Scroll Room" ) ;
 		assertTrue( cell.isRoomCenter() );
 		assertTrue( room.getCenterCell() == cell );
 		
