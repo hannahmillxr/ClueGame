@@ -2,6 +2,8 @@ package clueGame;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,12 +16,12 @@ import experiment.TestBoardCell;
 
 public class Board {
 
-	Map <Character, Room> roomMap= new HashMap<Character, Room>();
+	Map <Character, Room> roomMap;
 	private BoardCell [][] grid;
 	String layoutConfigFile;
 	String setupConfigFile;
-	private static int numColumns = 25;
-	private static int numRows = 30;
+	private int numColumns;
+	private int numRows;
 	
     /*
     * variable and methods used for singleton pattern
@@ -43,15 +45,13 @@ public class Board {
     	try {
     		loadSetupConfig();
     		loadLayoutConfig();
-    		//build rooms
-    		
-    		
-
     	} catch(BadConfigFormatException e)  {
-			System.out.println(e);
-			System.out.println(e.getMessage());
-		}	
+    		System.out.println(e);
+    		System.out.println(e.getMessage());
+    	}	
     }
+    
+    
     
     public int getNumRows() {
 		return numRows;
@@ -61,19 +61,20 @@ public class Board {
 		return numColumns;
 	}
 	
-	public Room getRoom(char symbol) {
-		Room room = new Room();
+	public Room getRoom(char initial) {
+		Room room = roomMap.get(initial);
+		return room;
+	}
+	
+	public Room getRoom(BoardCell cell) {
+		char initial = cell.getInitial();
+		Room room = roomMap.get(initial);
 		return room;
 	}
     
     public BoardCell getCell(int row, int col) {
     	BoardCell cell = new BoardCell(row, col);
 		return cell;
-	}
-    
-    public Room getRoom(BoardCell cell) {
-    	Room room = new Room();
-		return room;
 	}
     
     public void setConfigFiles(String csv, String txt) {
@@ -84,6 +85,7 @@ public class Board {
     
     //reads in text file 
     public void loadSetupConfig() throws BadConfigFormatException {
+    	roomMap = new HashMap<Character, Room>();
 		ArrayList<String> textFile = new ArrayList<String>();
 		
 		try {
@@ -92,6 +94,7 @@ public class Board {
 			while (in.hasNextLine()) {
 				String readInNext = in.nextLine();
 				textFile.add(readInNext);
+				
 			}
 			in.close();
 			
@@ -102,20 +105,21 @@ public class Board {
 		
 		
 		//text file has structure: [Room, name, initial] can be room or space ELSE THROW EXCEPTION
-		for (String line : textFile) {
-			String[] word = line.split(", ");
+		
+		for (int line = 0; line < textFile.size(); line++) {
+			String[] word = textFile.get(line).split(", ");
+			
 			
 			//make sure you are not adding comment line from txt file
 			if (word[0].equals("Room") || word[0].equals("Space")) {
 				
-				if (word.length>3) {
-					throw new BadConfigFormatException();
-				}
-				else {
-					Room room = new Room(word[1]);
-					Character initial = word[2].charAt(0);
-					roomMap.put(initial, room);
-				}
+				Room room = new Room(word[1]);
+				char initial = word[2].charAt(0);				
+				roomMap.put(initial, room);
+				
+			}
+			else if (!word[0].startsWith("//")){
+				throw new BadConfigFormatException("Text file is improperly formated");
 			}
 		}
     	
@@ -127,11 +131,12 @@ public class Board {
     	ArrayList<String> csvFile = new ArrayList<String>();
     	
     	try {
-    		FileReader reader = new FileReader(layoutConfigFile);
-			Scanner in = new Scanner(reader);
+    		FileReader reader = new FileReader(layoutConfigFile, StandardCharsets.UTF_8); // Replace UTF-8 with the actual encoding of your file
+    		Scanner in = new Scanner(reader);
 			while (in.hasNextLine()) {
 				String readInNext = in.nextLine();
 				csvFile.add(readInNext);
+				System.out.println(readInNext);
 			}
 			in.close();
 			
@@ -139,11 +144,15 @@ public class Board {
 			int colNum = firstList.length;
 			int rowNum = csvFile.size();
 			
+			numRows = rowNum;
+			numColumns = colNum;
+			
 			
 			grid = new BoardCell[rowNum][colNum];
 			//if rows are different lengths each time, throw new BadConfigFormatException("Rows have varying lengths")
 			for (int i =0; i< csvFile.size(); i++) {
 				String[] squares = csvFile.get(i).split(",");
+				
 				if (squares.length != colNum) {
 					throw new BadConfigFormatException("Rows have varying lengths");
 				}
@@ -151,13 +160,29 @@ public class Board {
 					if (squares[j].length()> 1) {
 						BoardCell cell = new BoardCell(i, j, squares[0].charAt(1));
 						grid[i][j] = cell;
+						
+						if (cell.isRoomCenter()) {
+							roomMap.get(cell.getInitial()).setCenterCell(cell);
+						}
+						if (cell.isRoomCenter()) {
+							roomMap.get(cell.getInitial()).setLabelCell(cell);
+						}
+							
 					}
 					else {
 						BoardCell cell = new BoardCell(i, j);
 						grid[i][j] = cell;
+						
+						if (cell.isRoomCenter()) {
+							roomMap.get(cell.getInitial()).setCenterCell(cell);
+						}
+						if (cell.isRoomCenter()) {
+							roomMap.get(cell.getInitial()).setLabelCell(cell);
+						}
 					}
-					
+										
 					//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
+					
 					
 					if (!roomMap.containsKey(squares[0].charAt(0))) {
 						throw new BadConfigFormatException("Room found that is not in legend");
@@ -171,6 +196,9 @@ public class Board {
 			System.out.println(e);
 			System.out.println(e.getMessage());
 		}
+    	catch (IOException e) {
+    	    System.out.println("An error occurred while reading the file: " + e.getMessage());
+    	}
     }
     
     

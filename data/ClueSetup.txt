@@ -1,17 +1,13 @@
 //Rooms and room cards
 Room, Kitchen, K
-Room, Cort yard, Y
+Room, Court Yard, Y
 Room, Bedrooms, B
 Room, Armory, A
-Room, Meditation room, M
-Room, Dojo room, D
-Room, Scroll room, S
-Room, Cherry Bloose Room, C
-Room, Tea room,T
+Room, Meditation Room, M
+Room, Dojo, D
+Room, Scroll Room, S
+Room, Cherry Blossom Room, C
+Room, Tea Room, T
 //other spaces on board
 Space, Unused, X
 Space, Walkway, W
-
-
-
-

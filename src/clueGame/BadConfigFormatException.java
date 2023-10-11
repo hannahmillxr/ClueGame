@@ -1,4 +1,5 @@
 package clueGame;
+import java.io.FileNotFoundException;
 
 public class BadConfigFormatException extends Exception {
 	
@@ -7,8 +8,7 @@ public class BadConfigFormatException extends Exception {
 	}
 	
 	public BadConfigFormatException(String message)  {
-		super(message);
-			
+		super(message);	
 	}
 	
 	

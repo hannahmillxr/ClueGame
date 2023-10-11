@@ -48,9 +48,9 @@ public class FileInitTests{
 		assertEquals("Tea Room", board.getRoom('T').getName() );
 		assertEquals("Bedrooms", board.getRoom('B').getName() );
 		assertEquals("Dojo", board.getRoom('D').getName() );
-		assertEquals("Meditation room", board.getRoom('M').getName() );
+		assertEquals("Meditation Room", board.getRoom('M').getName() );
 		assertEquals("Scroll Room", board.getRoom('S').getName() );
-		assertEquals("Cherry Blossum Room", board.getRoom('C').getName() );
+		assertEquals("Cherry Blossom Room", board.getRoom('C').getName() );
 		assertEquals("Walkway", board.getRoom('W').getName() );
 	}
 

@@ -78,6 +78,7 @@ public class BoardCell {
 			this.roomLabel = false;
 			this.roomCenter = false;
 			this.doorway = false;
+			this.secretPassage = secondCharacter;
 			
 		}
 
@@ -119,7 +120,12 @@ public class BoardCell {
 
 	public char getSecretPassage() {
 		// TODO Auto-generated method stub
-		return 0;
+		return secretPassage;
+	}
+	
+	public char getInitial() {
+		// TODO Auto-generated method stub
+		return initial;
 	}
 	
 }
