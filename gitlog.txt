@@ -1,3 +1,51 @@
+commit 533020426183c56f83a807b3e16223070f8c9bb2
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 12 13:29:11 2023 -0600
+
+    everything works :)
+
+commit 247053d487308773fff61e58603a9121bb89a34e
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 12 12:31:49 2023 -0600
+
+    new clue board
+
+commit 5faaa1d8f0bc616191df81edab6f76da321908c7
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Oct 11 14:03:13 2023 -0600
+
+    everything but one exception test is working
+
+commit 2d4db93c55449940b1f36219d39be740838b2e9f
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 10 19:08:50 2023 -0600
+
+    finally running without errors, weird '?' at the start of csv file, will go to office hours tommorrow and ask about csv format.
+
+commit f56ddf42d38db02d3d78d73c7ad1b6c7226b2978
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 10 15:37:08 2023 -0600
+
+    Added the git layoutConfigSetup
+
+commit 49c1eddc2f45fec2a79651384fe2386b59f16b59
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 10 12:52:10 2023 -0600
+
+    Accidentially edited the 306 file and replaced it with the original
+
+commit 80212e3a2e347f9cbb151e3f1f853807c399b25f
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 10 12:11:21 2023 -0600
+
+    added some comments
+
+commit 29f6ce206cd1c234e6511b3054906e4e748a7040
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 10 12:05:08 2023 -0600
+
+    Started C15A1, added a few implementations in room and Board
+
 commit cc7b94197709d3a293f984f309af8edad3ef1850
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Mon Oct 9 22:33:05 2023 -0600

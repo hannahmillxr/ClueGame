@@ -10,12 +10,14 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
-import experiment.TestBoardCell;
+
 
 public class Board {
 
 	Map <Character, Room> roomMap;
 	private BoardCell [][] grid;
+	private Set<BoardCell> visited = new HashSet <BoardCell>();
+	private Set<BoardCell> targets = new HashSet <BoardCell>();
 	String layoutConfigFile;
 	String setupConfigFile;
 	private int numColumns;
@@ -78,6 +80,40 @@ public class Board {
     	setupConfigFile = "data/" + txt;
     	layoutConfigFile = "data/" + csv;
 	}
+    
+    public void calcTargets(BoardCell startCell, int pathlength) { 
+		int numSteps = pathlength;
+		
+		visited.add(startCell);
+		
+		for (BoardCell cell : startCell.getAdjList()) {
+			if (!visited.contains(cell)) {
+				
+				visited.add(cell);
+				
+				if (cell.getOccupied()) {
+					continue;
+				}
+				
+				else if (cell.isRoom()){
+					targets.add(cell);
+				}
+				
+				else if (numSteps == 1) {
+					targets.add(cell);
+				}	
+				
+				else {
+					calcTargets(cell, numSteps-1);
+				}	
+				
+				visited.remove(cell);
+			}
+			
+			
+
+			
+		}
     
     
     //reads in text file 

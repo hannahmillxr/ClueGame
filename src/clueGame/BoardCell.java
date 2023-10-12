@@ -12,8 +12,9 @@ public class BoardCell {
 	private Boolean roomLabel;
 	private Boolean roomCenter;
 	private Boolean doorway;
+	private Boolean occupied;
 	private char secretPassage;
-	Set<TestBoardCell> adjacencyList;
+	Set<BoardCell> adjacencyList;
 	private Boolean isRoom;
 	
 	
@@ -133,4 +134,15 @@ public class BoardCell {
 		this.initial = symbol;
 	}
 	
+	public Set<BoardCell> getAdjList(){
+		return this.adjacencyList;
+	}
+	
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
+	
+	public boolean getOccupied() {
+		return this.occupied;
+	}
 }
