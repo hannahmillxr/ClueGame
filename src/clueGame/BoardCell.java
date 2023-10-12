@@ -26,7 +26,7 @@ public class BoardCell {
 		this.roomLabel = false;
 		this.roomCenter = false;
 		this.doorway = false;
-		this.adjacencyList = new HashSet<TestBoardCell>();
+		this.adjacencyList = new HashSet<BoardCell>();
 	}
 	
 	public BoardCell(int row, int col, char secondCharacter) {
@@ -83,7 +83,7 @@ public class BoardCell {
 			
 		}
 
-		this.adjacencyList = new HashSet<TestBoardCell>();
+		this.adjacencyList = new HashSet<BoardCell>();
 	}
 
 	

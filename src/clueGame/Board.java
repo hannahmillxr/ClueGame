@@ -82,38 +82,38 @@ public class Board {
 	}
     
     public void calcTargets(BoardCell startCell, int pathlength) { 
-		int numSteps = pathlength;
-		
-		visited.add(startCell);
-		
-		for (BoardCell cell : startCell.getAdjList()) {
-			if (!visited.contains(cell)) {
-				
-				visited.add(cell);
-				
-				if (cell.getOccupied()) {
-					continue;
-				}
-				
-				else if (cell.isRoom()){
-					targets.add(cell);
-				}
-				
-				else if (numSteps == 1) {
-					targets.add(cell);
-				}	
-				
-				else {
-					calcTargets(cell, numSteps-1);
-				}	
-				
-				visited.remove(cell);
-			}
-			
-			
+    	int numSteps = pathlength;
 
-			
-		}
+    	visited.add(startCell);
+
+    	for (BoardCell cell : startCell.getAdjList()) {
+    		if (!visited.contains(cell)) {
+
+    			visited.add(cell);
+
+    			if (cell.getOccupied()) {
+    				continue;
+    			}
+
+    			else if (cell.isRoom()){
+    				targets.add(cell);
+    			}
+
+    			else if (numSteps == 1) {
+    				targets.add(cell);
+    			}	
+
+    			else {
+    				calcTargets(cell, numSteps-1);
+    			}	
+
+    			visited.remove(cell);
+    		}
+    	}	
+
+
+
+    }
     
     
     //reads in text file 
