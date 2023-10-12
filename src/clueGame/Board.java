@@ -14,7 +14,7 @@ import experiment.TestBoardCell;
 
 public class Board {
 
-	Map <Character, Room> roomMap = new HashMap<Character, Room>();
+	Map <Character, Room> roomMap;
 	private BoardCell [][] grid;
 	String layoutConfigFile;
 	String setupConfigFile;
@@ -83,6 +83,7 @@ public class Board {
     //reads in text file 
     public void loadSetupConfig() throws BadConfigFormatException {
 		ArrayList<String> textFile = new ArrayList<String>();
+		roomMap = new HashMap<Character, Room>();
 		
 		try {
 			FileReader reader = new FileReader(setupConfigFile);
@@ -185,7 +186,7 @@ public class Board {
 										
 					//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
 					
-					if (!roomMap.containsKey(squares[0].charAt(0))) {
+					if (!roomMap.containsKey(squares[j].charAt(0))) {
 						throw new BadConfigFormatException("Room found that is not in legend");
 					}
 				}
