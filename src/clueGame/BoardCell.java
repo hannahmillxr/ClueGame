@@ -92,7 +92,6 @@ public class BoardCell {
 	}
 
 	public boolean isDoorway() {
-		// TODO Auto-generated method stub
 		return doorway;
 	}
 
@@ -105,12 +104,12 @@ public class BoardCell {
 	}
 	
 	public Object getDoorDirection() {
-		// TODO Auto-generated method stub
+	
 		return doorDirection;
 	}
 
 	public boolean isLabel() {
-		// TODO Auto-generated method stub
+		
 		return roomLabel;
 	}
 
@@ -120,17 +119,15 @@ public class BoardCell {
 	}
 
 	public char getSecretPassage() {
-		// TODO Auto-generated method stub
+		
 		return secretPassage;
 	}
 	
 	public char getInitial() {
-		// TODO Auto-generated method stub
 		return initial;
 	}
 	
 	public void setInitial(char symbol) {
-		// TODO Auto-generated method stub
 		this.initial = symbol;
 	}
 	

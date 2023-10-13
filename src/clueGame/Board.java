@@ -205,6 +205,8 @@ public class Board {
 							roomMap.get(cell.getInitial()).setLabelCell(cell);
 						}
 						grid[i][j] = cell;
+						System.out.println(grid[i][j]);
+						System.out.println("Wrk");
 							
 					}
 					else {
@@ -235,6 +237,15 @@ public class Board {
 			System.out.println(e.getMessage());
 		}
     }
+
+	public Set<BoardCell> getAdjList(int i, int j) {
+		return grid[i][j].getAdjList();
+		//return adj at sep board cell
+	}
+
+	public Set<BoardCell> getTargets() {
+		return targets;
+	}
     
     
     
