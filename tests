@@ -1,3 +1,6 @@
+FileInitTests:
+
+
 NUM_COLUMNS was changed to 30, as our gam board is wider than the example game board.
 
 The testRoomLabels() function was changed to reflect our room titles and symbols,
@@ -13,3 +16,37 @@ The number of doorways was changed to reflect that we have 12 doors in our board
 
 Finally, test rooms was altered to correspond to the rooms in our game, and the locations
 of their secret passages, center, and label. 
+
+BoardAdjTargetTests:
+
+In the testAdjacenciesRooms() function, we tested our kitchen room, which has 2 doors, and a 
+secret passage. We the tested our tea room, which has only one door and thus an adjacency of size one.
+Lastly, we tested the cherry blossom room which has two doors. 
+
+In the testAdjacencyDoor() function, we first tetst our door in to the beedrooms, which has no
+spaces around it blocked. We then tested the door into the meditation room which is in a signle file 
+hallway. Lastly we tested the doorway into the scroll room, which is next to an unused space.
+
+In the testAdjacencyWalkways(), we first test a walk way at the bottom of the board that has unused spaces to 
+its left and right. We then tested a two walk ways with all four directions open, one near a door. Lastley,
+we tested a walkway next to the closet in the center of the board. 
+
+We then tested the targets from the center of the scroll room, in a function called testTargetsInScrollRoom().
+The scroll room has a secret passage and two doors, we tested targets for rolls 1, 2, and 3. 
+
+We then tested the targets from the center of the armory, in a function called testTargetsInArmory().
+The armory has one door and no secret passage, we tested targets for rolls 1, 3, and 4. 
+
+In the testTargetsAtDoor() function, we tested the targets from door spaces. We chose to test a door that
+opened up into the kitchen, we tested targets for rolls 1, 2, and 3.
+
+In the testTargetsinWalkway1() function, we tested the targets from walkway spaces. We chose a spot adjacent to a door
+that opens up into the armory. We tested targets for rolls 1, 2, and 3.
+
+In the testTargetsinWalkway2() function, we tested the targets from walkway spaces. We chose a spot in a single file hallway,
+3 squares from a doorway into the meditation room. We tested targets for rolls 1, 4, and 3.
+
+Finally, we tested how the targets are calculated given one of the target spots is occupied. We first tested a spot adjacent to
+a door that opens up into the kitchen. Next we tested a doorway, in which the room was occupied, as the player should still
+be able to move into an occupied room. Finally, we tested a scenario in which one of the doorways out of the meditation room
+was blocked. 
