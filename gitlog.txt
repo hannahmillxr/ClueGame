@@ -1,3 +1,33 @@
+commit 39eced16a4047369c9255eb8fc7f7b86b96f7a1c
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Fri Oct 13 10:59:13 2023 -0600
+
+    Tests are updated to match our game board
+
+commit 78186b492e7b0c97bf549d354e4f9bbcaa7ba797
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Oct 13 08:41:22 2023 -0600
+
+    Fix all current errors in te class, that where caused adding new class. Need to change numbers
+
+commit e02fdfdd4ad9d68afcfba928aaedd7ed5c7b264a
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 12 13:45:17 2023 -0600
+
+    fixed errors
+
+commit 66d95a6202f9114ebee1983ee5d2712f2d4cc0b7
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 12 13:42:58 2023 -0600
+
+    Starting C15A2
+
+commit c2e6a683b3850c3217d08c6246161697fbe2401f
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 12 13:42:48 2023 -0600
+
+    Starting C15A2
+
 commit 533020426183c56f83a807b3e16223070f8c9bb2
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 12 13:29:11 2023 -0600

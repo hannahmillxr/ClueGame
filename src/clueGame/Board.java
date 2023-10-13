@@ -170,7 +170,6 @@ public class Board {
 				String readInNext = in.nextLine();
 				
 				csvFile.add(readInNext);
-				System.out.println(readInNext);
 			}
 			in.close();
 			
@@ -205,8 +204,6 @@ public class Board {
 							roomMap.get(cell.getInitial()).setLabelCell(cell);
 						}
 						grid[i][j] = cell;
-						System.out.println(grid[i][j]);
-						System.out.println("Wrk");
 							
 					}
 					else {

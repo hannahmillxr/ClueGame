@@ -107,13 +107,6 @@ class BoardTestExp {
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> targets = board.getTargets();
 		
-		
-		for (TestBoardCell currentCell: targets ) {
-			System.out.println(currentCell.getRow());
-			System.out.println(currentCell.getCol());
-			System.out.println();
-		}		
-		
 		Assert.assertEquals(6, targets.size());
 		Assert.assertTrue(targets.contains(board.getCell(0,3)));
 		Assert.assertTrue(targets.contains(board.getCell(1,2)));
