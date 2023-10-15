@@ -12,12 +12,14 @@ import java.util.TreeMap;
 
 
 
+
 public class Board {
 
 	Map <Character, Room> roomMap;
+	Map <BoardCell, Set<BoardCell>> adjMtx;
 	private BoardCell [][] grid;
-	private Set<BoardCell> visited = new HashSet <BoardCell>();
-	private Set<BoardCell> targets = new HashSet <BoardCell>();
+	private Set<BoardCell> visited;
+	private Set<BoardCell> targets;
 	String layoutConfigFile;
 	String setupConfigFile;
 	private int numColumns;
@@ -45,6 +47,7 @@ public class Board {
     	try {
     		loadSetupConfig();
     		loadLayoutConfig();
+    		buildAdjacencyList();
     	} catch(BadConfigFormatException e)  {
     		System.out.println(e);
     		System.out.println(e.getMessage());
@@ -82,6 +85,15 @@ public class Board {
 	}
     
     public void calcTargets(BoardCell startCell, int pathlength) { 
+    	
+    	targets = new HashSet <BoardCell>();
+    	visited = new HashSet <BoardCell>();
+    	calculations (startCell, pathlength);
+
+
+    }
+    
+    public void calculations (BoardCell startCell, int pathlength) { 
     	int numSteps = pathlength;
 
     	visited.add(startCell);
@@ -91,7 +103,7 @@ public class Board {
 
     			visited.add(cell);
 
-    			if (cell.getOccupied()) {
+    			if (!cell.isRoom() && cell.getOccupied()) {
     				continue;
     			}
 
@@ -104,15 +116,12 @@ public class Board {
     			}	
 
     			else {
-    				calcTargets(cell, numSteps-1);
+    				calculations(cell, numSteps-1);
     			}	
 
     			visited.remove(cell);
     		}
-    	}	
-
-
-
+    	}
     }
     
     
@@ -196,6 +205,19 @@ public class Board {
 						
 						cell.setInitial(squares[j].charAt(0));
 						
+						if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
+							cell.setRoom(true);
+							cell.setWalkway(false);
+						}
+						else if (squares[j].charAt(0) == 'W'){
+							cell.setRoom(false);
+							cell.setWalkway(true);	
+						}
+						else {
+							cell.setRoom(false);
+							cell.setWalkway(false);
+						}	
+						
 						if (cell.isRoomCenter()) {
 							Room temproom = roomMap.get(cell.getInitial());
 							temproom.setCenterCell(cell);
@@ -209,6 +231,19 @@ public class Board {
 					else {
 						BoardCell cell = new BoardCell(i, j);
 						cell.setInitial(squares[j].charAt(0));
+						
+						if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
+							cell.setRoom(true);
+							cell.setWalkway(false);
+						}
+						else if (squares[j].charAt(0) == 'W'){
+							cell.setRoom(false);
+							cell.setWalkway(true);	
+						}
+						else {
+							cell.setRoom(false);
+							cell.setWalkway(false);
+						}		
 						
 						if (cell.isRoomCenter()) {
 							roomMap.get(cell.getInitial()).setCenterCell(cell);
@@ -235,16 +270,95 @@ public class Board {
 		}
     }
 
-	public Set<BoardCell> getAdjList(int i, int j) {
-		return grid[i][j].getAdjList();
+	public Set<BoardCell> getAdjList(int row, int col) {
+		return grid[row][col].getAdjList();
 		//return adj at sep board cell
 	}
 
 	public Set<BoardCell> getTargets() {
 		return targets;
 	}
-    
-    
+	
+	public void buildAdjacencyList() {
+		this.adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
+
+		//build adjacency list, look up down left right and make sure its within the bounds
+		for (int i = 0; i < numRows;i++) {
+			for(int j = 0; j< numColumns;j++) {
+				BoardCell cell = this.getCell(i, j);
+				//walkways connect to adjacent walkways
+				if (cell.isWalkway()==true) {
+					if (i-1 >= 0 && this.getCell(i-1, j).isWalkway()) {
+						cell.addAdjacency(this.getCell(i-1, j));
+					}
+					if (j-1 >= 0 && this.getCell(i, j-1).isWalkway()) {
+						cell.addAdjacency(this.getCell(i, j-1));
+					}
+					if (i+1 <numRows && this.getCell(i+1, j).isWalkway()) {
+						cell.addAdjacency(this.getCell(i+1, j));
+					}
+					if (j+1 < numColumns && this.getCell(i, j+1).isWalkway()) {
+						cell.addAdjacency(this.getCell(i, j+1));
+					}
+				}
+				
+				
+				//walkways with doors connect to the room center
+				
+				if (cell.isDoorway()) {
+					
+					if (cell.getDoorDirection() == DoorDirection.UP) {
+						//get the initial of the square above current cell
+						char symbol = this.getCell(i-1, j).getInitial();
+						
+						//get the room center of that initial and add the room center to the doors adjacency
+						cell.addAdjacency(this.getRoom(symbol).getCenterCell());
+						this.getRoom(symbol).getCenterCell().addAdjacency(cell);
+					}
+					if (cell.getDoorDirection() == DoorDirection.DOWN) {
+						char symbol = this.getCell(i+1, j).getInitial();
+						
+						//get the room center of that initial and add the room center to the doors adjacency
+						cell.addAdjacency(this.getRoom(symbol).getCenterCell());
+						this.getRoom(symbol).getCenterCell().addAdjacency(cell);
+						
+					}
+					if (cell.getDoorDirection() == DoorDirection.LEFT) {
+						char symbol = this.getCell(i, j-1).getInitial();
+						
+						//get the room center of that initial and add the room center to the doors adjacency
+						cell.addAdjacency(this.getRoom(symbol).getCenterCell());
+						this.getRoom(symbol).getCenterCell().addAdjacency(cell);
+						
+					}
+					if (cell.getDoorDirection() == DoorDirection.RIGHT) {
+						char symbol = this.getCell(i, j+1).getInitial();
+						
+						//get the room center of that initial and add the room center to the doors adjacency
+						cell.addAdjacency(this.getRoom(symbol).getCenterCell());
+						this.getRoom(symbol).getCenterCell().addAdjacency(cell);
+					}
+				}
+
+				//if there is a secrete passage, connect the appropriate room centers
+				if (cell.isSecretPass()) {
+					char otherRoomSymbol = cell.getSecretPassage();
+					char thisCellSymbol = cell.getInitial();
+					//get the room center of that initial and add the room center to the doors adjacency
+					Room otherRoom = this.getRoom(otherRoomSymbol);
+					Room thisRoom = this.getRoom(thisCellSymbol);
+					thisRoom.getCenterCell().addAdjacency(otherRoom.getCenterCell());
+				}
+
+
+				Set<BoardCell> currentAdjacencyList =  cell.getAdjList();		
+				adjMtx.put(cell, currentAdjacencyList);
+			}
+		}
+
+	}
+
+
     
     
 }

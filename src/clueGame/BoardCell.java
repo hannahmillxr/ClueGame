@@ -2,7 +2,6 @@ package clueGame;
 import java.util.HashSet;
 import java.util.Set;
 
-import experiment.TestBoardCell;
 
 public class BoardCell {
 	private int row;
@@ -16,6 +15,8 @@ public class BoardCell {
 	private char secretPassage;
 	Set<BoardCell> adjacencyList;
 	private Boolean isRoom;
+	private Boolean isWalkway;
+	private Boolean isSecretPassage;
 	
 	
 	
@@ -26,6 +27,8 @@ public class BoardCell {
 		this.roomLabel = false;
 		this.roomCenter = false;
 		this.doorway = false;
+		this.isSecretPassage = false;
+		this.occupied = false;
 		this.adjacencyList = new HashSet<BoardCell>();
 	}
 	
@@ -40,17 +43,20 @@ public class BoardCell {
 			this.roomLabel = true;
 			this.roomCenter = false;
 			this.doorway = false;
+			this.isSecretPassage = false;
 		}
 		else if (secondCharacter == '*') {
 			this.roomCenter = true;
 			this.roomLabel = false;
 			this.doorway = false;
+			this.isSecretPassage = false;
 		}
 		else if(secondCharacter == '^'){
 			this.doorway = true;
 			this.doorDirection = DoorDirection.UP;
 			this.roomLabel = false;
 			this.roomCenter = false;
+			this.isSecretPassage = false;
 			
 		}
 		else if(secondCharacter == '>'){
@@ -58,6 +64,7 @@ public class BoardCell {
 			this.doorDirection = DoorDirection.RIGHT;
 			this.roomLabel = false;
 			this.roomCenter = false;
+			this.isSecretPassage = false;
 			
 		}
 		else if(secondCharacter == '<'){
@@ -65,6 +72,7 @@ public class BoardCell {
 			this.doorDirection = DoorDirection.LEFT;
 			this.roomLabel = false;
 			this.roomCenter = false;
+			this.isSecretPassage = false;
 			
 		}
 		else if(secondCharacter == 'v'){
@@ -72,6 +80,7 @@ public class BoardCell {
 			this.doorDirection = DoorDirection.DOWN;
 			this.roomLabel = false;
 			this.roomCenter = false;
+			this.isSecretPassage = false;
 			
 		}
 		//secret passage
@@ -79,28 +88,46 @@ public class BoardCell {
 			this.roomLabel = false;
 			this.roomCenter = false;
 			this.doorway = false;
+			this.isSecretPassage = true;
 			this.secretPassage = secondCharacter;
 			
 		}
 
 		this.adjacencyList = new HashSet<BoardCell>();
+
+		this.occupied = false;
 	}
 
+	public int getRow(){
+		return this.row;
+	}
 	
-	public void addAdjacency(TestBoardCell cell) {
-		//adjacencyList.add(cell);
+	public int getCol(){
+		return this.col;
+	}
+	
+	public void addAdjacency(BoardCell cell) {
+		adjacencyList.add(cell);
 	}
 
 	public boolean isDoorway() {
-		return doorway;
+		return this.doorway;
 	}
 
 	public boolean isRoom() {
-		return isRoom;
+		return this.isRoom;
 	}
 	
 	public void setRoom(boolean isRoom) {
 		this.isRoom=isRoom;
+	}
+	
+	public boolean isSecretPass() {
+		return isSecretPassage;
+	}
+	
+	public void setIsSecretPassage(boolean pass) {
+		this.isSecretPassage=pass;
 	}
 	
 	public Object getDoorDirection() {
@@ -120,7 +147,7 @@ public class BoardCell {
 
 	public char getSecretPassage() {
 		
-		return secretPassage;
+		return this.secretPassage;
 	}
 	
 	public char getInitial() {
@@ -141,5 +168,13 @@ public class BoardCell {
 	
 	public boolean getOccupied() {
 		return this.occupied;
+	}
+	
+	public boolean isWalkway() {
+		return this.isWalkway;
+	}
+	
+	public void setWalkway(boolean walkway) {
+		this.isWalkway=walkway;
 	}
 }
