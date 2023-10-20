@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: BadConfigFormatExcption Class is to defualt to a print or message when exception occurs
+ */
 package clueGame;
 import java.io.FileNotFoundException;
 

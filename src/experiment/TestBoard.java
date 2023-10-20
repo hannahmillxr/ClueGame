@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * 
+ */
 package experiment;
 import java.util.ArrayList;
 import java.util.HashMap;

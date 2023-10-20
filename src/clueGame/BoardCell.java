@@ -1,3 +1,8 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: BoardCell class will set, input, and inizalize the Board different cells for the user
+
+ */
 package clueGame;
 import java.util.HashSet;
 import java.util.Set;

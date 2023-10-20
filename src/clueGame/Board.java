@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: Board class will set, input, and inizalize the Board for the user
+ */
 package clueGame;
 
 import java.io.FileNotFoundException;
@@ -39,10 +43,10 @@ public class Board {
     public static Board getInstance() {
            return theInstance;
     }
+    
     /*
      * initialize the board (since we are using singleton pattern)
      */
-    
     public void initialize () {
     	try {
     		loadSetupConfig();
@@ -92,7 +96,7 @@ public class Board {
 
 
     }
-    
+    //Rename method different from calculations to calTarget
     public void calculations (BoardCell startCell, int pathlength) { 
     	int numSteps = pathlength;
 
@@ -147,7 +151,6 @@ public class Board {
 		
 		
 		//text file has structure: [Room, name, initial] can be room or space ELSE THROW EXCEPTION
-		
 		for (int line = 0; line < textFile.size(); line++) {
 			String[] word = textFile.get(line).split(", ");
 			
@@ -205,6 +208,7 @@ public class Board {
 						
 						cell.setInitial(squares[j].charAt(0));
 						
+						//Using the sqaure letter to determine if these is a room or walkway
 						if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
 							cell.setRoom(true);
 							cell.setWalkway(false);
@@ -255,7 +259,6 @@ public class Board {
 					}
 										
 					//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
-					
 					if (!roomMap.containsKey(squares[j].charAt(0))) {
 						throw new BadConfigFormatException("Room found that is not in legend");
 					}
@@ -304,7 +307,6 @@ public class Board {
 				
 				
 				//walkways with doors connect to the room center
-				
 				if (cell.isDoorway()) {
 					
 					if (cell.getDoorDirection() == DoorDirection.UP) {
