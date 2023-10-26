@@ -212,56 +212,13 @@ public class Board {
     				BoardCell cell = new BoardCell(i, j, squares[j].charAt(1));
 
 
-    				cell.setInitial(squares[j].charAt(0));
-
-    				//Using the sqaure letter to determine if these is a room or walkway
-    				if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
-    					cell.setRoom(true);
-    					cell.setWalkway(false);
-    				}
-    				else if (squares[j].charAt(0) == 'W'){
-    					cell.setRoom(false);
-    					cell.setWalkway(true);	
-    				}
-    				else {
-    					cell.setRoom(false);
-    					cell.setWalkway(false);
-    				}	
-
-    				if (cell.isRoomCenter()) {
-    					Room temproom = roomMap.get(cell.getInitial());
-    					temproom.setCenterCell(cell);
-    				}
-    				if (cell.isLabel()) {
-    					roomMap.get(cell.getInitial()).setLabelCell(cell);
-    				}
-    				grid[i][j] = cell;
+    				buildBoardCell(i, squares, j, cell);
 
     			}
     			else {
     				BoardCell cell = new BoardCell(i, j);
-    				cell.setInitial(squares[j].charAt(0));
-
-    				if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
-    					cell.setRoom(true);
-    					cell.setWalkway(false);
-    				}
-    				else if (squares[j].charAt(0) == 'W'){
-    					cell.setRoom(false);
-    					cell.setWalkway(true);	
-    				}
-    				else {
-    					cell.setRoom(false);
-    					cell.setWalkway(false);
-    				}		
-
-    				if (cell.isRoomCenter()) {
-    					roomMap.get(cell.getInitial()).setCenterCell(cell);
-    				}
-    				if (cell.isLabel()) {
-    					roomMap.get(cell.getInitial()).setLabelCell(cell);
-    				}
-    				grid[i][j] = cell;
+    				buildBoardCell(i, squares, j, cell);
+    				
     			}
 
     			//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
@@ -271,6 +228,33 @@ public class Board {
     		}
     	}	
     }
+
+	private void buildBoardCell(int row, String[] squares, int col, BoardCell cell) {
+		cell.setInitial(squares[col].charAt(0));
+
+		//Using the sqaure letter to determine if these is a room or walkway
+		if (squares[col].charAt(0) != 'W' && squares[col].charAt(0) != 'X') {
+			cell.setRoom(true);
+			cell.setWalkway(false);
+		}
+		else if (squares[col].charAt(0) == 'W'){
+			cell.setRoom(false);
+			cell.setWalkway(true);	
+		}
+		else {
+			cell.setRoom(false);
+			cell.setWalkway(false);
+		}	
+
+		if (cell.isRoomCenter()) {
+			Room temproom = roomMap.get(cell.getInitial());
+			temproom.setCenterCell(cell);
+		}
+		if (cell.isLabel()) {
+			roomMap.get(cell.getInitial()).setLabelCell(cell);
+		}
+		grid[row][col] = cell;
+	}
 
 	public Set<BoardCell> getAdjList(int row, int col) {
 		return grid[row][col].getAdjList();
