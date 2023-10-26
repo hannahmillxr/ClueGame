@@ -19,13 +19,13 @@ import java.util.TreeMap;
 
 public class Board {
 
-	Map <Character, Room> roomMap;
-	Map <BoardCell, Set<BoardCell>> adjMtx;
+	private Map <Character, Room> roomMap;
+	private Map <BoardCell, Set<BoardCell>> adjMtx;
 	private BoardCell [][] grid;
 	private Set<BoardCell> visited;
 	private Set<BoardCell> targets;
-	String layoutConfigFile;
-	String setupConfigFile;
+	private String layoutConfigFile;
+	private String setupConfigFile;
 	private int numColumns;
 	private int numRows;
 	
