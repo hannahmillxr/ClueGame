@@ -13,15 +13,15 @@ public class BoardCell {
 	private int col;
 	private char initial;
 	private DoorDirection doorDirection;
-	private Boolean roomLabel;
-	private Boolean roomCenter;
-	private Boolean doorway;
-	private Boolean occupied;
+	private Boolean roomLabel = false;
+	private Boolean roomCenter = false;
+	private Boolean doorway = false;
+	private Boolean occupied = false;
 	private char secretPassage;
 	Set<BoardCell> adjacencyList;
 	private Boolean isRoom;
 	private Boolean isWalkway;
-	private Boolean isSecretPassage;
+	private Boolean isSecretPassage = false;
 	
 	
 	
@@ -29,11 +29,6 @@ public class BoardCell {
 		super();
 		this.row = row;
 		this.col = col;
-		this.roomLabel = false;
-		this.roomCenter = false;
-		this.doorway = false;
-		this.isSecretPassage = false;
-		this.occupied = false;
 		this.adjacencyList = new HashSet<BoardCell>();
 	}
 	
@@ -41,66 +36,39 @@ public class BoardCell {
 		super();
 		this.row = row;
 		this.col = col;
+		this.adjacencyList = new HashSet<BoardCell>();
 		
 		//check what second character is
 		
 		if (secondCharacter == '#') {
 			this.roomLabel = true;
-			this.roomCenter = false;
-			this.doorway = false;
-			this.isSecretPassage = false;
+
 		}
 		else if (secondCharacter == '*') {
 			this.roomCenter = true;
-			this.roomLabel = false;
-			this.doorway = false;
-			this.isSecretPassage = false;
+
 		}
 		else if(secondCharacter == '^'){
 			this.doorway = true;
-			this.doorDirection = DoorDirection.UP;
-			this.roomLabel = false;
-			this.roomCenter = false;
-			this.isSecretPassage = false;
-			
+			this.doorDirection = DoorDirection.UP;	
 		}
 		else if(secondCharacter == '>'){
 			this.doorway = true;
-			this.doorDirection = DoorDirection.RIGHT;
-			this.roomLabel = false;
-			this.roomCenter = false;
-			this.isSecretPassage = false;
-			
+			this.doorDirection = DoorDirection.RIGHT;			
 		}
 		else if(secondCharacter == '<'){
 			this.doorway = true;
 			this.doorDirection = DoorDirection.LEFT;
-			this.roomLabel = false;
-			this.roomCenter = false;
-			this.isSecretPassage = false;
-			
 		}
 		else if(secondCharacter == 'v'){
 			this.doorway = true;
 			this.doorDirection = DoorDirection.DOWN;
-			this.roomLabel = false;
-			this.roomCenter = false;
-			this.isSecretPassage = false;
-			
 		}
 		//secret passage
 		else {
-			this.roomLabel = false;
-			this.roomCenter = false;
-			this.doorway = false;
 			this.isSecretPassage = true;
-			this.secretPassage = secondCharacter;
-			
+			this.secretPassage = secondCharacter;			
 		}
-
-		this.adjacencyList = new HashSet<BoardCell>();
-
-		this.occupied = false;
 	}
 
 	public int getRow(){
