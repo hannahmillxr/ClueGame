@@ -174,103 +174,102 @@ public class Board {
     //reads in csv file
     public void loadLayoutConfig() throws BadConfigFormatException{
     	ArrayList<String> csvFile = new ArrayList<String>();
-    	
+
     	try {
     		FileReader reader = new FileReader(layoutConfigFile);
-			Scanner in = new Scanner(reader);
-			while (in.hasNextLine()) {
-				String readInNext = in.nextLine();
-				
-				csvFile.add(readInNext);
-			}
-			in.close();
-			
-			String[] firstList = csvFile.get(0).split(",");
-			int colNum = firstList.length;
-			int rowNum = csvFile.size();
-			
-			numRows = rowNum;
-			numColumns = colNum;
-			
-			
-			grid = new BoardCell[rowNum][colNum];
-			//if rows are different lengths each time, throw new BadConfigFormatException("Rows have varying lengths")
-			for (int i =0; i< csvFile.size(); i++) {
-				String[] squares = csvFile.get(i).split(",");
-				
-				if (squares.length != colNum) {
-					throw new BadConfigFormatException("Rows have varying lengths");
-				}
-				for (int j = 0; j< squares.length; j++) {
-					if (squares[j].length()> 1) {
-						BoardCell cell = new BoardCell(i, j, squares[j].charAt(1));
-						
-						
-						cell.setInitial(squares[j].charAt(0));
-						
-						//Using the sqaure letter to determine if these is a room or walkway
-						if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
-							cell.setRoom(true);
-							cell.setWalkway(false);
-						}
-						else if (squares[j].charAt(0) == 'W'){
-							cell.setRoom(false);
-							cell.setWalkway(true);	
-						}
-						else {
-							cell.setRoom(false);
-							cell.setWalkway(false);
-						}	
-						
-						if (cell.isRoomCenter()) {
-							Room temproom = roomMap.get(cell.getInitial());
-							temproom.setCenterCell(cell);
-						}
-						if (cell.isLabel()) {
-							roomMap.get(cell.getInitial()).setLabelCell(cell);
-						}
-						grid[i][j] = cell;
-							
-					}
-					else {
-						BoardCell cell = new BoardCell(i, j);
-						cell.setInitial(squares[j].charAt(0));
-						
-						if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
-							cell.setRoom(true);
-							cell.setWalkway(false);
-						}
-						else if (squares[j].charAt(0) == 'W'){
-							cell.setRoom(false);
-							cell.setWalkway(true);	
-						}
-						else {
-							cell.setRoom(false);
-							cell.setWalkway(false);
-						}		
-						
-						if (cell.isRoomCenter()) {
-							roomMap.get(cell.getInitial()).setCenterCell(cell);
-						}
-						if (cell.isLabel()) {
-							roomMap.get(cell.getInitial()).setLabelCell(cell);
-						}
-						grid[i][j] = cell;
-					}
-										
-					//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
-					if (!roomMap.containsKey(squares[j].charAt(0))) {
-						throw new BadConfigFormatException("Room found that is not in legend");
-					}
-				}
-					
-				
-			}	
-			
-		} catch(FileNotFoundException e) {
-			System.out.println(e);
-			System.out.println(e.getMessage());
-		}
+    		Scanner in = new Scanner(reader);
+    		while (in.hasNextLine()) {
+    			String readInNext = in.nextLine();
+
+    			csvFile.add(readInNext);
+    		}
+    		in.close();
+
+    	} catch(FileNotFoundException e) {
+    		System.out.println(e);
+    		System.out.println(e.getMessage());
+    	}
+
+
+    	String[] firstList = csvFile.get(0).split(",");
+    	int colNum = firstList.length;
+    	int rowNum = csvFile.size();
+
+    	numRows = rowNum;
+    	numColumns = colNum;
+
+
+    	grid = new BoardCell[rowNum][colNum];
+    	//if rows are different lengths each time, throw new BadConfigFormatException("Rows have varying lengths")
+    	for (int i =0; i< csvFile.size(); i++) {
+    		String[] squares = csvFile.get(i).split(",");
+
+    		if (squares.length != colNum) {
+    			throw new BadConfigFormatException("Rows have varying lengths");
+    		}
+    		for (int j = 0; j< squares.length; j++) {
+    			if (squares[j].length()> 1) {
+    				BoardCell cell = new BoardCell(i, j, squares[j].charAt(1));
+
+
+    				cell.setInitial(squares[j].charAt(0));
+
+    				//Using the sqaure letter to determine if these is a room or walkway
+    				if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
+    					cell.setRoom(true);
+    					cell.setWalkway(false);
+    				}
+    				else if (squares[j].charAt(0) == 'W'){
+    					cell.setRoom(false);
+    					cell.setWalkway(true);	
+    				}
+    				else {
+    					cell.setRoom(false);
+    					cell.setWalkway(false);
+    				}	
+
+    				if (cell.isRoomCenter()) {
+    					Room temproom = roomMap.get(cell.getInitial());
+    					temproom.setCenterCell(cell);
+    				}
+    				if (cell.isLabel()) {
+    					roomMap.get(cell.getInitial()).setLabelCell(cell);
+    				}
+    				grid[i][j] = cell;
+
+    			}
+    			else {
+    				BoardCell cell = new BoardCell(i, j);
+    				cell.setInitial(squares[j].charAt(0));
+
+    				if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
+    					cell.setRoom(true);
+    					cell.setWalkway(false);
+    				}
+    				else if (squares[j].charAt(0) == 'W'){
+    					cell.setRoom(false);
+    					cell.setWalkway(true);	
+    				}
+    				else {
+    					cell.setRoom(false);
+    					cell.setWalkway(false);
+    				}		
+
+    				if (cell.isRoomCenter()) {
+    					roomMap.get(cell.getInitial()).setCenterCell(cell);
+    				}
+    				if (cell.isLabel()) {
+    					roomMap.get(cell.getInitial()).setLabelCell(cell);
+    				}
+    				grid[i][j] = cell;
+    			}
+
+    			//if there is a room that is not in our legend, throw new BadConfigFormatException("Room found that is not in legend")
+    			if (!roomMap.containsKey(squares[j].charAt(0))) {
+    				throw new BadConfigFormatException("Room found that is not in legend");
+    			}
+    		}
+    	}	
     }
 
 	public Set<BoardCell> getAdjList(int row, int col) {
