@@ -92,12 +92,12 @@ public class Board {
     	
     	targets = new HashSet <BoardCell>();
     	visited = new HashSet <BoardCell>();
-    	calculations (startCell, pathlength);
-
+    	calculateTargets (startCell, pathlength);
 
     }
+    
     //Rename method different from calculations to calTarget
-    public void calculations (BoardCell startCell, int pathlength) { 
+    public void calculateTargets (BoardCell startCell, int pathlength) { 
     	int numSteps = pathlength;
 
     	visited.add(startCell);
@@ -120,7 +120,7 @@ public class Board {
     			}	
 
     			else {
-    				calculations(cell, numSteps-1);
+    				calculateTargets(cell, numSteps-1);
     			}	
 
     			visited.remove(cell);
