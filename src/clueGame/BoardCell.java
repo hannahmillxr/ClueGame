@@ -70,14 +70,6 @@ public class BoardCell {
 			this.secretPassage = secondCharacter;			
 		}
 	}
-
-	public int getRow(){
-		return this.row;
-	}
-	
-	public int getCol(){
-		return this.col;
-	}
 	
 	public void addAdjacency(BoardCell cell) {
 		adjacencyList.add(cell);
@@ -114,17 +106,7 @@ public class BoardCell {
 	}
 
 	public boolean isRoomCenter() {
-		// TODO Auto-generated method stub
 		return roomCenter;
-	}
-
-	public char getSecretPassage() {
-		
-		return this.secretPassage;
-	}
-	
-	public char getInitial() {
-		return initial;
 	}
 	
 	public void setInitial(char symbol) {
@@ -139,15 +121,30 @@ public class BoardCell {
 		this.occupied = occupied;
 	}
 	
-	public boolean getOccupied() {
-		return this.occupied;
-	}
-	
 	public boolean isWalkway() {
 		return this.isWalkway;
 	}
 	
 	public void setWalkway(boolean walkway) {
 		this.isWalkway=walkway;
+	}
+	public int getRow(){
+		return this.row;
+	}
+	
+	public int getCol(){
+		return this.col;
+	}
+	public boolean getOccupied() {
+		return this.occupied;
+	}
+
+	public char getSecretPassage() {
+		
+		return this.secretPassage;
+	}
+	
+	public char getInitial() {
+		return initial;
 	}
 }
