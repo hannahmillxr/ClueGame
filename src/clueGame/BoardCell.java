@@ -147,4 +147,5 @@ public class BoardCell {
 	public char getInitial() {
 		return initial;
 	}
+	
 }
