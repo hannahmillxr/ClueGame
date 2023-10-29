@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * 
+ */
 package experiment;
 import java.util.HashSet;
 import java.util.Set;
