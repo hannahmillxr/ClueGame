@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
 
 
 
@@ -60,29 +59,7 @@ public class Board {
     
     
     
-    public int getNumRows() {
-		return numRows;
-	}
-
-	public int getNumColumns() {
-		return numColumns;
-	}
-	
-	public Room getRoom(char initial) {
-		Room room = roomMap.get(initial);
-		return room;
-	}
-	
-	public Room getRoom(BoardCell cell) {
-		char initial = cell.getInitial();
-		Room room = roomMap.get(initial);
-		return room;
-	}
-    
-    public BoardCell getCell(int row, int col) {
-		return grid[row][col];
-	}
-    
+ 
     public void setConfigFiles(String csv, String txt) {
     	setupConfigFile = "data/" + txt;
     	layoutConfigFile = "data/" + csv;
@@ -342,7 +319,29 @@ public class Board {
 		}
 
 	}
+	   public int getNumRows() {
+			return numRows;
+		}
 
+		public int getNumColumns() {
+			return numColumns;
+		}
+		
+		public Room getRoom(char initial) {
+			Room room = roomMap.get(initial);
+			return room;
+		}
+		
+		public Room getRoom(BoardCell cell) {
+			char initial = cell.getInitial();
+			Room room = roomMap.get(initial);
+			return room;
+		}
+	    
+	    public BoardCell getCell(int row, int col) {
+			return grid[row][col];
+		}
+	    
 
     
     
