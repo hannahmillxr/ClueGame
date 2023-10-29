@@ -11,11 +11,6 @@ public class Room {
 	private BoardCell labelCell;
 	
 	
-	
-	public Room() {
-		super();
-	}
-	
 	public Room(String name) {
 		super();
 		this.name = name;
