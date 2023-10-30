@@ -1,3 +1,63 @@
+commit daea69f11b3cd7d676e96fb85281469d1d79c97f
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 26 13:47:18 2023 -0600
+
+    Renamed calculations method to be more descriptive
+
+commit d8c81c33353e21d54ea6701e57047d1e6ffa3268
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 26 13:45:25 2023 -0600
+
+    Specified private attributes rather then letting attributes default to package
+
+commit dfd08d0d0e2c0fa5ac5c9353ca76e42ad9fad935
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 26 13:43:00 2023 -0600
+
+    Default booleans to false, allowing us to remove repetitive statements within the constructor.
+
+commit 328cff981d42df5f8f3c97dd0019ae702517d84a
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 26 13:37:46 2023 -0600
+
+    Added a buildBoardCell() function that simlified the loadLayout function
+
+commit f75056258ded3480f0035248e8b65bbedfb78f3e
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Oct 26 13:33:44 2023 -0600
+
+    Simplified try-catch in loadLayoutConfig()
+
+commit 77a2008ae14dae6514d80c99d17a2b999c189109
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Oct 20 15:11:00 2023 -0600
+
+    Fixed error, refactor, and checked. Finished!
+
+commit 2a8d5e03f9d7e03718f1621e9c59901c621b3c72
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Oct 14 21:30:01 2023 -0600
+
+    All tests passing :) just needs to be refactored
+
+commit 36bbeca79801f31b1ec6d39a7e15c9e214449477
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Oct 14 21:29:44 2023 -0600
+
+    All tests passing :) just needs to be refactored
+
+commit b181b4ce6e8aaf4db299037005b6ec436c0a6f72
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Fri Oct 13 16:55:23 2023 -0600
+
+    Added test spreadsheet
+
+commit e79d5856cfc16a106a8982096deb568934825eaa
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Fri Oct 13 11:11:33 2023 -0600
+
+    Took out print statements
+
 commit 39eced16a4047369c9255eb8fc7f7b86b96f7a1c
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Fri Oct 13 10:59:13 2023 -0600

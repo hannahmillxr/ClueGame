@@ -1,0 +1,80 @@
+ The most significant change made to the code was within the loadLayoutConfig function. Based on the number of characters in 
+ a given square, we call the appropriate parameterized constructor, and based on what the special charcter in the cell is, build the 
+ cell. Lots of code was repeated regardless of weather ot not the cell was special or not, so we put this repeated code into its own function:
+ buildBoardCell().
+ 
+ Before refactoring:
+    			
+    			if (squares[j].length()> 1) {
+    				BoardCell cell = new BoardCell(i, j, squares[j].charAt(1));
+
+
+    				cell.setInitial(squares[j].charAt(0));
+
+    				//Using the sqaure letter to determine if these is a room or walkway
+    				if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
+    					cell.setRoom(true);
+    					cell.setWalkway(false);
+    				}
+    				else if (squares[j].charAt(0) == 'W'){
+    					cell.setRoom(false);
+    					cell.setWalkway(true);	
+    				}
+    				else {
+    					cell.setRoom(false);
+    					cell.setWalkway(false);
+    				}	
+
+    				if (cell.isRoomCenter()) {
+    					Room temproom = roomMap.get(cell.getInitial());
+    					temproom.setCenterCell(cell);
+    				}
+    				if (cell.isLabel()) {
+    					roomMap.get(cell.getInitial()).setLabelCell(cell);
+    				}
+    				grid[i][j] = cell;
+
+    			}
+    			else {
+    				BoardCell cell = new BoardCell(i, j);
+    				cell.setInitial(squares[j].charAt(0));
+
+    				if (squares[j].charAt(0) != 'W' && squares[j].charAt(0) != 'X') {
+    					cell.setRoom(true);
+    					cell.setWalkway(false);
+    				}
+    				else if (squares[j].charAt(0) == 'W'){
+    					cell.setRoom(false);
+    					cell.setWalkway(true);	
+    				}
+    				else {
+    					cell.setRoom(false);
+    					cell.setWalkway(false);
+    				}		
+
+    				if (cell.isRoomCenter()) {
+    					roomMap.get(cell.getInitial()).setCenterCell(cell);
+    				}
+    				if (cell.isLabel()) {
+    					roomMap.get(cell.getInitial()).setLabelCell(cell);
+    				}
+    				grid[i][j] = cell;
+    			}
+    			
+    			
+    			
+ After Refactoring:
+    			
+  				if (squares[j].length()> 1) {
+    				BoardCell cell = new BoardCell(i, j, squares[j].charAt(1));
+
+
+    				buildBoardCell(i, squares, j, cell);
+
+    			}
+    			else {
+    				BoardCell cell = new BoardCell(i, j);
+    				buildBoardCell(i, squares, j, cell);
+    				
+    			}
+  
