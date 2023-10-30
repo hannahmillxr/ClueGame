@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: This program tests that config files are loaded properly.
+ */
 package tests;
 
 /*
