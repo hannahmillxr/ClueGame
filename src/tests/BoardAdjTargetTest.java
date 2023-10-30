@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: Test the Adjacencies in room and door, walk ways, certain rooms, and if occupied. 
+ */
 package tests;
 
 import static org.junit.Assert.assertEquals;

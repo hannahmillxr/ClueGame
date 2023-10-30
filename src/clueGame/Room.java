@@ -1,7 +1,6 @@
 /*
  * Author: Hannah Miller and Gillian Culberson
  * Description: Room class will get and set the different labels that are defined in the cells
-
  */
 package clueGame;
 
