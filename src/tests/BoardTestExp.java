@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: Test the Adjacencies certain corners and edges, and the movement through the cells. 
+ */
 package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Set;
