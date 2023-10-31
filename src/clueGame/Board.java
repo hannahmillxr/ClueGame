@@ -4,11 +4,15 @@
  */
 package clueGame;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -21,6 +25,9 @@ public class Board {
 	private Map <BoardCell, Set<BoardCell>> adjMtx;
 	private BoardCell [][] grid;
 	private Set<BoardCell> visited;
+	private List<String> roomCardDeck = Arrays.asList("Kitchen","Court Yard", "Armory", "Tea Room", "Bedrooms","Dojo", "Meditation Room", "Scroll Room", "Cherry Blossom Room","Walkway");
+	private List<String> weaponCardDeck = Arrays.asList("Shen's Cannon", "Fist", "Yin Yang Staff", "Frying Pan", "Jade Daggers", "Chop Sticks");
+	private static Map<String, String> playerColorMap = new HashMap<>(); 
 	private Set<BoardCell> targets;
 	private String layoutConfigFile;
 	private String setupConfigFile;
@@ -50,13 +57,12 @@ public class Board {
     		loadSetupConfig();
     		loadLayoutConfig();
     		buildAdjacencyList();
+    		buildPlayerDeck();
     	} catch(BadConfigFormatException e)  {
     		System.out.println(e);
     		System.out.println(e.getMessage());
     	}	
     }
-    
-    
     
  
     public void setConfigFiles(String csv, String txt) {
@@ -70,6 +76,15 @@ public class Board {
     	visited = new HashSet <BoardCell>();
     	calculateTargets (startCell, pathlength);
 
+    }
+    
+    public void buildPlayerDeck() {
+    	playerColorMap.put("PO", "Black"); 
+		playerColorMap.put("Tigress", "Red"); 
+		playerColorMap.put("Mantis", "Green"); 
+		playerColorMap.put("Monkey", "Brown");
+		playerColorMap.put("Crane", "White");
+		playerColorMap.put("Viper", "Yellow"); 
     }
     
     //Rename method different from calculations to calTarget
