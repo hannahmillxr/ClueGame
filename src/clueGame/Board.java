@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -25,14 +26,18 @@ public class Board {
 	private Map <BoardCell, Set<BoardCell>> adjMtx;
 	private BoardCell [][] grid;
 	private Set<BoardCell> visited;
-	private List<String> roomCardDeck = Arrays.asList("Kitchen","Court Yard", "Armory", "Tea Room", "Bedrooms","Dojo", "Meditation Room", "Scroll Room", "Cherry Blossom Room","Walkway");
-	private List<String> weaponCardDeck = Arrays.asList("Shen's Cannon", "Fist", "Yin Yang Staff", "Frying Pan", "Jade Daggers", "Chop Sticks");
-	private static Map<String, String> playerColorMap = new HashMap<>(); 
 	private Set<BoardCell> targets;
+	private Set<Player> players = new HashSet<>();
+	private Set<Card> deck = new HashSet<>(); //we might not use this
+	private ArrayList<Card> roomCards = new ArrayList<>();
+	private ArrayList<Card> personCards = new ArrayList<>();
+	private ArrayList<Card> weaponCards = new ArrayList<>();
 	private String layoutConfigFile;
 	private String setupConfigFile;
 	private int numColumns;
 	private int numRows;
+	private Solution solution = new Solution();
+	private Set<Card> dealt;
 	
     /*
     * variable and methods used for singleton pattern
@@ -57,7 +62,7 @@ public class Board {
     		loadSetupConfig();
     		loadLayoutConfig();
     		buildAdjacencyList();
-    		buildPlayerDeck();
+    		
     	} catch(BadConfigFormatException e)  {
     		System.out.println(e);
     		System.out.println(e.getMessage());
@@ -77,17 +82,78 @@ public class Board {
     	calculateTargets (startCell, pathlength);
 
     }
+   
     
-    public void buildPlayerDeck() {
-    	playerColorMap.put("PO", "Black"); 
-		playerColorMap.put("Tigress", "Red"); 
-		playerColorMap.put("Mantis", "Green"); 
-		playerColorMap.put("Monkey", "Brown");
-		playerColorMap.put("Crane", "White");
-		playerColorMap.put("Viper", "Yellow"); 
+    public void deal() {
+    	dealt = new HashSet<Card>();
+    	Random rand = new Random();
+    	Card roomSolution = roomCards.get(rand.nextInt(roomCards.size()));
+		Card personSolution = personCards.get(rand.nextInt(personCards.size()));
+		Card weaponSolution = weaponCards.get(rand.nextInt(weaponCards.size()));
+    	
+    	solution.setWeapon(weaponSolution);
+    	solution.setPerson(personSolution);
+    	solution.setRoom(roomSolution);
+    	
+    	for (Player player : players) {
+    		Card room = roomCards.get(rand.nextInt(roomCards.size()));
+    		Card person = personCards.get(rand.nextInt(personCards.size()));
+    		Card weapon = weaponCards.get(rand.nextInt(weaponCards.size()));
+    		
+    		while (dealt.contains(room)) {
+    			room = roomCards.get(rand.nextInt(roomCards.size()));
+    		}
+    		while (dealt.contains(person)) {
+    			person = personCards.get(rand.nextInt(personCards.size()));
+    		}
+    		while (dealt.contains(weapon)) {
+    			weapon = weaponCards.get(rand.nextInt(weaponCards.size()));
+    		}
+    		
+    		dealt.add(room);
+    		dealt.add(person);
+    		dealt.add(weapon);
+			player.updateHand(room);
+			player.updateHand(person);
+			player.updateHand(weapon);
+    	}
+    	
     }
     
-    //Rename method different from calculations to calTarget
+    public Map<Character, Room> getRoomMap() {
+		return roomMap;
+	}
+
+	public Set<Player> getPlayers() {
+		return players;
+	}
+
+	public Set<Card> getDeck() {
+		return deck;
+	}
+
+	public ArrayList<Card> getRoomCards() {
+		return roomCards;
+	}
+
+	public Solution getSolution() {
+		return solution;
+	}
+
+	public ArrayList<Card> getWeaponCards() {
+		return weaponCards;
+	}
+
+
+	public ArrayList<Card> getPersonCards() {
+		return personCards;
+	}
+
+	public Set<Card> getDealt() {
+		return dealt;
+	}
+
+	//Rename method different from calculations to calTarget
     public void calculateTargets (BoardCell startCell, int pathlength) { 
     	int numSteps = pathlength;
 
@@ -148,11 +214,45 @@ public class Board {
 			
 			//make sure you are not adding comment line from txt file
 			if (word[0].equals("Room") || word[0].equals("Space")) {
-				
 				Room room = new Room(word[1]);
 				char initial = word[2].charAt(0);				
 				roomMap.put(initial, room);
+				if (word[0].equals("Room")) {
+					Card roomCard = new Card(word[1], CardType.ROOM);
+					deck.add(roomCard);
+					roomCards.add(roomCard);
+				}
+			}
+			else if (word[0].equals("Player")) {
+				Card playerCard = new Card(word[1], CardType.PERSON);
+				deck.add(playerCard);
+				personCards.add(playerCard);
 				
+				//load players
+				
+				if (word.length == 5) {
+					//load player first
+					if (players.size() == 0) {
+						HumanPlayer player = new HumanPlayer(word[1], word[2], Integer.valueOf(word[3]), Integer.valueOf(word[4]));
+						players.add(player);
+					}
+					else {
+						ComputerPlayer player = new ComputerPlayer(word[1], word[2], Integer.valueOf(word[3]), Integer.valueOf(word[4]));
+						players.add(player);
+					}
+				}
+				else {
+					throw new BadConfigFormatException("Text file is improperly formated");
+				}
+				
+				
+				
+				
+			}
+			else if (word[0].equals("Weapon")) {
+				Card weaponCard = new Card(word[1], CardType.WEAPON);
+				deck.add(weaponCard);
+				weaponCards.add(weaponCard);
 			}
 			else if (!word[0].startsWith("//")){
 				throw new BadConfigFormatException("Text file is improperly formated");
