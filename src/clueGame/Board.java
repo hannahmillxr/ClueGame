@@ -27,8 +27,8 @@ public class Board {
 	private BoardCell [][] grid;
 	private Set<BoardCell> visited;
 	private Set<BoardCell> targets;
-	private Set<Player> players = new HashSet<>();
-	private Set<Card> deck;
+	private ArrayList<Player> players;
+	private ArrayList<Card> deck;
 	private ArrayList<Card> roomCards;
 	private ArrayList<Card> personCards;
 	private ArrayList<Card> weaponCards;
@@ -87,6 +87,11 @@ public class Board {
     
     public void deal() {
     	dealt = new HashSet<Card>();
+    	
+    	ArrayList<Card>tempDeck = new ArrayList<>();
+    	for(Card card : deck) {
+    		tempDeck.add(card);
+    	}
     	Random rand = new Random();
     	Card roomSolution = roomCards.get(rand.nextInt(roomCards.size()));
 		Card personSolution = personCards.get(rand.nextInt(personCards.size()));
@@ -95,29 +100,27 @@ public class Board {
     	solution.setWeapon(weaponSolution);
     	solution.setPerson(personSolution);
     	solution.setRoom(roomSolution);
+    	dealt.add(weaponSolution);
+		dealt.add(personSolution);
+		dealt.add(roomSolution);
+		tempDeck.remove(weaponSolution);
+		tempDeck.remove(personSolution);
+		tempDeck.remove(roomSolution);
+		
     	
     	for (Player player : players) {
-    		Card room = roomCards.get(rand.nextInt(roomCards.size()));
-    		Card person = personCards.get(rand.nextInt(personCards.size()));
-    		Card weapon = weaponCards.get(rand.nextInt(weaponCards.size()));
-    		
-    		while (dealt.contains(room)) {
-    			room = roomCards.get(rand.nextInt(roomCards.size()));
+    		for (int i = 0; i<3; i++) {
+    			System.out.println(tempDeck.size());
+    			Card dealing = tempDeck.get(rand.nextInt(tempDeck.size()));
+        		dealt.add(dealing);
+    			player.updateHand(dealing);
+    			tempDeck.remove(dealing);
     		}
-    		while (dealt.contains(person)) {
-    			person = personCards.get(rand.nextInt(personCards.size()));
-    		}
-    		while (dealt.contains(weapon)) {
-    			weapon = weaponCards.get(rand.nextInt(weaponCards.size()));
-    		}
-    		
-    		dealt.add(room);
-    		dealt.add(person);
-    		dealt.add(weapon);
-			player.updateHand(room);
-			player.updateHand(person);
-			player.updateHand(weapon);
+    		    		
     	}
+    	System.out.println(dealt.size());
+    	System.out.println(deck.size());
+    	System.out.println(tempDeck.size());
     	
     }
     
@@ -125,11 +128,11 @@ public class Board {
 		return roomMap;
 	}
 
-	public Set<Player> getPlayers() {
+	public ArrayList<Player> getPlayers() {
 		return players;
 	}
 
-	public Set<Card> getDeck() {
+	public ArrayList<Card> getDeck() {
 		return deck;
 	}
 
@@ -194,7 +197,8 @@ public class Board {
 		roomCards = new ArrayList<>();
 		personCards = new ArrayList<>();
 		weaponCards = new ArrayList<>();
-		deck = new HashSet<>(); 
+		players = new ArrayList<>();
+		deck = new ArrayList<>(); 
 		
 		try {
 			FileReader reader = new FileReader(setupConfigFile);

@@ -2,11 +2,16 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
+import clueGame.Card;
+import clueGame.CardType;
+import clueGame.Player;
 
 
 
@@ -35,7 +40,8 @@ class GameSetupTests {
 
 	@Test
 	public void loadInPlayers() {
-
+		
+		//All players are loaded in
 		assertEquals(6, board.getPlayers().size());
 	}
 
@@ -43,19 +49,39 @@ class GameSetupTests {
 	@Test
 	public void testCards() {
 		
+		//Make sure the correct number of room cards, person cards and weapon cards are present
 		assertEquals(9, board.getRoomCards().size());
 		assertEquals(6, board.getPersonCards().size());
 		assertEquals(6, board.getWeaponCards().size());
 		assertEquals(21, board.getDeck().size());
+		
+		//make sure we dealt the entire deck
+		assertEquals(board.getDealt().size(), board.getDeck().size());
+		
+		
+		//Make sure no players have the same two cards
+		ArrayList<Player> players = board.getPlayers();
+		for (int i =0; i< players.size()-1; i++) {
+			for (int j =1; j< players.size(); j++) {
+				ArrayList<Card> playerOneHand = players.get(i).getHand();
+				ArrayList<Card> playerTwoHand = players.get(j).getHand();
+				for (int card = 0; card<3; card++) {
+					if (i!=j) {
+						assertFalse(playerOneHand.get(card).equals(playerTwoHand.get(card)));
+					}
+					
+				}
+			}
+		}
 	}
 
 
 	//solution test, make sure solution has size of three and that all three types of cards are present
 	@Test
 	public void testSolutionCards() {
-		assertTrue(board.getSolution().getSolutionWeapon()!=null);
-		assertTrue(board.getSolution().getSolutionPerson()!=null);
-		assertTrue(board.getSolution().getSolutionRoom()!=null);
+		assertTrue(board.getSolution().getSolutionWeapon().getType()== CardType.WEAPON);
+		assertTrue(board.getSolution().getSolutionPerson().getType()== CardType.PERSON);
+		assertTrue(board.getSolution().getSolutionRoom().getType()== CardType.ROOM);
 	}
 
 }

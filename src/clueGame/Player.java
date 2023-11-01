@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,7 +9,7 @@ public class Player {
 	String color;
 	int row;
 	int col;
-	private Set<Card> hand;
+	private ArrayList<Card> hand;
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -16,7 +17,12 @@ public class Player {
 		this.color = color;
 		this.row = row;
 		this.col = col;
-		hand = new HashSet<Card>();
+		hand = new ArrayList<Card>();
+	}
+
+
+	public ArrayList<Card> getHand() {
+		return hand;
 	}
 
 
