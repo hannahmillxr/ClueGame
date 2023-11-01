@@ -2,16 +2,14 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.awt.Color;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
-import clueGame.Card;
-import clueGame.CardType;
-import clueGame.ComputerPlayer;
-import clueGame.HumanPlayer;
+
+
+
 
 class GameSetupTests {
 
@@ -44,10 +42,11 @@ class GameSetupTests {
 
 	@Test
 	public void testCards() {
-		assertEquals(21, board.getDeck().size());
+		
 		assertEquals(9, board.getRoomCards().size());
 		assertEquals(6, board.getPersonCards().size());
 		assertEquals(6, board.getWeaponCards().size());
+		assertEquals(21, board.getDeck().size());
 	}
 
 

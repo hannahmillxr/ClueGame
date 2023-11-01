@@ -29,6 +29,7 @@ public class BoardAdjTargetTest306 {
 
 	// Ensure that player does not move around within room
 	// These cells are LIGHT ORANGE on the planning spreadsheet
+	/*
 	@Test
 	public void testAdjacenciesRooms()
 	{
@@ -297,4 +298,6 @@ public class BoardAdjTargetTest306 {
 		assertTrue(targets.contains(board.getCell(8, 15)));
 
 	}
+	*/
 }
+

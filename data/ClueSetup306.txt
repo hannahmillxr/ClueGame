@@ -11,3 +11,17 @@ Room, Hall, H
 // other spaces on board
 Space, Unused, X
 Space, Walkway, W
+//Players
+Player, Po, Black, 3, 2
+Player, Tigress, Red, 3, 2
+Player, Mantis, Green, 3, 2
+Player, Monkey, Brown, 3, 2
+Player, Crane, White, 3, 2
+Player, Viper, Yellow, 3, 2
+//Weapon
+Weapon, Shen's Cannon
+Weapon, Yin Yang Staff
+Weapon, Chop Sticks
+Weapon, Frying Pan
+Weapon, Fist
+Weapon, Jade Dagger

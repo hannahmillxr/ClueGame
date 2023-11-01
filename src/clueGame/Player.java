@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
@@ -15,6 +16,7 @@ public class Player {
 		this.color = color;
 		this.row = row;
 		this.col = col;
+		hand = new HashSet<Card>();
 	}
 
 

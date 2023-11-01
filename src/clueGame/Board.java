@@ -28,10 +28,10 @@ public class Board {
 	private Set<BoardCell> visited;
 	private Set<BoardCell> targets;
 	private Set<Player> players = new HashSet<>();
-	private Set<Card> deck = new HashSet<>(); //we might not use this
-	private ArrayList<Card> roomCards = new ArrayList<>();
-	private ArrayList<Card> personCards = new ArrayList<>();
-	private ArrayList<Card> weaponCards = new ArrayList<>();
+	private Set<Card> deck;
+	private ArrayList<Card> roomCards;
+	private ArrayList<Card> personCards;
+	private ArrayList<Card> weaponCards;
 	private String layoutConfigFile;
 	private String setupConfigFile;
 	private int numColumns;
@@ -67,6 +67,7 @@ public class Board {
     		System.out.println(e);
     		System.out.println(e.getMessage());
     	}	
+    	deal();
     }
     
  
@@ -190,6 +191,10 @@ public class Board {
     public void loadSetupConfig() throws BadConfigFormatException {
 		ArrayList<String> textFile = new ArrayList<String>();
 		roomMap = new HashMap<Character, Room>();
+		roomCards = new ArrayList<>();
+		personCards = new ArrayList<>();
+		weaponCards = new ArrayList<>();
+		deck = new HashSet<>(); 
 		
 		try {
 			FileReader reader = new FileReader(setupConfigFile);
