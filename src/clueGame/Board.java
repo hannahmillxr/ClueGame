@@ -459,12 +459,19 @@ public class Board {
 	    public BoardCell getCell(int row, int col) {
 			return grid[row][col];
 		}
+/*
+ * Return the true if solution input matches the correct solution
+ */
+		public boolean checkAccusation(Solution solution2) {
 
-		public Boolean checkAccusation(Solution solution2) {
-
-			return null;
+			return solution2.person.equals(solution.person)&&
+					solution2.weapon.equals(solution.weapon)&&
+					solution2.room.equals(solution.room);
 		}
-
+		
+/*
+ * handles tha suggestion through each of the player
+ */
 		public Boolean handleSuggestion(Solution suggestion, Player Playeraccuse) {
 			
 			int currentplayer = players.indexOf(Playeraccuse);
@@ -485,9 +492,7 @@ public class Board {
 				}
 			}
 			return null;
-			
-			
-			return null;
+		
 		}
 	    
 
