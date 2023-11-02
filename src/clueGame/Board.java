@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.function.BooleanSupplier;
 
 
 
@@ -34,7 +35,7 @@ public class Board {
 	private String setupConfigFile;
 	private int numColumns;
 	private int numRows;
-	private Solution solution = new Solution();
+	public Solution solution = new Solution();
 	private Set<Card> dealt;
 	
     /*
@@ -457,6 +458,15 @@ public class Board {
 	    
 	    public BoardCell getCell(int row, int col) {
 			return grid[row][col];
+		}
+
+		public Boolean checkAccusation(Solution solution2) {
+
+			return null;
+		}
+
+		public Boolean handleSuggestion(Card roomCard, Card personCarn, Card weaponCard) {
+			return null;
 		}
 	    
 

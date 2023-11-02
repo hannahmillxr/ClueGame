@@ -1,3 +1,9 @@
+commit 96709a59db9688e1c905252e41254a91bfc961ce
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 2 13:11:08 2023 -0600
+
+    Added more complicated tests, they are passing
+
 commit 3e20c44a691a952d6dce16f00ca6982d1f976f51
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Thu Nov 2 12:36:36 2023 -0600
