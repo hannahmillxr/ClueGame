@@ -12,6 +12,7 @@ public class Player {
 	int row;
 	int col;
 	private ArrayList<Card> hand;
+	private ArrayList<Card> seenCards;
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -67,5 +68,9 @@ public class Player {
 			
 		}
 		return suggestcard;
+	}
+	
+	public void updateSeen(Card seenCard) {
+		seenCards.add(seenCard);
 	}
 }
