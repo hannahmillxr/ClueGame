@@ -3,7 +3,6 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import clueGame.Board;
 import clueGame.Card;
 import clueGame.CardType;
+import clueGame.ComputerPlayer;
+import clueGame.HumanPlayer;
 import clueGame.Player;
 
 
@@ -43,6 +44,19 @@ class GameSetupTests {
 		
 		//All players are loaded in
 		assertEquals(6, board.getPlayers().size());
+		//instance of human and computer
+		ArrayList<Player> players = board.getPlayers();
+		
+		assertTrue(players.get(0) instanceof HumanPlayer);
+		
+		for (int i = 1; i <players.size(); i++) {
+			assertTrue(players.get(i) instanceof ComputerPlayer);
+		}
+		
+		//color
+		Player player = new HumanPlayer("Crane", "White", 3, 2);
+		assertTrue(player.getColor().equals("White"));
+		
 	}
 
 
@@ -68,6 +82,13 @@ class GameSetupTests {
 				for (int card = 0; card<3; card++) {
 					if (i!=j) {
 						assertFalse(playerOneHand.get(card).equals(playerTwoHand.get(card)));
+						assertFalse(playerOneHand.get(card).equals(board.getSolution().getSolutionWeapon()));
+						assertFalse(playerOneHand.get(card).equals(board.getSolution().getSolutionPerson()));
+						assertFalse(playerOneHand.get(card).equals(board.getSolution().getSolutionRoom()));
+						assertFalse(playerTwoHand.get(card).equals(board.getSolution().getSolutionWeapon()));
+						assertFalse(playerTwoHand.get(card).equals(board.getSolution().getSolutionRoom()));
+						assertFalse(playerTwoHand.get(card).equals(board.getSolution().getSolutionPerson()));
+						
 					}
 					
 				}
@@ -76,7 +97,7 @@ class GameSetupTests {
 	}
 
 
-	//solution test, make sure solution has size of three and that all three types of cards are present
+	//solution test, make sure that all three types of cards are present
 	@Test
 	public void testSolutionCards() {
 		assertTrue(board.getSolution().getSolutionWeapon().getType()== CardType.WEAPON);

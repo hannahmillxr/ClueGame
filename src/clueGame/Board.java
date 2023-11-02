@@ -108,7 +108,6 @@ public class Board {
     	
     	for (Player player : players) {
     		for (int i = 0; i<3; i++) {
-    			System.out.println(tempDeck.size());
     			Card dealing = tempDeck.get(rand.nextInt(tempDeck.size()));
         		dealt.add(dealing);
     			player.updateHand(dealing);
@@ -116,9 +115,6 @@ public class Board {
     		}
     		    		
     	}
-    	System.out.println(dealt.size());
-    	System.out.println(deck.size());
-    	System.out.println(tempDeck.size());
     	
     }
     

@@ -1,3 +1,8 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: Child class of player, reflects computer behavior
+ */
+
 package clueGame;
 
 public class ComputerPlayer extends Player{

@@ -1,3 +1,57 @@
+commit 3e20c44a691a952d6dce16f00ca6982d1f976f51
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 12:36:36 2023 -0600
+
+    Added the author and description to the player
+
+commit a23d4a862736001b2560913a21105ae55008d5ed
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 12:31:17 2023 -0600
+
+    Added the author and description to the solution
+
+commit dd1d29ec74700d637b4e44a509d13591f1554b0d
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 12:31:02 2023 -0600
+
+    Took out unessusary commands and imports
+
+commit af6c70102634eb69023aba83f704368d9859c7d7
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 10:28:12 2023 -0600
+
+    Need to take out a few items
+
+commit 11614dc2168208b141ae60d99867d920963c031c
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 1 12:32:43 2023 -0600
+
+    Tests are passing, just need a few more detailed tests
+
+commit e35d9cceaa0a19e2e8eb6b22622321921bd3e686
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 1 11:00:55 2023 -0600
+
+    All done, tests passing
+
+commit 9627153f03c5edfdbcaa6e4b721813347456b9ef
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 31 23:06:48 2023 -0600
+
+    Added some tests, we deffinitly need more, some are passing with what I implemented in board and some are erroring.
+
+commit fad0eb315eaadebd8238478b6f41195724d74d9e
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Oct 31 13:48:38 2023 -0600
+
+    Created player and card classes
+
+commit 522a6ca1f330debf9f8e544f4a95409f6e5e44d7
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sun Oct 29 19:29:00 2023 -0600
+
+    git log updated
+
 commit 8c263989ecf1d1ace0b0fbdbf7c15710528cb2e2
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Sun Oct 29 19:28:36 2023 -0600
@@ -8,79 +62,79 @@ commit 38bf1b24ab217be4db3f01dc55dcae45464b3cd5
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 18:09:37 2023 -0600
 
-    Refactor Added Author and Description to FileInitTests Class
+    Added Author and Description to FileInitTests Class
 
 commit a00b30bf169d5b6ca1884356581fa9e984aaad0b
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 18:08:13 2023 -0600
 
-    Refactor Added Author and Description to BoardTestExp Class
+    Added Author and Description to BoardTestExp Class
 
 commit 45a184615d39d31293078f5d2e7088a0ecdafc2f
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 18:05:56 2023 -0600
 
-    Refactor Added Author and Description to BoardAdjTest Class
+    Added Author and Description to BoardAdjTest Class
 
 commit c5501fb34fcaae8664226f3dd977d721eee01f83
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:43:03 2023 -0600
 
-    Refactor Moved getters in BoardCell Class to the bottom
+    Moved getters in BoardCell Class to the bottom
 
 commit b778765de45c5df5e26f46f5081cac14fcab0317
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:41:55 2023 -0600
 
-    Refactor Removed unnecessary default constructor from Room Class
+    Removed unnecessary default constructor from Room Class
 
 commit e7fce36aed881f0feccd4068ba0e3b31ceea02d5
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:40:43 2023 -0600
 
-    Refactor Removed the Todo from BoardCell Class
+    Removed the Todo from BoardCell Class
 
 commit c58ef36bcae449d1525e2d216b415ff4d85dea8a
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:37:17 2023 -0600
 
-    Refactor Moved the Getter to the bottom, in Board
+    Moved the Getter to the bottom, in Board
 
 commit 6fab139749051240d4c5aca5e7844a0d19494b4f
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:32:59 2023 -0600
 
-    Refactor Removed the unnecessary tree map import
+    Removed the unnecessary tree map import
 
 commit daea69f11b3cd7d676e96fb85281469d1d79c97f
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:47:18 2023 -0600
 
-    Refactor Renamed calculations method to be more descriptive
+    Renamed calculations method to be more descriptive
 
 commit d8c81c33353e21d54ea6701e57047d1e6ffa3268
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:45:25 2023 -0600
 
-    Refactor Specified private attributes rather then letting attributes default to package
+    Specified private attributes rather then letting attributes default to package
 
 commit dfd08d0d0e2c0fa5ac5c9353ca76e42ad9fad935
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:43:00 2023 -0600
 
-    Refactor Default booleans to false, allowing us to remove repetitive statements within the constructor.
+    Default booleans to false, allowing us to remove repetitive statements within the constructor.
 
 commit 328cff981d42df5f8f3c97dd0019ae702517d84a
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:37:46 2023 -0600
 
-    Refactor Added a buildBoardCell() function that simlified the loadLayout function
+    Added a buildBoardCell() function that simlified the loadLayout function
 
 commit f75056258ded3480f0035248e8b65bbedfb78f3e
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:33:44 2023 -0600
 
-    Refactor Simlified try-catch in loadLayoutConfig()
+    Simlified try-catch in loadLayoutConfig()
 
 commit 77a2008ae14dae6514d80c99d17a2b999c189109
 Author: gcculberson <g.c.culberson@gmail.com>
