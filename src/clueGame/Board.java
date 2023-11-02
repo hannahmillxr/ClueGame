@@ -465,7 +465,28 @@ public class Board {
 			return null;
 		}
 
-		public Boolean handleSuggestion(Card roomCard, Card personCarn, Card weaponCard) {
+		public Boolean handleSuggestion(Solution suggestion, Player Playeraccuse) {
+			
+			int currentplayer = players.indexOf(Playeraccuse);
+			
+			while(true) {
+				currentplayer = (currentplayer+1) % players.size();
+				Player player_ind = players.get(currentplayer);
+				
+				if(player_ind == Playeraccuse) {
+					break;
+				}
+				
+				Card pullcard = player_ind.disproveSuggestion(suggestion);
+				
+				
+				if(pullcard != null) {
+					return null;
+				}
+			}
+			return null;
+			
+			
 			return null;
 		}
 	    
