@@ -8,79 +8,79 @@ commit 38bf1b24ab217be4db3f01dc55dcae45464b3cd5
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 18:09:37 2023 -0600
 
-    Added Author and Description to FileInitTests Class
+    Refactor Added Author and Description to FileInitTests Class
 
 commit a00b30bf169d5b6ca1884356581fa9e984aaad0b
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 18:08:13 2023 -0600
 
-    Added Author and Description to BoardTestExp Class
+    Refactor Added Author and Description to BoardTestExp Class
 
 commit 45a184615d39d31293078f5d2e7088a0ecdafc2f
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 18:05:56 2023 -0600
 
-    Added Author and Description to BoardAdjTest Class
+    Refactor Added Author and Description to BoardAdjTest Class
 
 commit c5501fb34fcaae8664226f3dd977d721eee01f83
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:43:03 2023 -0600
 
-    Moved getters in BoardCell Class to the bottom
+    Refactor Moved getters in BoardCell Class to the bottom
 
 commit b778765de45c5df5e26f46f5081cac14fcab0317
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:41:55 2023 -0600
 
-    Removed unnecessary default constructor from Room Class
+    Refactor Removed unnecessary default constructor from Room Class
 
 commit e7fce36aed881f0feccd4068ba0e3b31ceea02d5
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:40:43 2023 -0600
 
-    Removed the Todo from BoardCell Class
+    Refactor Removed the Todo from BoardCell Class
 
 commit c58ef36bcae449d1525e2d216b415ff4d85dea8a
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:37:17 2023 -0600
 
-    Moved the Getter to the bottom, in Board
+    Refactor Moved the Getter to the bottom, in Board
 
 commit 6fab139749051240d4c5aca5e7844a0d19494b4f
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Sun Oct 29 12:32:59 2023 -0600
 
-    Removed the unnecessary tree map import
+    Refactor Removed the unnecessary tree map import
 
 commit daea69f11b3cd7d676e96fb85281469d1d79c97f
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:47:18 2023 -0600
 
-    Renamed calculations method to be more descriptive
+    Refactor Renamed calculations method to be more descriptive
 
 commit d8c81c33353e21d54ea6701e57047d1e6ffa3268
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:45:25 2023 -0600
 
-    Specified private attributes rather then letting attributes default to package
+    Refactor Specified private attributes rather then letting attributes default to package
 
 commit dfd08d0d0e2c0fa5ac5c9353ca76e42ad9fad935
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:43:00 2023 -0600
 
-    Default booleans to false, allowing us to remove repetitive statements within the constructor.
+    Refactor Default booleans to false, allowing us to remove repetitive statements within the constructor.
 
 commit 328cff981d42df5f8f3c97dd0019ae702517d84a
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:37:46 2023 -0600
 
-    Added a buildBoardCell() function that simlified the loadLayout function
+    Refactor Added a buildBoardCell() function that simlified the loadLayout function
 
 commit f75056258ded3480f0035248e8b65bbedfb78f3e
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Oct 26 13:33:44 2023 -0600
 
-    Simlified try-catch in loadLayoutConfig()
+    Refactor Simlified try-catch in loadLayoutConfig()
 
 commit 77a2008ae14dae6514d80c99d17a2b999c189109
 Author: gcculberson <g.c.culberson@gmail.com>

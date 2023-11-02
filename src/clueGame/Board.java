@@ -4,15 +4,15 @@
  */
 package clueGame;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
