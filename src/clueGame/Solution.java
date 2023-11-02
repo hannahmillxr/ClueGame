@@ -1,3 +1,7 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: Stores the room, person, and weapon card. 
+ */
 package clueGame;
 
 public class Solution {
