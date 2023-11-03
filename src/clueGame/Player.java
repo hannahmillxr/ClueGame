@@ -33,25 +33,6 @@ public class Player {
 		hand.add(card);
 	}
 
-
-	public String getName() {
-		return name;
-	}
-
-
-	public String getColor() {
-		return color;
-	}
-
-
-	public int getRow() {
-		return row;
-	}
-
-
-	public int getCol() {
-		return col;
-	}
 	public Card disproveSuggestion(Solution suggestion){
 		ArrayList<Card> pullcard =new ArrayList<Card>();
 		
@@ -73,4 +54,24 @@ public class Player {
 	public void updateSeen(Card seenCard) {
 		seenCards.add(seenCard);
 	}
+
+	public String getName() {
+		return name;
+	}
+
+
+	public String getColor() {
+		return color;
+	}
+
+
+	public int getRow() {
+		return row;
+	}
+
+
+	public int getCol() {
+		return col;
+	}
 }
+
