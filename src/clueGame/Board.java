@@ -437,28 +437,7 @@ public class Board {
 		}
 
 	}
-	   public int getNumRows() {
-			return numRows;
-		}
 
-		public int getNumColumns() {
-			return numColumns;
-		}
-		
-		public Room getRoom(char initial) {
-			Room room = roomMap.get(initial);
-			return room;
-		}
-		
-		public Room getRoom(BoardCell cell) {
-			char initial = cell.getInitial();
-			Room room = roomMap.get(initial);
-			return room;
-		}
-	    
-	    public BoardCell getCell(int row, int col) {
-			return grid[row][col];
-		}
 /*
  * Return the true if solution input matches the correct solution
  */
@@ -494,6 +473,28 @@ public class Board {
 			return null;
 		
 		}
+		   public int getNumRows() {
+				return numRows;
+			}
+
+			public int getNumColumns() {
+				return numColumns;
+			}
+			
+			public Room getRoom(char initial) {
+				Room room = roomMap.get(initial);
+				return room;
+			}
+			
+			public Room getRoom(BoardCell cell) {
+				char initial = cell.getInitial();
+				Room room = roomMap.get(initial);
+				return room;
+			}
+		    
+		    public BoardCell getCell(int row, int col) {
+				return grid[row][col];
+			}
 	    
 
     
