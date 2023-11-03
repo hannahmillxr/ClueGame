@@ -238,9 +238,21 @@ public class GameSolutionTest {
 		HumanPlayer human = new HumanPlayer("Po", "white",3,2);	
 		ComputerPlayer compPlayer = new ComputerPlayer("Po","white",3,2);
 		
+		human.add();
+		/***
+		 * What needs to be done
+		 * Set up situation: create player, add cards to each players hand, test suggestion, and then assert.
+		 * Make assert/tests
+		 * 
+		 * 
+		 * 
+		 */
 		
 		
-				
+		
+		/**
+		 * Everything below thing is wrong
+		 */
 		Card solutionWeapon = board.solution.getSolutionWeapon();
 		Card solutionPerson = board.solution.getSolutionPerson();
 		Card solutionRoom = board.solution.getSolutionRoom();
