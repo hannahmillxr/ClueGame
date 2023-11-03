@@ -470,9 +470,9 @@ public class Board {
 		}
 		
 /*
- * handles tha suggestion through each of the player
+ * handles the suggestion through each of the player
  */
-		public Boolean handleSuggestion(Solution suggestion, Player Playeraccuse) {
+		public Card handleSuggestion(Solution suggestion, Player Playeraccuse) {
 			
 			int currentplayer = players.indexOf(Playeraccuse);
 			
@@ -488,7 +488,7 @@ public class Board {
 				
 				
 				if(pullcard != null) {
-					return null;
+					return pullcard;
 				}
 			}
 			return null;
