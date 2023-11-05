@@ -73,5 +73,9 @@ public class Player {
 	public int getCol() {
 		return col;
 	}
+	
+	public void clearHand() {
+		hand.clear();
+	}
 }
 
