@@ -223,4 +223,9 @@ public class GameSolutionTest {
 		return false;
 	}
 	
+	@Test
+	public void createSuggestion() {
+		
+	}
+	
 }
