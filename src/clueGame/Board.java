@@ -34,7 +34,7 @@ public class Board {
 	private String setupConfigFile;
 	private int numColumns;
 	private int numRows;
-	public Solution solution = new Solution();
+	public Solution solution;
 	private Set<Card> dealt;
 	
     /*
@@ -85,6 +85,7 @@ public class Board {
     
     public void deal() {
     	dealt = new HashSet<Card>();
+    	solution = new Solution();
     	
     	ArrayList<Card>tempDeck = new ArrayList<>();
     	for(Card card : deck) {

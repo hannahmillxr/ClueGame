@@ -153,13 +153,18 @@ public class GameSolutionTest {
 		 * 
 		 */
 		ArrayList<Player> players = board.getPlayers();
+
+		
+		Card solutionWeapon = board.solution.getSolutionWeapon();
+		Card solutionPerson = board.solution.getSolutionPerson();
+		Card solutionRoom = board.solution.getSolutionRoom();
+		
+		//Suggestion no one can disprove returns null
+		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon), players.get(0))== null);
+		
 		board.solution.setWeapon(chopStickCard);
 		board.solution.setPerson(viperCard);
 		board.solution.setRoom(kitchenCard);
-		
-		//Suggestion no one can disprove returns null
-		assertTrue(board.handleSuggestion(board.solution, players.get(0))== null);
-		
 		/***
 		 * What needs to be done
 		 * Set up situation: create player, add cards to each players hand, test suggestion, and then assert.
@@ -191,9 +196,9 @@ public class GameSolutionTest {
 		players = board.getPlayers();
 		
 	
-		Card solutionWeapon = chopStickCard;
-		Card solutionPerson = viperCard;
-		Card solutionRoom = kitchenCard;
+		solutionWeapon = chopStickCard;
+		solutionPerson = viperCard;
+		solutionRoom = kitchenCard;
 		
 		//Suggestion only suggesting player can disprove returns null
 		assertTrue(board.handleSuggestion(new Solution(dojoCard, solutionPerson, solutionWeapon), players.get(1))== null);
