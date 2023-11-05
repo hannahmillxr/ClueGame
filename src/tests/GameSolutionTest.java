@@ -73,11 +73,17 @@ public class GameSolutionTest {
 		board.solution.setWeapon(chopStickCard);
 		board.solution.setPerson(viperCard);
 		board.solution.setRoom(kitchenCard);
-
+		
+		//solution is correct
 		assertTrue(board.checkAccusation(new Solution(kitchenCard, viperCard, chopStickCard)));
-
-		assertFalse(board.checkAccusation(new Solution(kitchenCard, viperCard, shensCannonCard)));
+		
+		//solution with wrong person
 		assertFalse(board.checkAccusation(new Solution(kitchenCard, craneCard, chopStickCard)));
+		
+		//solution with wrong weapon
+		assertFalse(board.checkAccusation(new Solution(kitchenCard, viperCard, shensCannonCard)));
+		
+		//solution with wrong room
 		assertFalse(board.checkAccusation(new Solution(dojoCard, viperCard, chopStickCard)));
 		
 	}
@@ -121,104 +127,17 @@ public class GameSolutionTest {
 		
 		
 		//If players has >1 matching card, returned card should be chosen randomly
-		checkWeapon = solutionWeapon;
-		checkPerson = solutionPerson;
-		checkRoom = solutionRoom;
-		Card firstChangedCard = null;
-		Card secondChangedCard = null;
+		board.solution.setWeapon(chopStickCard);
+		board.solution.setPerson(viperCard);
+		board.solution.setRoom(kitchenCard);
+
+		board.getPlayers().get(0).clearHand();
+		board.getPlayers().get(0).updateHand(meditationCard);
+		board.getPlayers().get(0).updateHand(jadeDaggerCard);
+		board.getPlayers().get(0).updateHand(teaRoomCard);
 		
-		for (Player player :players) {
-			Card firstCard = player.getHand().get(0);
-			Card secondCard = player.getHand().get(1);
-			Card thirdCard = player.getHand().get(2);
-			
-			if (firstCard.getType() != secondCard.getType()) {
-				if (firstCard.getType()== CardType.ROOM){
-					checkRoom = firstCard;
-					firstChangedCard = checkRoom;
-				}
-				if (firstCard.getType()== CardType.PERSON){
-					checkPerson = firstCard;
-					firstChangedCard = checkPerson;
-				}
-				if (firstCard.getType()== CardType.WEAPON){
-					checkWeapon = firstCard;
-					firstChangedCard = checkWeapon;
-				}
-				
-				if (secondCard.getType()== CardType.ROOM){
-					checkRoom = secondCard;
-					secondChangedCard = checkRoom;
-				}
-				if (secondCard.getType()== CardType.PERSON){
-					checkPerson = secondCard;
-					secondChangedCard = checkPerson;
-				}
-				if (secondCard.getType()== CardType.WEAPON){
-					checkWeapon = secondCard;
-					secondChangedCard = checkWeapon;
-				}
-				break;
-			}
-			else if (secondCard.getType() != thirdCard.getType()) {
-				if (thirdCard.getType()== CardType.ROOM){
-					checkRoom = thirdCard;
-					 firstChangedCard = checkRoom;
-				}
-				if (thirdCard.getType()== CardType.PERSON){
-					checkPerson = thirdCard;
-					 firstChangedCard = checkPerson;
-				}
-				if (thirdCard.getType()== CardType.WEAPON){
-					checkWeapon = thirdCard;
-					 firstChangedCard = checkWeapon;
-				}
-				
-				if (secondCard.getType()== CardType.ROOM){
-					checkRoom = secondCard;
-					secondChangedCard = checkRoom;
-				}
-				if (secondCard.getType()== CardType.PERSON){
-					checkPerson = secondCard;
-					secondChangedCard = checkPerson;
-				}
-				if (secondCard.getType()== CardType.WEAPON){
-					checkWeapon = secondCard;
-					secondChangedCard = checkWeapon;
-				}
-				break;
-			}
-			else if (thirdCard.getType() != firstCard.getType()) {
-				if (firstCard.getType()== CardType.ROOM){
-					checkRoom = firstCard;
-					 firstChangedCard = checkRoom;
-				}
-				if (firstCard.getType()== CardType.PERSON){
-					checkPerson = firstCard;
-					 firstChangedCard = checkPerson;
-				}
-				if (firstCard.getType()== CardType.WEAPON){
-					checkWeapon = firstCard;
-					 firstChangedCard = checkWeapon;
-				}
-				
-				if (thirdCard.getType()== CardType.ROOM){
-					checkRoom = thirdCard;
-					secondChangedCard = checkRoom;
-				}
-				if (thirdCard.getType()== CardType.PERSON){
-					checkPerson = thirdCard;
-					secondChangedCard = checkPerson;
-				}
-				if (thirdCard.getType()== CardType.WEAPON){
-					checkWeapon = thirdCard;
-					secondChangedCard = checkWeapon;
-				}
-				break;
-			}
-		}
-		Solution answer = new Solution(checkRoom, checkPerson, checkWeapon);
-		assertTrue((board.handleSuggestion(answer, players.get(3))== firstChangedCard) || board.handleSuggestion(answer, players.get(3))== secondChangedCard);
+		Solution answer = new Solution(meditationCard, solutionPerson, jadeDaggerCard);
+		assertTrue(isMeditationRoomOrJadeDagger(board.getPlayers().get(0).disproveSuggestion(answer)));
 		
 		
 		
@@ -228,130 +147,80 @@ public class GameSolutionTest {
 	@Test
 	public void handleSuggestion() {
 		
+		/**
+		 * set up cards in player
+		 * set up cards in solution
+		 * 
+		 */
+		ArrayList<Player> players = board.getPlayers();
+
+		
 		Card solutionWeapon = board.solution.getSolutionWeapon();
 		Card solutionPerson = board.solution.getSolutionPerson();
 		Card solutionRoom = board.solution.getSolutionRoom();
-		ArrayList<Player> players = board.getPlayers();
 		
-		//No player should be holding solution cards, so handle suggestion should return null
+		//Suggestion no one can disprove returns null
 		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon), players.get(0))== null);
 		
+		board.solution.setWeapon(chopStickCard);
+		board.solution.setPerson(viperCard);
+		board.solution.setRoom(kitchenCard);
+		/***
+		 * What needs to be done
+		 * Set up situation: create player, add cards to each players hand, test suggestion, and then assert.
+		 * Make assert/tests
+		 * 
+		 */
+		//build player one
+		board.getPlayers().get(0).clearHand();
+		board.getPlayers().get(0).updateHand(meditationCard);
+		board.getPlayers().get(0).updateHand(jadeDaggerCard);
+		board.getPlayers().get(0).updateHand(teaRoomCard);
 		
+		//build player two
+		board.getPlayers().get(1).clearHand();
+		board.getPlayers().get(1).updateHand(dojoCard);
+		board.getPlayers().get(1).updateHand(fistCard);
+		board.getPlayers().get(1).updateHand(craneCard);
 		
-		ArrayList<Card> rooms = board.getRoomCards();
-		ArrayList<Card> persons = board.getPersonCards();
-		ArrayList<Card> weapons= board.getWeaponCards();
+		board.getPlayers().get(2).clearHand();
+		board.getPlayers().get(2).updateHand(armoryCard);
+		board.getPlayers().get(2).updateHand(courtYardCard);
+		board.getPlayers().get(2).updateHand(mantisCard);
 		
-		//No player should be holding weapon or person solution cards, so handle suggestion should return the room that must be somewhere amongst players
-		Card otherRoom;
-		if (rooms.get(0).equals(solutionRoom)) {
-			otherRoom = rooms.get(1);
-		}
-		else {
-			otherRoom = rooms.get(0);
-		}
+		//other hands are empty
+		board.getPlayers().get(3).clearHand();
+		board.getPlayers().get(4).clearHand();
+		board.getPlayers().get(5).clearHand();
 		
-		assertTrue(board.handleSuggestion(new Solution(otherRoom, solutionPerson, solutionWeapon), players.get(3))== otherRoom);
+		players = board.getPlayers();
 		
+	
+		solutionWeapon = chopStickCard;
+		solutionPerson = viperCard;
+		solutionRoom = kitchenCard;
 		
+		//Suggestion only suggesting player can disprove returns null
+		assertTrue(board.handleSuggestion(new Solution(dojoCard, solutionPerson, solutionWeapon), players.get(1))== null);
 		
-		//No player should be holding weapon or room solution cards, so handle suggestion should return the person that must be somewhere amongst players
-		Card otherPerson;
-		if (persons.get(0).equals(solutionPerson)) {
-			otherPerson = persons.get(1);
-		}
-		else {
-			otherPerson = persons.get(0);
-		}
+		//Suggestion only human can disprove returns answer (i.e., card that disproves suggestion)
+		assertTrue(players.get(0) instanceof HumanPlayer);
+		assertTrue(board.handleSuggestion(new Solution(meditationCard, solutionPerson, solutionWeapon), players.get(2))== meditationCard);
+		
+		//Suggestion that two players can disprove, correct player (based on starting with next player in list) returns answer
+		assertTrue((board.handleSuggestion(new Solution(dojoCard, mantisCard, solutionWeapon), players.get(0))== dojoCard));
 
-		assertTrue(board.handleSuggestion(new Solution(solutionRoom, otherPerson, solutionWeapon), players.get(3))== otherPerson);
-
-
-		
-		
-		//No player should be holding person or room solution cards, so handle suggestion should return the weapon that must be somewhere amongst players
-		Card otherWeapon;
-		if (weapons.get(0).equals(solutionWeapon)) {
-			otherWeapon = weapons.get(1);
-		}
-		else {
-			otherWeapon = weapons.get(0);
-		}
-		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, otherWeapon), players.get(3))== otherWeapon);
-		
-		
-		Solution answer = new Solution(otherRoom, solutionPerson, otherWeapon);
-		assertTrue((board.handleSuggestion(answer, players.get(3))== otherRoom) || board.handleSuggestion(answer, players.get(3))== otherWeapon);
-		
-		
-		//solution only a human can disprove
-		
-		Card checkWeapon = solutionWeapon;
-		Card checkPerson = solutionPerson;
-		Card checkRoom = solutionRoom;
-		Card changed = null;
-		int humanIndex = 0;
-		
-		
-		for (int i = 0; i<players.size(); i++) {
-			if (players.get(i) instanceof HumanPlayer) {
-				Card humanCheck = players.get(i).getHand().get(0);
-				if (humanCheck.getType()== CardType.ROOM){
-					checkRoom = humanCheck;
-					changed = checkRoom;
-					humanIndex = i;
-				}
-				if (humanCheck.getType()== CardType.PERSON){
-					checkPerson = humanCheck;
-					changed = checkPerson;
-					humanIndex = i;
-				}
-				if (humanCheck.getType()== CardType.WEAPON){
-					checkWeapon = humanCheck;
-					changed = checkWeapon;
-					humanIndex = i;
-				}
-				
-				break;
-			}
-		}
-		
-		assertTrue(board.handleSuggestion(new Solution(checkRoom, checkPerson, checkWeapon), players.get(3))== changed);
-		
-		
-		//Solution two players can disprove correct player (based on starting with next player in list) returns answer
-		Card changed2 = null;
-		int index = 0;
-		
-		for (int j = (humanIndex +1)%players.size(); j<players.size(); j++) {
-			if (players.get(j) instanceof ComputerPlayer) {
-				for (int i =0; i<3; i++) {
-					Card check = players.get(j).getHand().get(i);
-					
-					if ((check.getType() != changed.getType())){
-						if (check.getType()== CardType.ROOM){
-							checkRoom = check;
-							changed2 = checkRoom;
-							index = j;
-						}
-						if (check.getType()== CardType.PERSON){
-							checkPerson = check;
-							changed2 = checkPerson;
-							index = j;
-						}
-						if (check.getType()== CardType.WEAPON){
-							checkWeapon = check;
-							changed2 = checkWeapon;
-							index = j;
-						}
-					}
-				}	
-				
-			}
-		}
-		assertTrue(board.handleSuggestion(new Solution(checkRoom, checkPerson, checkWeapon), players.get(index-1))== changed2);
 
 	}
 	
+	private Boolean isMeditationRoomOrJadeDagger(Card card) {
+		if (card.equals(meditationCard)){
+			return true;
+		}
+		if (card.equals(jadeDaggerCard)){
+			return true;
+		}
+		return false;
+	}
 	
 }

@@ -1,4 +1,5 @@
 /*
+ /*
  * Author: Hannah Miller and Gillian Culberson
  * Description: Creates a player by storing a name, color, row, color, and whether in hand. 
  */
@@ -6,7 +7,7 @@ package clueGame;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
 	String name;
 	String color;
 	int row;
@@ -21,6 +22,19 @@ public class Player {
 		this.row = row;
 		this.col = col;
 		hand = new ArrayList<Card>();
+		seenCards = new ArrayList<Card>();
+	}
+
+	public abstract Solution createSuggestion();
+	public abstract BoardCell selectTarget();
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+
+	public void setCol(int col) {
+		this.col = col;
 	}
 
 
@@ -73,5 +87,17 @@ public class Player {
 	public int getCol() {
 		return col;
 	}
-}
+	
+	public void clearHand() {
+		hand.clear();
+	}
 
+	public void clearSeen() {
+		seenCards.clear();
+	}
+
+
+	public ArrayList<Card> getSeenCards() {
+		return seenCards;
+	}
+}

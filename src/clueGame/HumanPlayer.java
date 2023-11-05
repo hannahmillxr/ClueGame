@@ -11,4 +11,14 @@ public class HumanPlayer extends Player {
 		super(name, color, row, col);
 	}
 
+	@Override
+	public Solution createSuggestion() {
+		return null;
+	}
+
+	@Override
+	public BoardCell selectTarget() {
+		return null;
+	}
+
 }
