@@ -228,34 +228,10 @@ public class GameSolutionTest {
 	@Test
 	public void handleSuggestion() {
 		
-		/**
-		 * set up cards in player
-		 * set up cards in solution
-		 * 
-		 */
-		
-		ArrayList<Player> players = board.getPlayers();
-		HumanPlayer human = new HumanPlayer("Po", "white",3,2);	
-		ComputerPlayer compPlayer = new ComputerPlayer("Po","white",3,2);
-		
-		human.add();
-		/***
-		 * What needs to be done
-		 * Set up situation: create player, add cards to each players hand, test suggestion, and then assert.
-		 * Make assert/tests
-		 * 
-		 * 
-		 * 
-		 */
-		
-		
-		
-		/**
-		 * Everything below thing is wrong
-		 */
 		Card solutionWeapon = board.solution.getSolutionWeapon();
 		Card solutionPerson = board.solution.getSolutionPerson();
 		Card solutionRoom = board.solution.getSolutionRoom();
+		ArrayList<Player> players = board.getPlayers();
 		
 		//No player should be holding solution cards, so handle suggestion should return null
 		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon), players.get(0))== null);
@@ -274,6 +250,7 @@ public class GameSolutionTest {
 		else {
 			otherRoom = rooms.get(0);
 		}
+		
 		assertTrue(board.handleSuggestion(new Solution(otherRoom, solutionPerson, solutionWeapon), players.get(3))== otherRoom);
 		
 		
@@ -286,6 +263,7 @@ public class GameSolutionTest {
 		else {
 			otherPerson = persons.get(0);
 		}
+
 		assertTrue(board.handleSuggestion(new Solution(solutionRoom, otherPerson, solutionWeapon), players.get(3))== otherPerson);
 
 
