@@ -60,6 +60,7 @@ class ComputerAITest {
 		cherryBlossomCard = new Card ("Cherry Blossom Room", CardType.ROOM);
 		teaRoomCard = new Card ("Tea Room", CardType.ROOM);
 		courtYardCard = new Card ("Court Yard", CardType.ROOM);
+
 	}
 
 	//if no rooms in list, select randomly
@@ -207,6 +208,5 @@ class ComputerAITest {
 	@Test
 	void createSuggestionMultipleUnseenPeople() {
 		
-	}
-
+}
 }
