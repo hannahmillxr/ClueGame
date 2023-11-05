@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.function.BooleanSupplier;
 
 
 
@@ -112,6 +111,7 @@ public class Board {
     			Card dealing = tempDeck.get(rand.nextInt(tempDeck.size()));
         		dealt.add(dealing);
     			player.updateHand(dealing);
+    			player.updateSeen(dealing);
     			tempDeck.remove(dealing);
     		}
     		    		
@@ -458,6 +458,15 @@ public class Board {
 	    
 	    public BoardCell getCell(int row, int col) {
 			return grid[row][col];
+		}
+	    
+	    public Card getCard(String cardName) {
+			for(Card card: deck) {
+				if(card.getCardName().equals(cardName)) {
+					return card;
+				}
+			}
+			return null;
 		}
 /*
  * Return the true if solution input matches the correct solution

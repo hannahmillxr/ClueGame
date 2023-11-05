@@ -71,6 +71,16 @@ public class BoardCell {
 		}
 	}
 	
+	public boolean equals(BoardCell target) {
+		if (this.row == target.getRow()) {
+			if (this.col == target.getCol()) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
 	public void addAdjacency(BoardCell cell) {
 		adjacencyList.add(cell);
 	}
