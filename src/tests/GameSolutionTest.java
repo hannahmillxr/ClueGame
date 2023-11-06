@@ -224,4 +224,22 @@ public class GameSolutionTest {
 		return false;
 	}
 	
+	@Test
+	public void createSuggestion() {
+		ArrayList<Player> players = board.getPlayers();
+		ArrayList<Player> playerguess;
+		players = board.solution.setWeapon(chopStickCard);
+		players = board.solution.setPerson(viperCard);
+		players = board.solution.setRoom(kitchenCard);
+
+
+		playerguess = board.solution.setWeapon(chopStickCard);
+		playerguess = board.solution.setPerson(viperCard);
+		playerguess = board.solution.setRoom(kitchenCard);		
+		assertTrue((ComputerPlayer.createSuggestion(players.equals(playerguess));
+		
+
+		
+	}
+	
 }

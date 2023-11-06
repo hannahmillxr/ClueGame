@@ -20,5 +20,4 @@ public class HumanPlayer extends Player {
 	public BoardCell selectTarget() {
 		return null;
 	}
-
 }

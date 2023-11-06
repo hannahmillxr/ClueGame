@@ -1,4 +1,4 @@
-/*
+ /*
  * Author: Hannah Miller and Gillian Culberson
  * Description: Creates a player by storing a name, color, row, color, and whether in hand. 
  */
@@ -100,4 +100,3 @@ public abstract class Player {
 		return seenCards;
 	}
 }
-

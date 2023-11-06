@@ -31,7 +31,4 @@ public class Card {
 		return type;
 	}
 	
-	
-	
-	
 }
