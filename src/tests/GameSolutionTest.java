@@ -162,6 +162,7 @@ public class GameSolutionTest {
 		//Suggestion no one can disprove returns null
 		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon), players.get(0))== null);
 		
+		
 		board.solution.setWeapon(chopStickCard);
 		board.solution.setPerson(viperCard);
 		board.solution.setRoom(kitchenCard);
