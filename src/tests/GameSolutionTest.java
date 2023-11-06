@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
 import clueGame.Card;
 import clueGame.CardType;
-import clueGame.ComputerPlayer;
 import clueGame.HumanPlayer;
 import clueGame.Player;
 import clueGame.Solution;
@@ -30,8 +30,8 @@ public class GameSolutionTest {
 	dojoCard, kitchenCard, scrollRoomCard, cherryBlossomCard, teaRoomCard;
 
 
-	@BeforeAll
-	public static void setUp() {
+	@BeforeEach
+	public void setUp() {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
@@ -94,6 +94,7 @@ public class GameSolutionTest {
 		Card solutionPerson = board.solution.getSolutionPerson();
 		Card solutionRoom = board.solution.getSolutionRoom();
 		ArrayList<Player> players = board.getPlayers();
+		
 		//If player has only one matching card it should be returned
 		
 		Card checkWeapon = solutionWeapon;
@@ -122,6 +123,7 @@ public class GameSolutionTest {
 		
 		assertTrue(playerOneMatchingCard.disproveSuggestion(new Solution(checkRoom, checkPerson, checkWeapon))== changed);
 		
+		
 		//If player has no matching cards, null is returned
 		assertTrue(playerOneMatchingCard.disproveSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon))== null);
 		
@@ -146,12 +148,7 @@ public class GameSolutionTest {
 	
 	@Test
 	public void handleSuggestion() {
-		
-		/**
-		 * set up cards in player
-		 * set up cards in solution
-		 * 
-		 */
+
 		ArrayList<Player> players = board.getPlayers();
 
 		
@@ -166,12 +163,7 @@ public class GameSolutionTest {
 		board.solution.setWeapon(chopStickCard);
 		board.solution.setPerson(viperCard);
 		board.solution.setRoom(kitchenCard);
-		/***
-		 * What needs to be done
-		 * Set up situation: create player, add cards to each players hand, test suggestion, and then assert.
-		 * Make assert/tests
-		 * 
-		 */
+
 		//build player one
 		board.getPlayers().get(0).clearHand();
 		board.getPlayers().get(0).updateHand(meditationCard);
@@ -184,6 +176,7 @@ public class GameSolutionTest {
 		board.getPlayers().get(1).updateHand(fistCard);
 		board.getPlayers().get(1).updateHand(craneCard);
 		
+		//build player three
 		board.getPlayers().get(2).clearHand();
 		board.getPlayers().get(2).updateHand(armoryCard);
 		board.getPlayers().get(2).updateHand(courtYardCard);
@@ -224,22 +217,6 @@ public class GameSolutionTest {
 		return false;
 	}
 	
-	@Test
-	public void createSuggestion() {
-		ArrayList<Player> players = board.getPlayers();
-		ArrayList<Player> playerguess;
-		players = board.solution.setWeapon(chopStickCard);
-		players = board.solution.setPerson(viperCard);
-		players = board.solution.setRoom(kitchenCard);
 
-
-		playerguess = board.solution.setWeapon(chopStickCard);
-		playerguess = board.solution.setPerson(viperCard);
-		playerguess = board.solution.setRoom(kitchenCard);		
-		assertTrue((ComputerPlayer.createSuggestion(players.equals(playerguess));
-		
-
-		
-	}
 	
 }

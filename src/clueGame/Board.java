@@ -487,7 +487,7 @@ public class Board {
 			
 			int currentplayer = players.indexOf(Playeraccuse);
 			
-			while(true) {
+			for (int i =0; i< players.size(); i++) {
 				currentplayer = (currentplayer+1) % players.size();
 				Player player_ind = players.get(currentplayer);
 				

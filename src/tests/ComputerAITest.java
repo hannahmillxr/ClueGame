@@ -2,13 +2,19 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
 import clueGame.Card;
 import clueGame.CardType;
+import clueGame.ComputerPlayer;
+import clueGame.Player;
+import clueGame.Solution;
 
 class ComputerAITest {
 	// Constants that I will use to test whether the file was loaded correctly
@@ -24,8 +30,8 @@ class ComputerAITest {
 	dojoCard, kitchenCard, scrollRoomCard, cherryBlossomCard, teaRoomCard;
 
 
-	@BeforeAll
-	public static void setUp() {
+	@BeforeEach
+	public void setUp() {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
@@ -133,6 +139,7 @@ class ComputerAITest {
 		//Place a computer character in the doorway to the kitchen, which is already in seen deck
 		board.getPlayers().get(1).setRow(6); 
 		board.getPlayers().get(1).setCol(3);
+		
 		board.getPlayers().get(1).updateSeen(kitchenCard);
 
 		//if we have one move available, we should move randomly
@@ -178,14 +185,30 @@ class ComputerAITest {
 	//Room matches current location
 	@Test
 	void createSuggestionCurrentLocation() {
-		
+		//put a player into the kitchen
+		board.getPlayers().get(1).setRow(3); 
+		board.getPlayers().get(1).setCol(2);
+		Solution answer =  board.getPlayers().get(1).createSuggestion();
+		assertTrue(answer.getSolutionRoom().equals(kitchenCard));
 	}
 	
 	
 	//If only one weapon not seen, it's selected
 	@Test
 	void createSuggestionOnlyOneUnseenWeapon() {
+		board.getPlayers().get(1).setRow(3); 
+		board.getPlayers().get(1).setCol(2);
+		board.getPlayers().get(1).clearSeen();
+		//only unseen is the jade dagger
+		board.getPlayers().get(1).updateSeen(shensCannonCard); 
+		board.getPlayers().get(1).updateSeen(yinYangStaffCard); 
+		board.getPlayers().get(1).updateSeen(fryPanCard); 
+		board.getPlayers().get(1).updateSeen(fistCard); 
+		board.getPlayers().get(1).updateSeen(chopStickCard); 
 		
+		Solution answer =  board.getPlayers().get(1).createSuggestion();
+		assertTrue(answer.getSolutionWeapon().equals(jadeDaggerCard));
+
 	}
 	
 	
@@ -193,6 +216,19 @@ class ComputerAITest {
 	//If only one person not seen, it's selected (can be same test as weapon)
 	@Test
 	void createSuggestionOnlyOneUnseenPerson() {
+		board.getPlayers().get(1).setRow(3); 
+		board.getPlayers().get(1).setCol(2);
+		board.getPlayers().get(1).clearSeen();
+		
+		//only unseen is Crane
+		board.getPlayers().get(1).updateSeen(poCard); 
+		board.getPlayers().get(1).updateSeen(mantisCard); 
+		board.getPlayers().get(1).updateSeen(viperCard); 
+		board.getPlayers().get(1).updateSeen(monkeyCard); 
+		board.getPlayers().get(1).updateSeen(tigressCard); 
+		
+		Solution answer =  board.getPlayers().get(1).createSuggestion();
+		assertTrue(answer.getSolutionPerson().equals(craneCard));
 		
 	}
 	
@@ -200,6 +236,31 @@ class ComputerAITest {
 	//If multiple weapons not seen, one of them is randomly selected
 	@Test
 	void createSuggestionMultipleUnseenWeapons() {
+		board.getPlayers().get(1).setRow(3); 
+		board.getPlayers().get(1).setCol(2);
+		board.getPlayers().get(1).clearSeen();
+		//only unseen is the jade dagger and chopstick
+		board.getPlayers().get(1).updateSeen(shensCannonCard); 
+		board.getPlayers().get(1).updateSeen(yinYangStaffCard); 
+		board.getPlayers().get(1).updateSeen(fryPanCard); 
+		board.getPlayers().get(1).updateSeen(fistCard);
+
+		int jadeDaggerCount = 0;
+		int chopStickCount = 0;
+
+
+		for (int i = 0; i<1000; i++) {
+			Solution answer =  board.getPlayers().get(1).createSuggestion();
+			if (jadeDaggerCard.equals(answer.getSolutionWeapon())){
+				 jadeDaggerCount++;
+			}
+			if (chopStickCard.equals(answer.getSolutionWeapon())){
+				 chopStickCount++;
+			}
+		}
+
+		assertTrue(jadeDaggerCount>1);
+		assertTrue(chopStickCount>1);
 		
 	}
 	
@@ -207,6 +268,35 @@ class ComputerAITest {
 	//If multiple persons not seen, one of them is randomly selected
 	@Test
 	void createSuggestionMultipleUnseenPeople() {
+		board.getPlayers().get(1).setRow(3); 
+		board.getPlayers().get(1).setCol(2);
+		board.getPlayers().get(1).clearSeen();
 		
-}
+		//only unseen is Crane and tigress
+		board.getPlayers().get(1).updateSeen(poCard); 
+		board.getPlayers().get(1).updateSeen(mantisCard); 
+		board.getPlayers().get(1).updateSeen(viperCard); 
+		board.getPlayers().get(1).updateSeen(monkeyCard); 
+		
+		int craneCount = 0;
+		int tigressCount = 0;
+
+
+		for (int i = 0; i<1000; i++) {
+			Solution answer =  board.getPlayers().get(1).createSuggestion();
+			if (tigressCard.equals(answer.getSolutionPerson())){
+				 tigressCount++;
+			}
+			if (craneCard.equals(answer.getSolutionPerson())){
+				 craneCount++;
+			}
+		}
+
+		assertTrue(craneCount>1);
+		assertTrue(tigressCount>1);
+
+		
+	}
+	
+
 }

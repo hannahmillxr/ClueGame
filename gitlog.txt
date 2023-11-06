@@ -1,3 +1,131 @@
+commit cf0ebbca843d445e649e699a5a3b77b087188630
+Merge: bea3280 462e444
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sun Nov 5 18:01:15 2023 -0700
+
+    Merge branch 'main' of https://github.com/hannahmillxr/C13A2
+
+commit bea32807b6ef9157a817f549391ef03ffbee86b6
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sun Nov 5 18:01:11 2023 -0700
+
+    cleaning up
+
+commit 462e4449f96132e434142e38a3c49d677c337f74
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Sun Nov 5 16:58:53 2023 -0700
+
+    Made createSuggestion test is having errors
+
+commit a9e6ef18f982b4e19e496fc6b0a7627daf70cddb
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Sun Nov 5 16:44:35 2023 -0700
+
+    Made createSuggestion method, still some errors
+
+commit 1dcea12438eca08f55277c37a2acdd54348d76e3
+Merge: 14e83bc b23a77f
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Sun Nov 5 10:50:18 2023 -0700
+
+    Fixed merge conflict
+
+commit 14e83bc852b7439c8451d07b3553a5c027e8e095
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Sun Nov 5 10:05:43 2023 -0700
+
+    merge conflict
+
+commit e3e6f5e448ff7200d3af5b5b50dfb49d907728e3
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Sun Nov 5 09:33:07 2023 -0700
+
+    had worked on the handle suggestion test now working on create suggestion
+
+commit b23a77fb04047db82788507284455ae73c5e6ec8
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Nov 4 22:46:03 2023 -0600
+
+    Fixed bug with solution declaration
+
+commit b20a1b129871a04f01cff0e40d9b8b0fb99ae734
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Nov 4 22:30:14 2023 -0600
+
+    Wrote tests for selectTarget() function and implementation for method in ComputerAI class, all tests pass
+
+commit b746ace884c8bb7d62505b2874f50eec67bebd7f
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Nov 4 20:29:43 2023 -0600
+
+    Finished game solution tests
+
+commit 6b50999a4fd1e5e39c9a753ecb89068cbd899777
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Nov 3 16:43:01 2023 -0600
+
+    moved getter
+
+commit 658c91491828765842434f939bf16d57b54919b3
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Nov 3 16:03:06 2023 -0600
+
+    added some commits
+
+commit bf85ff58726d59fc2bb3f44e591fb4220fe8d6c5
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Nov 3 15:19:19 2023 -0600
+
+    added the steps to the handleSuggestions
+
+commit 6daf57b49d28568ee1366e2f97f04e66c2ab7f03
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Nov 3 14:46:17 2023 -0600
+
+    added the createSuggetion method and selectTarget, but needs more inside
+
+commit 54c533f8e0f87c1a4c1161cf06b68b3996001ae2
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 2 21:14:59 2023 -0600
+
+    Added to gameSolutionTests
+
+commit 3f09b7347184e3ae36fa85237f9f6b836a3da21e
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 2 21:14:25 2023 -0600
+
+    Added to gameSolutionTests
+
+commit 7107813a10654f7fd7be4da565ff828e204d994e
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 17:55:56 2023 -0600
+
+    Added seenCard variable and method
+
+commit 606c39335757d3302e16fb9607942bf1b8d075c5
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 17:51:44 2023 -0600
+
+    Finshed in check accusation
+
+commit d306f8a5aba69b539f0d1511eb09c6fcec09e1a0
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 17:47:23 2023 -0600
+
+    Finshed in handle suggestion
+
+commit d4fffcc92bc6ff806741ddbf58df76e70b70776c
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 2 17:31:32 2023 -0600
+
+    Finshed in disproveSuggestion
+
+commit 3b5ebe221d2da1a517f79e0951c1f720ed3e7c7a
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 2 14:32:59 2023 -0600
+
+    Started adding gamesolutiontests
+
 commit 96709a59db9688e1c905252e41254a91bfc961ce
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Nov 2 13:11:08 2023 -0600

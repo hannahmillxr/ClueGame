@@ -6,7 +6,6 @@
 package clueGame;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 import java.util.Set;
 
@@ -16,49 +15,54 @@ public class ComputerPlayer extends Player{
 	}
 	
 	@Override
-	public Solution createSuggestion(Board card, String guessWeapon, String guessPerson, String guessRoom) {
-		/*storing in the guess of room, weapon, and person*/
-		this.guessWeapon = guessWeapon;
-		this.guessPerson = guessPerson;
-		this.guessRoom = guessRoom;
-		int randnum = 0;
-		/*storing all of the room, weapon, and human*/
-		ArrayList<Card> room = new ArrayList<Card>();//could not find the room the player is in
-		ArrayList<Card> weapon = new ArrayList<Card>();
-		ArrayList<Card> human = new ArrayList<Card>();
+	public Solution createSuggestion() {
+		Random random = new Random();
+		//get the room player is in
+		int row = this.getRow();
+		int col = this.getCol();
+		BoardCell thisCell = Board.getInstance().getCell(row, col);
+		Card roomCard = Board.getInstance().getCard(Board.getInstance().getRoom(thisCell).getName());
+		Card personCard;
+		Card weaponCard;
 		
-		for(int i=0; i<room.size();i++) {
-			if(guessRoom.equals(room)) {
-				for(Card card : inseenCard) {
-					if(CardType.WEAPON == card.getCardType()) {
-						weapon.add(card);
-						if(weapon.size()>=1) {
-							Random rand = new Random();
-							Collection.shuffle(weapon);
-							randnum = rand.nextInt();
-							guessWeapon = weapon.get(randnum);
-						}
-						
-					}else if(CardType.Person == card.getCardType()) {
-						person.add(card);
-						if(person.size()>=1) {
-							Random rand = new Random();
-							Collection.shuffle(person);
-							randnum = rand.nextInt();
-							guessPerson = person.get(randnum);
-					}else {
+		ArrayList<Card> weaponList = new ArrayList<Card>();
+		ArrayList<Card> personList = new ArrayList<Card>();
+
+		
+		for (Card card: Board.getInstance().getDeck()) {
+			if(card.getType() == CardType.PERSON) {
+				boolean contains = false;
+				for (Card seenCard: super.getSeenCards()) {
+					if (card.equals(seenCard)) {
+						contains = true;
 						break;
 					}
 				}
+				if (contains == false) {
+					personList.add(card);
+				}
+				
+			}
+			if(card.getType() == CardType.WEAPON) {
+				boolean contains = false;
+				for (Card seenCard: super.getSeenCards()) {
+					if (card.equals(seenCard)) {
+						contains = true;
+						break;
+					}
+				}
+				if (contains == false) {
+					weaponList.add(card);
+				}
+				
 			}
 		}
-			
-			
 		
+		personCard = personList.get(random.nextInt(personList.size()));
+		weaponCard = weaponList.get(random.nextInt(weaponList.size()));                     
+
+		return new Solution(roomCard, personCard, weaponCard); 
 	}
-		Card roomInformation = Card(room, deck, roomMap);
-		return new Solution(roomInformation, guessPerson, guessWeapon);
-}
 	
 		
 	
