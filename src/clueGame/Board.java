@@ -17,8 +17,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
-
-
 public class Board {
 
 	private Map <Character, Room> roomMap;
