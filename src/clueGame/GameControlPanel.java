@@ -29,49 +29,62 @@ public class GameControlPanel extends JPanel {
 	public GameControlPanel()  {
 		gui = this;
 		setSize(300, 150);		
-		JPanel bigPanel = new JPanel();
-		bigPanel.setLayout(new GridLayout(2, 0));
+//		JPanel bigPanel = new JPanel();
+		setLayout(new GridLayout(2, 0));
 		
+		// First panel
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(1, 4));
-		bigPanel.add(panel, BorderLayout.NORTH);
 		
+		// Creates and adds whoPanel
 		JPanel whosNextPanel = new JPanel();
-		whosNextPanel.setLayout(new GridLayout(2, 0));
 		JLabel nameLabel = new JLabel("Whose Turn?");
 		whoseTurn = new JTextField(10);
-		add(nameLabel, BorderLayout.NORTH);
-		add(whoseTurn, BorderLayout.SOUTH);
+		whosNextPanel.add(nameLabel);
+		whosNextPanel.add(whoseTurn);
+		panel.add(whosNextPanel);
 		
+		// Creates and adds roll panel
 		JPanel createRollPanel = new JPanel();
-		createRollPanel.setLayout(new GridLayout(2, 0));
 		JLabel rollNameLabel = new JLabel("Roll:");
 		numRolls = new JTextField(10);
-		add(rollNameLabel, BorderLayout.NORTH);
-		add(numRolls, BorderLayout.CENTER);
-		
-		JButton makeAccusationButton = new JButton();
-		JButton NextButton = new JButton();
-		
+		createRollPanel.add(rollNameLabel);
+		createRollPanel.add(numRolls);
+		panel.add(createRollPanel);
+//		
+		JButton makeAccusationButton = new JButton("Accusation: ");
+		JButton NextButton = new JButton("Next!");
+		panel.add(makeAccusationButton);
+		panel.add(NextButton);
+//		
 		JPanel guessPanel = new JPanel();
-		panel.add(guessPanel, BorderLayout.SOUTH);
+		
 		guessPanel.setLayout(new GridLayout(0, 2));
-		bigPanel.add(guessPanel, BorderLayout.SOUTH);
-		
+		panel.add(guessPanel);
+
 		JPanel makeGuessPanel = new JPanel();
-		guessPanel.add(makeGuessPanel, BorderLayout.WEST);
 		makeGuessPanel.setLayout(new GridLayout(1,0));
-		
+		makeGuessPanel.setBorder(new TitledBorder( new EtchedBorder(), "Guess"));
 		guess = new JTextField(10);
-		makeGuessPanel.add(guess, BorderLayout.CENTER);
-		
+		makeGuessPanel.add(guess);
+		guessPanel.add(makeGuessPanel);
+
 		JPanel guessResultPanel = new JPanel();
-		guessPanel.add(guessResultPanel, BorderLayout.EAST);
 		guessResultPanel.setLayout(new GridLayout(1,0));
+		guessResultPanel.setBorder(new TitledBorder( new EtchedBorder(), "Guess Result"));
+		guess = new JTextField(10);
+		guessResultPanel.add(guess);
+		guessPanel.add(guessResultPanel);
+
+//		guessPanel.add(guessResultPanel, BorderLayout.EAST);
+//		guessResultPanel.setLayout(new GridLayout(1,0));
+//		
+//		guessResult = new JTextField(10);
+//		guessResultPanel.add(guessResult, BorderLayout.CENTER);
 		
-		guessResult = new JTextField(10);
-		guessResultPanel.add(guessResult, BorderLayout.CENTER);
-	
+		// Adds all your panels to big panel!
+		add(panel);
+		add(guessPanel);
 
 	}
 
