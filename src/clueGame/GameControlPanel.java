@@ -57,6 +57,7 @@ public class GameControlPanel extends JPanel {
 		JButton NextButton = new JButton("Next!");
 		panel.add(makeAccusationButton);
 		panel.add(NextButton);
+		
 		//Creates the guess second panal
 		JPanel guessPanel = new JPanel();
 		guessPanel.setLayout(new GridLayout(0, 2));
