@@ -51,6 +51,7 @@ public class GameControlPanel extends JPanel {
 		createRollPanel.add(rollNameLabel);
 		createRollPanel.add(numRolls);
 		panel.add(createRollPanel);
+		
 		//Creates the buttons
 		JButton makeAccusationButton = new JButton("Accusation: ");
 		JButton NextButton = new JButton("Next!");
