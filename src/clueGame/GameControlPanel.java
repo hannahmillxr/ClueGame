@@ -70,6 +70,7 @@ public class GameControlPanel extends JPanel {
 		guess = new JTextField(10);
 		makeGuessPanel.add(guess);
 		guessPanel.add(makeGuessPanel);
+		
 		//Creates the guess result text box and outline of the left side guess
 		JPanel guessResultPanel = new JPanel();
 		guessResultPanel.setLayout(new GridLayout(1,0));
