@@ -43,7 +43,6 @@ public class GameControlPanel extends JPanel {
 		whosNextPanel.add(nameLabel);
 		whosNextPanel.add(whoseTurn);
 		panel.add(whosNextPanel);
-		
 		// Creates and adds roll panel
 		JPanel createRollPanel = new JPanel();
 		JLabel rollNameLabel = new JLabel("Roll:");
@@ -51,24 +50,23 @@ public class GameControlPanel extends JPanel {
 		createRollPanel.add(rollNameLabel);
 		createRollPanel.add(numRolls);
 		panel.add(createRollPanel);
-//		
+		//Creates the buttons
 		JButton makeAccusationButton = new JButton("Accusation: ");
 		JButton NextButton = new JButton("Next!");
 		panel.add(makeAccusationButton);
 		panel.add(NextButton);
-//		
+		//Creates the guess second panal
 		JPanel guessPanel = new JPanel();
-		
 		guessPanel.setLayout(new GridLayout(0, 2));
 		panel.add(guessPanel);
-
+		//Creates the guess text box and outline of the left side guess
 		JPanel makeGuessPanel = new JPanel();
 		makeGuessPanel.setLayout(new GridLayout(1,0));
 		makeGuessPanel.setBorder(new TitledBorder( new EtchedBorder(), "Guess"));
 		guess = new JTextField(10);
 		makeGuessPanel.add(guess);
 		guessPanel.add(makeGuessPanel);
-
+		//Creates the guess result text box and outline of the left side guess
 		JPanel guessResultPanel = new JPanel();
 		guessResultPanel.setLayout(new GridLayout(1,0));
 		guessResultPanel.setBorder(new TitledBorder( new EtchedBorder(), "Guess Result"));
