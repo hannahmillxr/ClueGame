@@ -29,7 +29,6 @@ public class GameControlPanel extends JPanel {
 	public GameControlPanel()  {
 		gui = this;
 		setSize(300, 150);		
-//		JPanel bigPanel = new JPanel();
 		setLayout(new GridLayout(2, 0));
 		
 		// First panel

@@ -1,3 +1,9 @@
+commit f55ff0a49f5e4a71928e3cc9b41240985fcc2c2a
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Nov 7 22:46:45 2023 -0700
+
+    Added setters to the GUI
+
 commit c27e9199fa14ff833ebfdaa24907c602388ee356
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Tue Nov 7 18:05:18 2023 -0700

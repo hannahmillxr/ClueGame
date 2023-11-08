@@ -126,6 +126,17 @@ public class Board {
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
+	
+	public String getPlayerColor(String playerName) {
+		ArrayList<Player> players = getPlayers();
+		String color = null;
+		for (Player player: players) {
+			if (playerName.equals(player.getName())){
+				color = player.getColor();
+			}
+		}
+		return color;
+	}
 
 	public ArrayList<Card> getDeck() {
 		return deck;

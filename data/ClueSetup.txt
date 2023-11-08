@@ -12,10 +12,10 @@ Room, Tea Room, T
 Space, Unused, X
 Space, Walkway, W
 //Players
-Player, Po, Black, 7, 0
+Player, Po, Light Grey, 7, 0
 Player, Tigress, Red, 6, 29
 Player, Mantis, Green, 13, 29
-Player, Monkey, Brown, 13, 0
+Player, Monkey, Magenta, 13, 0
 Player, Crane, White, 1, 16
 Player, Viper, Yellow, 24, 5
 //Weapon
