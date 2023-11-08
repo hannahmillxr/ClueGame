@@ -43,6 +43,7 @@ public class GameControlPanel extends JPanel {
 		whosNextPanel.add(nameLabel);
 		whosNextPanel.add(whoseTurn);
 		panel.add(whosNextPanel);
+		
 		// Creates and adds roll panel
 		JPanel createRollPanel = new JPanel();
 		JLabel rollNameLabel = new JLabel("Roll:");
