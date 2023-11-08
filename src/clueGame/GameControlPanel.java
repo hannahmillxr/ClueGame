@@ -78,13 +78,7 @@ public class GameControlPanel extends JPanel {
 		guess = new JTextField(10);
 		guessResultPanel.add(guess);
 		guessPanel.add(guessResultPanel);
-
-//		guessPanel.add(guessResultPanel, BorderLayout.EAST);
-//		guessResultPanel.setLayout(new GridLayout(1,0));
-//		
-//		guessResult = new JTextField(10);
-//		guessResultPanel.add(guessResult, BorderLayout.CENTER);
-		
+	
 		// Adds all your panels to big panel!
 		add(panel);
 		add(guessPanel);
