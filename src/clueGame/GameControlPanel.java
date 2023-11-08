@@ -75,8 +75,8 @@ public class GameControlPanel extends JPanel {
 		JPanel guessResultPanel = new JPanel();
 		guessResultPanel.setLayout(new GridLayout(1,0));
 		guessResultPanel.setBorder(new TitledBorder( new EtchedBorder(), "Guess Result"));
-		guess = new JTextField(10);
-		guessResultPanel.add(guess);
+		guessResult = new JTextField(10);
+		guessResultPanel.add(guessResult);
 		guessPanel.add(guessResultPanel);
 	
 		// Adds all your panels to big panel!
@@ -87,18 +87,19 @@ public class GameControlPanel extends JPanel {
 
 	
 	
-	private void setTurn(ComputerPlayer computerPlayer, int i) {
-
+	private void setTurn(ComputerPlayer computerPlayer, int roll) {
+		whoseTurn.setText(computerPlayer.getName());
+		numRolls.setText(Integer.toString(roll));
 		
 	}
 	
-	private void setGuessResult(String string) {
-
+	private void setGuessResult(String guess) {
+		guessResult.setText(guess);
 		
 	}
 
-	private void setGuess(String string) {
-				
+	private void setGuess(String thisGuess) {
+		guess.setText(thisGuess);	
 	}
 	
 	/**
@@ -114,9 +115,9 @@ public class GameControlPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 		// test filling in the data
-		//panel.setTurn(new ComputerPlayer( "Col. Mustard", 0, 0, "orange"), 5);
-		//panel.setGuess( "I have no guess!");
-		//panel.setGuessResult( "So you have nothing?");
+		panel.setTurn(new ComputerPlayer( "Po", "Black", 3, 2), 5);
+		panel.setGuess( "I have no guess!");
+		panel.setGuessResult( "So you have nothing?");
 	}
 
 

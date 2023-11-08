@@ -1,3 +1,63 @@
+commit c27e9199fa14ff833ebfdaa24907c602388ee356
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:05:18 2023 -0700
+
+    Add all panels to the largest panel
+
+commit 52ac4ae3da09ae141aca797e6879fdfd2798f9e3
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:04:38 2023 -0700
+
+    Creates the guess result text box and outline of the left side guess
+
+commit 1a752addac30d51317b37d365ab805cc75ed4fee
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:04:16 2023 -0700
+
+    Creates the guess text box and outline of the left side guess
+
+commit cdd89be13214c2af99121391cb28adceeef191d6
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:03:34 2023 -0700
+
+    Creates the guess second panel
+
+commit 6d5a8340aeabbb240f06421c490fefa8e7a81882
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:03:09 2023 -0700
+
+    Create the buttons
+
+commit daaaf664c314e163927ab37560c8dbdd76194268
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:02:24 2023 -0700
+
+    Create and add whoPanel
+
+commit 830b1f15e70c8c2c310fa81509ad0c587ef3572d
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:01:34 2023 -0700
+
+    Create and add whoPanal
+
+commit c117081f63e78375b56b6fc20daa7c2010605fe7
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 7 18:01:07 2023 -0700
+
+    Create first panel
+
+commit c53eefc7cef175033a78531dd31a247ecdede69d
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Nov 7 13:37:13 2023 -0700
+
+    started making GUI
+
+commit 385b32f8aa5b41e38823136ead2a89f551ff5a6a
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sun Nov 5 21:06:31 2023 -0700
+
+    Finished ComputerAI tests and implementation. All tests are passing.
+
 commit cf0ebbca843d445e649e699a5a3b77b087188630
 Merge: bea3280 462e444
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
