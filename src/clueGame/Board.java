@@ -7,6 +7,7 @@ package clueGame;
 
 
 
+import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -17,7 +18,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Board {
+import javax.swing.JPanel;
+
+public class Board extends JPanel{
 
 	private Map <Character, Room> roomMap;
 	private Map <BoardCell, Set<BoardCell>> adjMtx;
@@ -117,6 +120,16 @@ public class Board {
     		    		
     	}
     	
+    }
+    
+    public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		for(int row = 0;row < grid.length;row++) {
+			for(int col = 0; col < grid[0].length; col++) {
+				getCell(row, col).draw(g);
+			}
+		}
     }
     
     public Map<Character, Room> getRoomMap() {

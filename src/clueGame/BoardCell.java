@@ -4,6 +4,9 @@
 
  */
 package clueGame;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +25,8 @@ public class BoardCell {
 	private Boolean isRoom;
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
+	private static final int BOX_WIDTH = 18;
+	private static final int BOX_HEIGHT = 18;
 	
 	
 	
@@ -80,6 +85,57 @@ public class BoardCell {
 		return false;
 		
 	}
+	
+	public void draw(Graphics g) {
+		if (this.isSecretPassage) {
+			g.setColor(Color.CYAN);
+		}
+		else if (this.isWalkway) {
+			g.setColor(Color.DARK_GRAY);
+
+		}
+		else if (this.isDoorway()) {
+			g.setColor(Color.DARK_GRAY);
+			//add a border
+		}
+		else if (this.isRoom) {
+			g.setColor(Color.MAGENTA);
+		}
+		//unused set black
+		else {
+			g.setColor(Color.BLACK);
+		}
+		g.fillRect(this.getRow()* BOX_HEIGHT, this.getCol()* BOX_WIDTH, BOX_WIDTH, BOX_HEIGHT);
+
+		// putting boarder around grid cells
+		if(this.isWalkway) {
+			g.setColor(Color.BLACK);
+			g.drawRect(this.getRow()* BOX_HEIGHT, this.getCol()* BOX_WIDTH, BOX_WIDTH, BOX_HEIGHT);
+		}
+		// add label to doors
+		g.setColor(Color.BLUE);
+		if(this.isDoorway()) {
+			if (this.getDoorDirection() == DoorDirection.UP) {
+				
+			}
+			if (this.getDoorDirection() == DoorDirection.DOWN) {
+				
+			}
+			if (this.getDoorDirection() == DoorDirection.LEFT) {
+				
+			}
+			if (this.getDoorDirection() == DoorDirection.RIGHT) {
+				
+			}
+		}
+		
+
+
+				
+
+	}	
+	
+	
 	
 	public void addAdjacency(BoardCell cell) {
 		adjacencyList.add(cell);

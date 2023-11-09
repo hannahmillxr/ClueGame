@@ -27,6 +27,7 @@ public class GameCardPanel extends JPanel{
 	public GameCardPanel()  {
 		cards = Board.getInstance().getPlayers().get(0).getHand();
 		seenCards = Board.getInstance().getPlayers().get(0).getSeenCards();
+		this.setSize(250,675);
 		
 		this.setLayout(new GridLayout(3,1));
 		this.setBorder(new TitledBorder(new EtchedBorder(), "Known Cards"));	
@@ -283,7 +284,7 @@ public class GameCardPanel extends JPanel{
 		GameCardPanel panel = new GameCardPanel();  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(180, 690);  // size the frame
+		frame.setSize(200, 690);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 

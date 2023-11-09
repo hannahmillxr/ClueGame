@@ -13,8 +13,7 @@ public class Card {
 		if (this.cardName.equals(target.getCardName())) {
 			return true;
 		}
-		return false;
-		
+		return false;	
 	}
 
 	public Card(String cardName, CardType type) {
