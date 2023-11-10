@@ -124,10 +124,11 @@ public class Board extends JPanel{
     
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		for(int row = 0;row < grid.length;row++) {
 			for(int col = 0; col < grid[0].length; col++) {
-				getCell(row, col).draw(g);
+				BoardCell cell = getCell(row,col);
+				cell.draw(g);
+				
 			}
 		}
     }

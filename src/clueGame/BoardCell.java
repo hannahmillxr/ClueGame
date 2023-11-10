@@ -7,6 +7,7 @@ package clueGame;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,8 +26,8 @@ public class BoardCell {
 	private Boolean isRoom;
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
-	private static final int BOX_WIDTH = 18;
-	private static final int BOX_HEIGHT = 18;
+	private static final int BOX_WIDTH = 22;
+	private static final int BOX_HEIGHT = 22;
 	
 	
 	
@@ -91,12 +92,12 @@ public class BoardCell {
 			g.setColor(Color.CYAN);
 		}
 		else if (this.isWalkway) {
-			g.setColor(Color.DARK_GRAY);
+			g.setColor(Color.GRAY);
 
 		}
 		else if (this.isDoorway()) {
-			g.setColor(Color.DARK_GRAY);
-			//add a border
+			g.setColor(Color.GRAY);
+			
 		}
 		else if (this.isRoom) {
 			g.setColor(Color.MAGENTA);
@@ -105,27 +106,33 @@ public class BoardCell {
 		else {
 			g.setColor(Color.BLACK);
 		}
-		g.fillRect(this.getRow()* BOX_HEIGHT, this.getCol()* BOX_WIDTH, BOX_WIDTH, BOX_HEIGHT);
+		g.fillRect( this.getCol()*BOX_WIDTH, this.getRow()* BOX_HEIGHT , BOX_HEIGHT, BOX_WIDTH);
 
-		// putting boarder around grid cells
 		if(this.isWalkway) {
 			g.setColor(Color.BLACK);
-			g.drawRect(this.getRow()* BOX_HEIGHT, this.getCol()* BOX_WIDTH, BOX_WIDTH, BOX_HEIGHT);
+			g.drawRect( this.getCol()*BOX_WIDTH, this.getRow()* BOX_HEIGHT , BOX_HEIGHT, BOX_WIDTH);
 		}
-		// add label to doors
+		if(this.isSecretPassage) {
+			g.setColor(Color.BLACK);
+			g.drawRect( this.getCol()*BOX_WIDTH, this.getRow()* BOX_HEIGHT , BOX_HEIGHT, BOX_WIDTH);
+		}
+		
+
 		g.setColor(Color.BLUE);
 		if(this.isDoorway()) {
 			if (this.getDoorDirection() == DoorDirection.UP) {
-				
+				g.fillRect(col * BOX_WIDTH, row * BOX_HEIGHT, BOX_WIDTH, BOX_HEIGHT / 5);
 			}
 			if (this.getDoorDirection() == DoorDirection.DOWN) {
-				
+				g.fillRect(col * BOX_WIDTH, row * BOX_HEIGHT + (4 * (BOX_HEIGHT / 5)), BOX_WIDTH, BOX_HEIGHT / 5);
+	     		
 			}
 			if (this.getDoorDirection() == DoorDirection.LEFT) {
-				
+				g.fillRect(col * BOX_WIDTH, row * BOX_HEIGHT, BOX_WIDTH / 5, BOX_HEIGHT);
+	            
 			}
 			if (this.getDoorDirection() == DoorDirection.RIGHT) {
-				
+				g.fillRect(col * BOX_WIDTH + (4 * (BOX_WIDTH / 5)), row * BOX_HEIGHT, BOX_WIDTH / 5, BOX_HEIGHT);
 			}
 		}
 		
