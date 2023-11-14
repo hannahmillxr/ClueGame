@@ -86,18 +86,18 @@ public class GameControlPanel extends JPanel {
 
 	
 	
-	private void setTurn(ComputerPlayer computerPlayer, int roll) {
+	void setTurn(ComputerPlayer computerPlayer, int roll) {
 		whoseTurn.setText(computerPlayer.getName());
 		numRolls.setText(Integer.toString(roll));
 		
 	}
 	
-	private void setGuessResult(String guess) {
+	void setGuessResult(String guess) {
 		guessResult.setText(guess);
 		
 	}
 
-	private void setGuess(String thisGuess) {
+	void setGuess(String thisGuess) {
 		guess.setText(thisGuess);	
 	}
 	

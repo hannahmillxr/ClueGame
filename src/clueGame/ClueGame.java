@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
@@ -10,8 +11,6 @@ public class ClueGame extends JFrame{
 	private static Board board;
 	private static GameCardPanel cardPanel;
 	private static GameControlPanel controlPanel;
-	public static final int WIDTH_DOT = 21;
-	public static final int HEIGHT_DOT = 21;
 
 	public ClueGame(){
 		this.setTitle("Kung-Fu Panda Clue Game");
@@ -29,10 +28,10 @@ public class ClueGame extends JFrame{
 		controlPanel = new GameControlPanel();
 	}
 	
-	
+	/*
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
-		switch(Color.toLowerCase()) {
+		switch(Color.)) {
 		case("Po"):
 			g.fillOval(7, 0, WIDTH_DOT, HEIGHT_DOT);
 			g.setColor(Color.lightGray);
@@ -50,22 +49,27 @@ public class ClueGame extends JFrame{
 			g.setColor(Color.white);
 		case("Viper"):
 			g.fillOval(24, 25, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.yellow);
-		}
-		
-		
+			g.setColor(Color.yellow);	
 	}
+	*/
 	
 	
 	
 	public static void main(String[] args) {
 	
 		ClueGame clueGame = new ClueGame();		
-		clueGame.setVisible(true);
+		
 		clueGame.setLayout(new BorderLayout());
 		clueGame.add(board, BorderLayout.CENTER);
 		clueGame.add(controlPanel, BorderLayout.SOUTH);
 		clueGame.add(cardPanel, BorderLayout.EAST);
+		
+		
+		controlPanel.setTurn(new ComputerPlayer( "Po", "Black", 3, 2), 5);
+		controlPanel.setGuess( "I have no guess!");
+		controlPanel.setGuessResult( "So you have nothing?");
+		
+		clueGame.setVisible(true);
 	}
 }
 

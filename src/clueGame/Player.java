@@ -4,11 +4,14 @@
  */
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 public abstract class Player {
 	String name;
 	String color;
+	Color colorJavaType;
 	int row;
 	int col;
 	private ArrayList<Card> hand;
@@ -20,6 +23,7 @@ public abstract class Player {
 		this.color = color;
 		this.row = row;
 		this.col = col;
+		colorJavaType = getColor(color);
 		hand = new ArrayList<Card>();
 		seenCards = new ArrayList<Card>();
 	}
@@ -42,6 +46,10 @@ public abstract class Player {
 	}
 
 
+	public Color getColorJavaType() {
+		return colorJavaType;
+	}
+
 	public void updateHand(Card card) {
 		hand.add(card);
 	}
@@ -62,6 +70,17 @@ public abstract class Player {
 			
 		}
 		return suggestcard;
+	}
+	
+	public void draw(Graphics g, int cellSize) {
+		
+		//add color to the player tokens by filling in their ovals
+		g.setColor(this.colorJavaType);
+		g.fillOval(col*cellSize, row*cellSize, cellSize, cellSize);
+		
+		//add a black border around the players 
+		g.setColor(Color.BLACK);
+		g.drawOval(col*cellSize, row*cellSize, cellSize, cellSize);
 	}
 	
 	public void updateSeen(Card seenCard) {
@@ -98,5 +117,51 @@ public abstract class Player {
 
 	public ArrayList<Card> getSeenCards() {
 		return seenCards;
+	}
+	
+	
+	static Color getColor(String color) {
+		switch (color.toLowerCase()) {
+		case "black":
+			return Color.BLACK;
+			
+		case "blue":
+			return Color.BLUE;
+			
+		case "cyan":
+			return Color.CYAN;
+			
+		case "darkgray":
+			return Color.DARK_GRAY;
+			
+		case "gray":
+			return Color.GRAY;
+			
+		case "green":
+			return Color.GREEN.darker();
+
+		case "yellow":
+			return Color.YELLOW;
+			
+		case "lightgray":
+			return Color.LIGHT_GRAY;
+
+		case "magenta":
+			return Color.MAGENTA;
+
+		case "orange":
+			return Color.ORANGE;
+			
+		case "pink":
+			return Color.PINK;
+
+		case "red":
+			return Color.RED;
+
+		case "white":
+			return Color.WHITE;
+			
+		}
+		return null;
 	}
 }

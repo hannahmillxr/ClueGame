@@ -7,6 +7,8 @@ package clueGame;
 
 
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -123,14 +125,54 @@ public class Board extends JPanel{
     }
     
     public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		for(int row = 0;row < grid.length;row++) {
-			for(int col = 0; col < grid[0].length; col++) {
-				BoardCell cell = getCell(row,col);
-				cell.draw(g);
-				
-			}
-		}
+    	super.paintComponent(g);
+    	
+    	//calculate cell size
+    	int width = this.getWidth();
+		int height = this.getHeight();
+		
+		//use minimum so cells don't overflow off board
+		int cellsize = Math.min(height/numRows, width/numColumns);
+		
+		//have the boardcell's draw themselves
+    	for(int row = 0;row < grid.length;row++) {
+    		for(int col = 0; col < grid[0].length; col++) {
+    			BoardCell cell = getCell(row,col);
+    			cell.draw(g, cellsize);
+
+    		}
+    	}
+
+    	//have the players draw themselves
+    	for(Player player : players) {
+    		player.draw(g, cellsize);
+    	}
+    	
+    	//write the initials on the secret passages 
+    	for(int row = 0; row < grid.length; row++) {
+    		for(int col = 0; col < grid[0].length; col++) {
+    			if(grid[row][col].getIsSecretPassage()) {
+    				g.setColor(Color.BLACK);
+    				String initial = Character.toString((grid[row][col].getSecretPassage()));
+    				g.drawString(initial, col*cellsize+cellsize/4, row*cellsize+cellsize/2);
+    			}
+    		}
+    	}
+    	
+    	//write the name on the center cell
+    	for(int row = 0; row < grid.length; row++) {
+    		for(int col = 0; col < grid[0].length; col++) {
+    			if(grid[row][col].isLabel()) {
+    				String roomName = this.getRoom(grid[row][col]).getName();
+    				String[] words = roomName.split(" ");
+    				for (int i =0; i<words.length; i++) {
+    					g.setColor(Color.BLACK);
+    					g.setFont(new Font("Ink Free", Font.BOLD, 16));
+        				g.drawString(words[i], col*cellsize, row*cellsize+(i*cellsize));
+    				}
+    			}
+    		}
+    	}
     }
     
     public Map<Character, Room> getRoomMap() {
@@ -141,12 +183,12 @@ public class Board extends JPanel{
 		return players;
 	}
 	
-	public String getPlayerColor(String playerName) {
+	public Color getPlayerColor(String playerName) {
 		ArrayList<Player> players = getPlayers();
-		String color = null;
+		Color color = null;
 		for (Player player: players) {
 			if (playerName.equals(player.getName())){
-				color = player.getColor();
+				color = player.getColorJavaType();
 			}
 		}
 		return color;

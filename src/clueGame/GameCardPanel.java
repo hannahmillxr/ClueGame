@@ -84,7 +84,7 @@ public class GameCardPanel extends JPanel{
 		
 		int count = 0;
 		for (Card card: seenCards) {
-			weaponSeen = new JTextField(10);
+			weaponSeen = new JTextField(15);
 			if (card.getType() == CardType.WEAPON) {
 				if (!cards.contains(card)) {
 					weaponSeen.setText(card.getCardName());
@@ -94,7 +94,7 @@ public class GameCardPanel extends JPanel{
 			}
 		}
 		if (count == 0) {
-			weaponSeen = new JTextField(10);
+			weaponSeen = new JTextField(15);
 			weaponSeen.setText("None");
 			weaponPanel.add(weaponSeen);
 		}
@@ -104,7 +104,7 @@ public class GameCardPanel extends JPanel{
 	private void setWeaponInHand(JPanel weaponPanel) {
 		int count =0;
 		for (Card card: cards) {
-			weaponInHand = new JTextField(10);
+			weaponInHand = new JTextField(15);
 			if (card.getType() == CardType.WEAPON) {
 				weaponInHand.setText(card.getCardName());
 				weaponPanel.add(weaponInHand);
@@ -112,7 +112,7 @@ public class GameCardPanel extends JPanel{
 			}
 		}
 		if (count == 0) {
-			weaponInHand = new JTextField(10);
+			weaponInHand = new JTextField(15);
 			weaponInHand.setText("None");
 			weaponPanel.add(weaponInHand);
 		}
@@ -122,7 +122,7 @@ public class GameCardPanel extends JPanel{
 	private void setRoomSeen(JPanel roomPanel) {
 		int count = 0;
 		for (Card card: seenCards) {
-			roomSeen = new JTextField(10);
+			roomSeen = new JTextField(15);
 			if (card.getType() == CardType.ROOM) {
 				if (!cards.contains(card)) {
 					roomSeen.setText(card.getCardName());
@@ -132,7 +132,7 @@ public class GameCardPanel extends JPanel{
 			}
 		}
 		if (count == 0) {
-			roomSeen = new JTextField(10);
+			roomSeen = new JTextField(15);
 			roomSeen.setText("None");
 			roomPanel.add(roomSeen);
 		}
@@ -142,7 +142,7 @@ public class GameCardPanel extends JPanel{
 	private void setRoomInHand(JPanel roomPanel) {
 		int count = 0;
 		for (Card card: cards) {
-			roomInHand = new JTextField(10);
+			roomInHand = new JTextField(15);
 			if (card.getType() == CardType.ROOM) {
 				roomInHand.setText(card.getCardName());
 				roomPanel.add(roomInHand);
@@ -150,7 +150,7 @@ public class GameCardPanel extends JPanel{
 			}
 		}
 		if (count == 0) {
-			roomInHand = new JTextField(10);
+			roomInHand = new JTextField(15);
 			roomInHand.setText("None");
 			roomPanel.add(roomInHand);
 		}
@@ -159,17 +159,17 @@ public class GameCardPanel extends JPanel{
 	private void setPeopleInHand(JPanel peoplePanel) {
 		int count = 0;
 		for (Card card: cards) {
-			peopleInHand = new JTextField(10);
+			peopleInHand = new JTextField(15);
 			if (card.getType() == CardType.PERSON) {
-				String color = Board.getInstance().getPlayerColor(card.getCardName());
-				peopleInHand.setBackground(getColor(color));
+				Color color = Board.getInstance().getPlayerColor(card.getCardName());
+				peopleInHand.setBackground(color);
 				peopleInHand.setText(card.getCardName());
 				peoplePanel.add(peopleInHand);
 				count++;
 			}
 		}
 		if (count == 0) {
-			peopleInHand = new JTextField(10);
+			peopleInHand = new JTextField(15);
 			peopleInHand.setText("None");
 			peoplePanel.add(peopleInHand);
 		}
@@ -178,13 +178,13 @@ public class GameCardPanel extends JPanel{
 	private void setPeopleSeen(JPanel peoplePanel) {
 		int count = 0;
 		for (Card card: seenCards) {
-			peopleSeen = new JTextField(10);
+			peopleSeen = new JTextField(15);
 			if (card.getType() == CardType.PERSON) {
 				
 				if (!cards.contains(card)) {
 					peopleSeen.setText(card.getCardName());
-					String color = Board.getInstance().getPlayerColor(card.getCardName());
-					peopleSeen.setBackground(getColor(color));
+					Color color = Board.getInstance().getPlayerColor(card.getCardName());
+					peopleSeen.setBackground(color);
 					
 					peoplePanel.add(peopleSeen);
 					count++;
@@ -193,58 +193,11 @@ public class GameCardPanel extends JPanel{
 			}
 		}
 		if (count == 0) {
-			peopleSeen = new JTextField(10);
+			peopleSeen = new JTextField(15);
 			peopleSeen.setText("None");
 			peoplePanel.add(peopleSeen);
 		}
 	}
-
-	static Color getColor(String color) {
-		switch (color.toLowerCase()) {
-		case "black":
-			return Color.BLACK;
-			
-		case "blue":
-			return Color.BLUE;
-			
-		case "cyan":
-			return Color.CYAN;
-			
-		case "darkgray":
-			return Color.DARK_GRAY;
-			
-		case "gray":
-			return Color.GRAY;
-			
-		case "green":
-			return Color.GREEN;
-
-		case "yellow":
-			return Color.YELLOW;
-			
-		case "lightgray":
-			return Color.LIGHT_GRAY;
-
-		case "magenta":
-			return Color.MAGENTA;
-
-		case "orange":
-			return Color.ORANGE;
-			
-		case "pink":
-			return Color.PINK;
-
-		case "red":
-			return Color.RED;
-
-		case "white":
-			return Color.WHITE;
-			
-		}
-		return null;
-	}
-
-
 
 
 	

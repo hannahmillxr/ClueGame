@@ -26,8 +26,6 @@ public class BoardCell {
 	private Boolean isRoom;
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
-	private static final int BOX_WIDTH = 22;
-	private static final int BOX_HEIGHT = 22;
 	
 	
 	
@@ -87,7 +85,7 @@ public class BoardCell {
 		
 	}
 	
-	public void draw(Graphics g) {
+	public void draw(Graphics g, int cellsize) {
 		if (this.isSecretPassage) {
 			g.setColor(Color.CYAN);
 		}
@@ -100,45 +98,41 @@ public class BoardCell {
 			
 		}
 		else if (this.isRoom) {
-			g.setColor(Color.MAGENTA);
+			g.setColor(Color.MAGENTA.darker());
 		}
 		//unused set black
 		else {
 			g.setColor(Color.BLACK);
 		}
-		g.fillRect( this.getCol()*BOX_WIDTH, this.getRow()* BOX_HEIGHT , BOX_HEIGHT, BOX_WIDTH);
+		g.fillRect( this.getCol()*cellsize, this.getRow()* cellsize , cellsize, cellsize);
 
 		if(this.isWalkway) {
 			g.setColor(Color.BLACK);
-			g.drawRect( this.getCol()*BOX_WIDTH, this.getRow()* BOX_HEIGHT , BOX_HEIGHT, BOX_WIDTH);
+			g.drawRect( this.getCol()*cellsize, this.getRow()* cellsize , cellsize, cellsize);
 		}
 		if(this.isSecretPassage) {
 			g.setColor(Color.BLACK);
-			g.drawRect( this.getCol()*BOX_WIDTH, this.getRow()* BOX_HEIGHT , BOX_HEIGHT, BOX_WIDTH);
+			g.drawRect( this.getCol()*cellsize, this.getRow()* cellsize , cellsize, cellsize);
 		}
 		
 
 		g.setColor(Color.BLUE);
 		if(this.isDoorway()) {
 			if (this.getDoorDirection() == DoorDirection.UP) {
-				g.fillRect(col * BOX_WIDTH, row * BOX_HEIGHT, BOX_WIDTH, BOX_HEIGHT / 5);
+				g.fillRect(col * cellsize, row * cellsize, cellsize, cellsize / 5);
 			}
 			if (this.getDoorDirection() == DoorDirection.DOWN) {
-				g.fillRect(col * BOX_WIDTH, row * BOX_HEIGHT + (4 * (BOX_HEIGHT / 5)), BOX_WIDTH, BOX_HEIGHT / 5);
+				g.fillRect(col * cellsize, row * cellsize + (4 * (cellsize / 5)), cellsize, cellsize / 5);
 	     		
 			}
 			if (this.getDoorDirection() == DoorDirection.LEFT) {
-				g.fillRect(col * BOX_WIDTH, row * BOX_HEIGHT, BOX_WIDTH / 5, BOX_HEIGHT);
+				g.fillRect(col * cellsize, row * cellsize, cellsize / 5, cellsize);
 	            
 			}
 			if (this.getDoorDirection() == DoorDirection.RIGHT) {
-				g.fillRect(col * BOX_WIDTH + (4 * (BOX_WIDTH / 5)), row * BOX_HEIGHT, BOX_WIDTH / 5, BOX_HEIGHT);
+				g.fillRect(col * cellsize + (4 * (cellsize / 5)), row * cellsize, cellsize / 5, cellsize);
 			}
-		}
-		
-
-
-				
+		}		
 
 	}	
 	
@@ -217,6 +211,10 @@ public class BoardCell {
 		return this.secretPassage;
 	}
 	
+	public Boolean getIsSecretPassage() {
+		return isSecretPassage;
+	}
+
 	public char getInitial() {
 		return initial;
 	}
