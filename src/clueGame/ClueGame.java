@@ -1,6 +1,8 @@
 package clueGame;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
@@ -8,6 +10,8 @@ public class ClueGame extends JFrame{
 	private static Board board;
 	private static GameCardPanel cardPanel;
 	private static GameControlPanel controlPanel;
+	public static final int WIDTH_DOT = 21;
+	public static final int HEIGHT_DOT = 21;
 
 	public ClueGame(){
 		this.setTitle("Kung-Fu Panda Clue Game");
@@ -24,6 +28,35 @@ public class ClueGame extends JFrame{
 		cardPanel = new GameCardPanel();
 		controlPanel = new GameControlPanel();
 	}
+	
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		switch(Color.toLowerCase()) {
+		case("Po"):
+			g.fillOval(7, 0, WIDTH_DOT, HEIGHT_DOT);
+			g.setColor(Color.lightGray);
+		case("Tigress"):
+			g.fillOval(6, 29, WIDTH_DOT, HEIGHT_DOT);
+			g.setColor(Color.red);
+		case("Mantis"):
+			g.fillOval(13, 29, WIDTH_DOT, HEIGHT_DOT);
+			g.setColor(Color.green);
+		case("Monkey"):
+			g.fillOval(13, 0, WIDTH_DOT, HEIGHT_DOT);
+			g.setColor(Color.magenta);
+		case("Crane"):
+			g.fillOval(1, 16, WIDTH_DOT, HEIGHT_DOT);
+			g.setColor(Color.white);
+		case("Viper"):
+			g.fillOval(24, 25, WIDTH_DOT, HEIGHT_DOT);
+			g.setColor(Color.yellow);
+		}
+		
+		
+	}
+	
+	
 	
 	public static void main(String[] args) {
 	
