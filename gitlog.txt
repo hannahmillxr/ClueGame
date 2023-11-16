@@ -1,3 +1,57 @@
+commit 6af842f92bd646ce2845ed2ed0c80a7c8e8c74d1
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:58:40 2023 -0700
+
+    Refactor #8: All getters and setters are at the bottom of the class
+
+commit bf66267e23c3098ea03e5ca9cd36563d85bb8b92
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:41:03 2023 -0700
+
+    Refactor #7: Added comments to the paintcomponent function in board
+
+commit 7df1aa3c12171166d679724915e7176bf5af5b30
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:38:59 2023 -0700
+
+    Refactor #6: Added comments to the computer player
+
+commit 5c96e02b39f83a50adba76d536ad4d2dc953a35c
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:34:59 2023 -0700
+
+    Refactor #5: Added comments to the deal function
+
+commit 7c0bf50c6cd366e19a9fcd7a0d6501cc79fa6e4b
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:32:18 2023 -0700
+
+    Refactor #4: extracted local variable rather than calling the getter multiple times within the for loop to improve efficency
+
+commit 13d764c101d59a5bb31cfa0284149d05cd1435e0
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:29:13 2023 -0700
+
+    Refactor #3: Removed commented out function
+
+commit 38f80f7a5defbe0d11e560341a1d7727ce9cb0ff
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 13:28:23 2023 -0700
+
+    Refactor #2: Extracted local variable for calling human player to clean up code
+
+commit 79aa3c55b8e7eddb047a6167cbc58e77ca4b7334
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 12:54:47 2023 -0700
+
+    Refactor #1: made attributes private in gamecardpanel class
+
+commit a90a94a340eddffb58831d0edb1fb3d584610f52
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 12:53:49 2023 -0700
+
+    Added button listener to control panel and singleTurn function in board which handles a single turn
+
 commit d1c348e37d277b9160a3200de5975f89087ea8fd
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Tue Nov 14 13:49:30 2023 -0700
