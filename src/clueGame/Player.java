@@ -31,25 +31,6 @@ public abstract class Player {
 	public abstract Solution createSuggestion();
 	public abstract BoardCell selectTarget();
 
-	public void setRow(int row) {
-		this.row = row;
-	}
-
-
-	public void setCol(int col) {
-		this.col = col;
-	}
-
-
-	public ArrayList<Card> getHand() {
-		return hand;
-	}
-
-
-	public Color getColorJavaType() {
-		return colorJavaType;
-	}
-
 	public void updateHand(Card card) {
 		hand.add(card);
 	}
@@ -86,6 +67,14 @@ public abstract class Player {
 	public void updateSeen(Card seenCard) {
 		seenCards.add(seenCard);
 	}
+	
+	public void clearHand() {
+		hand.clear();
+	}
+
+	public void clearSeen() {
+		seenCards.clear();
+	}
 
 	public String getName() {
 		return name;
@@ -95,7 +84,25 @@ public abstract class Player {
 	public String getColor() {
 		return color;
 	}
+	
+	public void setRow(int row) {
+		this.row = row;
+	}
 
+
+	public void setCol(int col) {
+		this.col = col;
+	}
+
+
+	public ArrayList<Card> getHand() {
+		return hand;
+	}
+
+
+	public Color getColorJavaType() {
+		return colorJavaType;
+	}
 
 	public int getRow() {
 		return row;
@@ -104,14 +111,6 @@ public abstract class Player {
 
 	public int getCol() {
 		return col;
-	}
-	
-	public void clearHand() {
-		hand.clear();
-	}
-
-	public void clearSeen() {
-		seenCards.clear();
 	}
 
 

@@ -117,7 +117,7 @@ public class FileInitTests{
 		assertFalse( cell.isDoorway()) ;
 
 		// this is a label cell to test
-		cell = board.getCell(9, 3);
+		cell = board.getCell(11, 1);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Bedrooms" ) ;
@@ -125,7 +125,7 @@ public class FileInitTests{
 		assertTrue( room.getLabelCell() == cell );
 		
 		// this is a room center cell to test
-		cell = board.getCell(20, 2);
+		cell = board.getCell(18, 1);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Scroll Room" ) ;

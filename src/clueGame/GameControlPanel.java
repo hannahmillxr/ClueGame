@@ -86,22 +86,7 @@ public class GameControlPanel extends JPanel {
 
 	
 	
-	public void setTurn(Player computerPlayer, int roll) {
-		whoseTurn.setText(computerPlayer.getName());
-		numRolls.setText(Integer.toString(roll));
-		whoseTurn.setBackground(computerPlayer.getColorJavaType());
-	}
-	
-	
-	
-	public void setGuessResult(String guess) {
-		guessResult.setText(guess);
-		
-	}
 
-	public void setGuess(String thisGuess) {
-		guess.setText(thisGuess);	
-	}
 	
 	
 	private class nextButtonListener implements ActionListener {
@@ -140,7 +125,23 @@ public class GameControlPanel extends JPanel {
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
 	}
+	
+	public void setTurn(Player computerPlayer, int roll) {
+		whoseTurn.setText(computerPlayer.getName());
+		numRolls.setText(Integer.toString(roll));
+		whoseTurn.setBackground(computerPlayer.getColorJavaType());
+	}
+	
+	
+	
+	public void setGuessResult(String guess) {
+		guessResult.setText(guess);
+		
+	}
 
+	public void setGuess(String thisGuess) {
+		guess.setText(thisGuess);	
+	}
 
 
 

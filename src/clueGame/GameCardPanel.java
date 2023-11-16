@@ -80,6 +80,53 @@ public class GameCardPanel extends JPanel{
 
 	}
 	
+
+
+
+	
+	public static void main(String[] args) {
+		Board board;
+		board = Board.getInstance();
+		// set the file names to use my config files
+		board.setConfigFiles("newClueBoardcsv.csv", "ClueSetup.txt");
+		// Initialize will load BOTH config files
+		board.initialize();
+		
+		//We want the panel to look good if everything is seen
+		Player humanPlayer = Board.getInstance().getPlayers().get(0);
+		humanPlayer.clearHand();
+		humanPlayer.updateHand(new Card("Po", CardType.PERSON));
+		humanPlayer.updateHand(new Card("Tigress", CardType.PERSON));
+		humanPlayer.updateHand(new Card("Fist", CardType.WEAPON));
+		
+		humanPlayer.clearSeen();
+		humanPlayer.updateSeen(new Card("Shen's Cannon", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card("Yin Yang Staff", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card ("Frying Pan", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card("Jade Dagger", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card ("Crane", CardType.PERSON));
+		humanPlayer.updateSeen(new Card("Monkey", CardType.PERSON));
+		humanPlayer.updateSeen(new Card ("Mantis", CardType.PERSON));
+		humanPlayer.updateSeen(new Card("Kitchen", CardType.ROOM));
+		humanPlayer.updateSeen( new Card("Armory", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Bedrooms", CardType.ROOM));
+		humanPlayer.updateSeen(new Card("Meditation Room", CardType.ROOM));
+		humanPlayer.updateSeen(new Card("Dojo", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Scroll Room", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Cherry Blossom Room", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Court Yard", CardType.ROOM));
+
+		
+		
+		GameCardPanel panel = new GameCardPanel();  // create the panel
+		JFrame frame = new JFrame();  // create the frame 
+		frame.setContentPane(panel); // put the panel in the frame
+		frame.setSize(150, 690);  // size the frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
+		frame.setVisible(true); // make it visible
+
+	}
+	
 	private void setWeaponSeen(JPanel weaponPanel) {
 		
 		int count = 0;
@@ -197,51 +244,6 @@ public class GameCardPanel extends JPanel{
 			peopleSeen.setText("None");
 			peoplePanel.add(peopleSeen);
 		}
-	}
-
-
-	
-	public static void main(String[] args) {
-		Board board;
-		board = Board.getInstance();
-		// set the file names to use my config files
-		board.setConfigFiles("newClueBoardcsv.csv", "ClueSetup.txt");
-		// Initialize will load BOTH config files
-		board.initialize();
-		
-		//We want the panel to look good if everything is seen
-		Player humanPlayer = Board.getInstance().getPlayers().get(0);
-		humanPlayer.clearHand();
-		humanPlayer.updateHand(new Card("Po", CardType.PERSON));
-		humanPlayer.updateHand(new Card("Tigress", CardType.PERSON));
-		humanPlayer.updateHand(new Card("Fist", CardType.WEAPON));
-		
-		humanPlayer.clearSeen();
-		humanPlayer.updateSeen(new Card("Shen's Cannon", CardType.WEAPON));
-		humanPlayer.updateSeen(new Card("Yin Yang Staff", CardType.WEAPON));
-		humanPlayer.updateSeen(new Card ("Frying Pan", CardType.WEAPON));
-		humanPlayer.updateSeen(new Card("Jade Dagger", CardType.WEAPON));
-		humanPlayer.updateSeen(new Card ("Crane", CardType.PERSON));
-		humanPlayer.updateSeen(new Card("Monkey", CardType.PERSON));
-		humanPlayer.updateSeen(new Card ("Mantis", CardType.PERSON));
-		humanPlayer.updateSeen(new Card("Kitchen", CardType.ROOM));
-		humanPlayer.updateSeen( new Card("Armory", CardType.ROOM));
-		humanPlayer.updateSeen(new Card ("Bedrooms", CardType.ROOM));
-		humanPlayer.updateSeen(new Card("Meditation Room", CardType.ROOM));
-		humanPlayer.updateSeen(new Card("Dojo", CardType.ROOM));
-		humanPlayer.updateSeen(new Card ("Scroll Room", CardType.ROOM));
-		humanPlayer.updateSeen(new Card ("Cherry Blossom Room", CardType.ROOM));
-		humanPlayer.updateSeen(new Card ("Court Yard", CardType.ROOM));
-
-		
-		
-		GameCardPanel panel = new GameCardPanel();  // create the panel
-		JFrame frame = new JFrame();  // create the frame 
-		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(150, 690);  // size the frame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		frame.setVisible(true); // make it visible
-
 	}
 
 }

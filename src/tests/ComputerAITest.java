@@ -127,7 +127,7 @@ class ComputerAITest {
 		//if we have one move available, we should move into the unseen room
 		board.calcTargets(board.getCell(board.getPlayers().get(1).getRow(), board.getPlayers().get(1).getCol()), 1);
 		BoardCell target = board.getPlayers().get(1).selectTarget();
-		assertTrue(target.getRow() == 3);
+		assertTrue(target.getRow() == 4);
 		assertTrue(target.getCol() == 2);
 
 	}
@@ -146,7 +146,7 @@ class ComputerAITest {
 		board.calcTargets(board.getCell(board.getPlayers().get(1).getRow(), board.getPlayers().get(1).getCol()), 1);
 
 
-		BoardCell room =  board.getCell(3, 2);
+		BoardCell room =  board.getCell(4, 2);
 		BoardCell down =  board.getCell(7, 3);
 		BoardCell left =  board.getCell(6, 2);
 		BoardCell right =  board.getCell(6, 4);

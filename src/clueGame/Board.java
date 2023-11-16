@@ -79,10 +79,7 @@ public class Board extends JPanel{
     }
     
  
-    public void setConfigFiles(String csv, String txt) {
-    	setupConfigFile = "data/" + txt;
-    	layoutConfigFile = "data/" + csv;
-	}
+
     
     public void calcTargets(BoardCell startCell, int pathlength) { 
     	
@@ -239,50 +236,7 @@ public class Board extends JPanel{
     	}
     }
     
-    public Map<Character, Room> getRoomMap() {
-		return roomMap;
-	}
-
-	public ArrayList<Player> getPlayers() {
-		return players;
-	}
-	
-	public Color getPlayerColor(String playerName) {
-		ArrayList<Player> players = getPlayers();
-		Color color = null;
-		for (Player player: players) {
-			if (playerName.equals(player.getName())){
-				color = player.getColorJavaType();
-			}
-		}
-		return color;
-	}
-
-	public ArrayList<Card> getDeck() {
-		return deck;
-	}
-
-	public ArrayList<Card> getRoomCards() {
-		return roomCards;
-	}
-
-	public Solution getSolution() {
-		return solution;
-	}
-
-	public ArrayList<Card> getWeaponCards() {
-		return weaponCards;
-	}
-
-
-	public ArrayList<Card> getPersonCards() {
-		return personCards;
-	}
-
-	public Set<Card> getDealt() {
-		return dealt;
-	}
-
+    
 	//Rename method different from calculations to calTarget
     public void calculateTargets (BoardCell startCell, int pathlength) { 
     	int numSteps = pathlength;
@@ -482,14 +436,6 @@ public class Board extends JPanel{
 		grid[row][col] = cell;
 	}
 
-	public Set<BoardCell> getAdjList(int row, int col) {
-		return grid[row][col].getAdjList();
-		//return adj at sep board cell
-	}
-
-	public Set<BoardCell> getTargets() {
-		return targets;
-	}
 	
 	public void buildAdjacencyList() {
 		this.adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
@@ -568,87 +514,147 @@ public class Board extends JPanel{
 		}
 
 	}
-	   public int getNumRows() {
-			return numRows;
-		}
+	public int getNumRows() {
+		return numRows;
+	}
 
-		public int getNumColumns() {
-			return numColumns;
-		}
-		
-		public Room getRoom(char initial) {
-			Room room = roomMap.get(initial);
-			return room;
-		}
-		
-		public Room getRoom(BoardCell cell) {
-			char initial = cell.getInitial();
-			Room room = roomMap.get(initial);
-			return room;
-		}
-	    
-	    public BoardCell getCell(int row, int col) {
-			return grid[row][col];
-		}
-	    
-	    public Card getCard(String cardName) {
-			for(Card card: deck) {
-				if(card.getCardName().equals(cardName)) {
-					return card;
-				}
+	public int getNumColumns() {
+		return numColumns;
+	}
+
+	public Room getRoom(char initial) {
+		Room room = roomMap.get(initial);
+		return room;
+	}
+
+	public Room getRoom(BoardCell cell) {
+		char initial = cell.getInitial();
+		Room room = roomMap.get(initial);
+		return room;
+	}
+
+	public BoardCell getCell(int row, int col) {
+		return grid[row][col];
+	}
+
+	public Card getCard(String cardName) {
+		for(Card card: deck) {
+			if(card.getCardName().equals(cardName)) {
+				return card;
 			}
-			return null;
 		}
-/*
- * Return the true if solution input matches the correct solution
- */
-		public boolean checkAccusation(Solution solution2) {
+		return null;
+	}
+	/*
+	 * Return the true if solution input matches the correct solution
+	 */
+	public boolean checkAccusation(Solution solution2) {
 
-			return solution2.person.equals(solution.person)&&
-					solution2.weapon.equals(solution.weapon)&&
-					solution2.room.equals(solution.room);
-		}
-		
-/*
- * handles the suggestion through each of the player
- */
-		public Card handleSuggestion(Solution suggestion, Player Playeraccuse) {
-			
-			int currentplayer = players.indexOf(Playeraccuse);
-			
-			for (int i =0; i< players.size(); i++) {
-				currentplayer = (currentplayer+1) % players.size();
-				Player player_ind = players.get(currentplayer);
-				
-				if(player_ind == Playeraccuse) {
-					break;
-				}
-				
-				Card pullcard = player_ind.disproveSuggestion(suggestion);
-				
-				
-				if(pullcard != null) {
-					return pullcard;
-				}
+		return solution2.person.equals(solution.person)&&
+				solution2.weapon.equals(solution.weapon)&&
+				solution2.room.equals(solution.room);
+	}
+
+	/*
+	 * handles the suggestion through each of the player
+	 */
+	public Card handleSuggestion(Solution suggestion, Player Playeraccuse) {
+
+		int currentplayer = players.indexOf(Playeraccuse);
+
+		for (int i =0; i< players.size(); i++) {
+			currentplayer = (currentplayer+1) % players.size();
+			Player player_ind = players.get(currentplayer);
+
+			if(player_ind == Playeraccuse) {
+				break;
 			}
-			return null;
-		
-		}
 
-		public Player getActivePlayer() {
-			return activePlayer;
-		}
+			Card pullcard = player_ind.disproveSuggestion(suggestion);
 
-		public boolean getFinishedTurn() {
-		
-			return finishedTurn;
-		}
-		public boolean getGameOver() {
-			
-			return gameOver;
-		}
-	    
 
-    
-    
+			if(pullcard != null) {
+				return pullcard;
+			}
+		}
+		return null;
+
+	}
+
+	public Player getActivePlayer() {
+		return activePlayer;
+	}
+
+	public boolean getFinishedTurn() {
+
+		return finishedTurn;
+	}
+
+	public boolean getGameOver() {
+
+		return gameOver;
+	}
+
+	public void setConfigFiles(String csv, String txt) {
+		setupConfigFile = "data/" + txt;
+		layoutConfigFile = "data/" + csv;
+	}
+	
+	public Set<BoardCell> getAdjList(int row, int col) {
+		return grid[row][col].getAdjList();
+		//return adj at sep board cell
+	}
+
+	public Set<BoardCell> getTargets() {
+		return targets;
+	}
+	
+	public Map<Character, Room> getRoomMap() {
+		return roomMap;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+	
+	public Color getPlayerColor(String playerName) {
+		ArrayList<Player> players = getPlayers();
+		Color color = null;
+		for (Player player: players) {
+			if (playerName.equals(player.getName())){
+				color = player.getColorJavaType();
+			}
+		}
+		return color;
+	}
+
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
+
+	public ArrayList<Card> getRoomCards() {
+		return roomCards;
+	}
+
+	public Solution getSolution() {
+		return solution;
+	}
+
+	public ArrayList<Card> getWeaponCards() {
+		return weaponCards;
+	}
+
+
+	public ArrayList<Card> getPersonCards() {
+		return personCards;
+	}
+
+	public Set<Card> getDealt() {
+		return dealt;
+	}
+
+
+
+
+
 }
