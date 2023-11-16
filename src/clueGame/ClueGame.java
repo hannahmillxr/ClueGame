@@ -1,9 +1,10 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ */
 package clueGame;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+
 
 import javax.swing.JFrame;
 
@@ -31,7 +32,7 @@ public class ClueGame extends JFrame{
 	/*
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
-		switch(Color.)) {
+		switch(Color.color)) {
 		case("Po"):
 			g.fillOval(7, 0, WIDTH_DOT, HEIGHT_DOT);
 			g.setColor(Color.lightGray);
@@ -70,6 +71,13 @@ public class ClueGame extends JFrame{
 		controlPanel.setGuessResult( "So you have nothing?");
 		
 		clueGame.setVisible(true);
+		
 	}
+	
+	public static GameControlPanel getControlPanel() {
+		return controlPanel;
+	}
+
+	
 }
 

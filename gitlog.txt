@@ -1,3 +1,33 @@
+commit d1c348e37d277b9160a3200de5975f89087ea8fd
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Tue Nov 14 13:49:30 2023 -0700
+
+    Finished game board drawing
+
+commit f946ea5c6ec13572e72b7b1faf19978434d8d2fb
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 14 09:27:39 2023 -0700
+
+    Add the dot, but slight error in differing between the character
+
+commit c846dda3a86e749803198d1b53156957b6282579
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 9 21:09:55 2023 -0700
+
+    Added doorway filled rectangles and inverted teh flipped board
+
+commit 2a1973c3f62020917b62c29cdc461b16da621110
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 9 15:22:12 2023 -0700
+
+    Added clueBoard class, painted board and added draw function to the board cell class
+
+commit 1e75a64dd88ec9efea92f20254b727dd1f5e07eb
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 8 13:42:42 2023 -0700
+
+    updated readme and git log
+
 commit e5316d08e4b7cb3edd9aa587b3a2ee39c402c408
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Wed Nov 8 13:36:11 2023 -0700

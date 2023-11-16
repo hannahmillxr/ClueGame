@@ -86,19 +86,41 @@ public class GameControlPanel extends JPanel {
 
 	
 	
-	void setTurn(ComputerPlayer computerPlayer, int roll) {
+	public void setTurn(Player computerPlayer, int roll) {
 		whoseTurn.setText(computerPlayer.getName());
 		numRolls.setText(Integer.toString(roll));
-		
+		whoseTurn.setBackground(computerPlayer.getColorJavaType());
 	}
 	
-	void setGuessResult(String guess) {
+	
+	
+	public void setGuessResult(String guess) {
 		guessResult.setText(guess);
 		
 	}
 
-	void setGuess(String thisGuess) {
+	public void setGuess(String thisGuess) {
 		guess.setText(thisGuess);	
+	}
+	
+	
+	private class nextButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			if(Board.getInstance().getGameOver() == false) {
+
+				if(Board.getInstance().getFinishedTurn()) {
+					Board.getInstance().singleTurn();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "PLayer turn is not finished!");
+				}
+			}
+			
+		}
+
 	}
 	
 	/**

@@ -40,6 +40,10 @@ public class Board extends JPanel{
 	private int numRows;
 	public Solution solution;
 	private Set<Card> dealt;
+	private Player activePlayer;
+	private int roll;
+	private Boolean gameOver;
+	private Boolean finishedTurn;
 	
     /*
     * variable and methods used for singleton pattern
@@ -70,6 +74,8 @@ public class Board extends JPanel{
     		System.out.println(e.getMessage());
     	}	
     	deal();
+    	//human player starts
+    	activePlayer = players.get(0);
     }
     
  
@@ -84,6 +90,53 @@ public class Board extends JPanel{
     	visited = new HashSet <BoardCell>();
     	calculateTargets (startCell, pathlength);
 
+    }
+    
+    //When the player hits next, this should be called by each player until the human player is reached 
+    public void singleTurn() {
+    	// turn is not over until this is true
+    	finishedTurn = false;
+    	
+		repaint();
+		
+		//roll dice
+		Random rand = new Random();
+		roll = rand.nextInt(6)+1;
+		
+		ClueGame.getControlPanel().setTurn(activePlayer, roll);
+		
+		//calculate targets for the current location
+		BoardCell currentLocation = getCell(activePlayer.getRow(), activePlayer.getCol());
+		calcTargets(currentLocation, roll);
+		
+		//computer selects a target and moves to it
+		movePlayer(activePlayer.selectTarget());
+		
+		//turn is over, repaint
+		finishedTurn = true;
+		repaint();
+		
+		nextTurn();
+	}
+    
+    public void nextTurn() {
+    	for (int i = 0; i<players.size(); i++) {
+    		if (players.get(i) == activePlayer) {
+    			activePlayer = players.get(i+1);
+    			break;
+    		}
+    	}
+    }
+    
+    
+    public void movePlayer(BoardCell moveToCell) {
+    	BoardCell moveFromCell = getCell(activePlayer.getRow(), activePlayer.getCol());
+    	moveFromCell.setOccupied(false);
+    	moveToCell.setOccupied(true);
+    	
+    	activePlayer.setRow(moveToCell.getRow());
+    	activePlayer.setCol(moveToCell.getCol());
+    	
     }
    
     
@@ -165,6 +218,7 @@ public class Board extends JPanel{
     			if(grid[row][col].isLabel()) {
     				String roomName = this.getRoom(grid[row][col]).getName();
     				String[] words = roomName.split(" ");
+    				//Room names with multiple words stack
     				for (int i =0; i<words.length; i++) {
     					g.setColor(Color.BLACK);
     					g.setFont(new Font("Ink Free", Font.BOLD, 16));
@@ -569,6 +623,19 @@ public class Board extends JPanel{
 			}
 			return null;
 		
+		}
+
+		public Player getActivePlayer() {
+			return activePlayer;
+		}
+
+		public boolean getFinishedTurn() {
+		
+			return finishedTurn;
+		}
+		public boolean getGameOver() {
+			
+			return gameOver;
 		}
 	    
 
