@@ -210,9 +210,13 @@ public class Board extends JPanel{
     	//write the initials on the secret passages 
     	for(int row = 0; row < grid.length; row++) {
     		for(int col = 0; col < grid[0].length; col++) {
+    			
+    			//if the cells a secret passage we want to write an initial in black on the cell
     			if(grid[row][col].getIsSecretPassage()) {
     				g.setColor(Color.BLACK);
     				String initial = Character.toString((grid[row][col].getSecretPassage()));
+    				
+    				//this centers the initial in the secret tunnel cell
     				g.drawString(initial, col*cellsize+cellsize/4, row*cellsize+cellsize/2);
     			}
     		}
