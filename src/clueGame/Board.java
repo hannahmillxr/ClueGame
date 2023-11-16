@@ -144,18 +144,24 @@ public class Board extends JPanel{
     	dealt = new HashSet<Card>();
     	solution = new Solution();
     	
+    	//build a temporary deck to remove from as you deal cards
     	ArrayList<Card>tempDeck = new ArrayList<>();
     	for(Card card : deck) {
     		tempDeck.add(card);
     	}
+    	
+    	//build a solution of random cards from the deck
     	Random rand = new Random();
     	Card roomSolution = roomCards.get(rand.nextInt(roomCards.size()));
 		Card personSolution = personCards.get(rand.nextInt(personCards.size()));
 		Card weaponSolution = weaponCards.get(rand.nextInt(weaponCards.size()));
     	
+		//set solutions 
     	solution.setWeapon(weaponSolution);
     	solution.setPerson(personSolution);
     	solution.setRoom(roomSolution);
+    	
+    	//add the weapons to the deck of delt cards and remove if from the temp deck of undealt cards
     	dealt.add(weaponSolution);
 		dealt.add(personSolution);
 		dealt.add(roomSolution);
@@ -163,7 +169,7 @@ public class Board extends JPanel{
 		tempDeck.remove(personSolution);
 		tempDeck.remove(roomSolution);
 		
-    	
+    	//distribute the rest of the cards in temp deck and remove them as you go
     	for (Player player : players) {
     		for (int i = 0; i<3; i++) {
     			Card dealing = tempDeck.get(rand.nextInt(tempDeck.size()));
