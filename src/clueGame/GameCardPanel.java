@@ -15,14 +15,14 @@ import javax.swing.border.TitledBorder;
 
 
 public class GameCardPanel extends JPanel{
-	JTextField peopleInHand;
-	JTextField peopleSeen;
-	JTextField roomInHand;
-	JTextField roomSeen;
-	JTextField weaponInHand;
-	JTextField weaponSeen;
-	ArrayList<Card> cards;
-	ArrayList<Card> seenCards;
+	private JTextField peopleInHand;
+	private JTextField peopleSeen;
+	private JTextField roomInHand;
+	private JTextField roomSeen;
+	private JTextField weaponInHand;
+	private JTextField weaponSeen;
+	private ArrayList<Card> cards;
+	private ArrayList<Card> seenCards;
 	
 	public GameCardPanel()  {
 		cards = Board.getInstance().getPlayers().get(0).getHand();
