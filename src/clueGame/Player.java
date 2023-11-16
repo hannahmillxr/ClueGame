@@ -9,9 +9,9 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public abstract class Player {
-	String name;
-	String color;
-	Color colorJavaType;
+	private String name;
+	private String color;
+	private Color colorJavaType;
 	int row;
 	int col;
 	private ArrayList<Card> hand;

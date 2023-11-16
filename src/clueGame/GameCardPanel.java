@@ -210,27 +210,28 @@ public class GameCardPanel extends JPanel{
 		board.initialize();
 		
 		//We want the panel to look good if everything is seen
-		Board.getInstance().getPlayers().get(0).clearHand();
-		Board.getInstance().getPlayers().get(0).updateHand(new Card("Po", CardType.PERSON));
-		Board.getInstance().getPlayers().get(0).updateHand(new Card("Tigress", CardType.PERSON));
-		Board.getInstance().getPlayers().get(0).updateHand(new Card("Fist", CardType.WEAPON));
+		Player humanPlayer = Board.getInstance().getPlayers().get(0);
+		humanPlayer.clearHand();
+		humanPlayer.updateHand(new Card("Po", CardType.PERSON));
+		humanPlayer.updateHand(new Card("Tigress", CardType.PERSON));
+		humanPlayer.updateHand(new Card("Fist", CardType.WEAPON));
 		
-		Board.getInstance().getPlayers().get(0).clearSeen();
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Shen's Cannon", CardType.WEAPON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Yin Yang Staff", CardType.WEAPON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Frying Pan", CardType.WEAPON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Jade Dagger", CardType.WEAPON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Crane", CardType.PERSON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Monkey", CardType.PERSON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Mantis", CardType.PERSON));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Kitchen", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen( new Card("Armory", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Bedrooms", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Meditation Room", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card("Dojo", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Scroll Room", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Cherry Blossom Room", CardType.ROOM));
-		Board.getInstance().getPlayers().get(0).updateSeen(new Card ("Court Yard", CardType.ROOM));
+		humanPlayer.clearSeen();
+		humanPlayer.updateSeen(new Card("Shen's Cannon", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card("Yin Yang Staff", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card ("Frying Pan", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card("Jade Dagger", CardType.WEAPON));
+		humanPlayer.updateSeen(new Card ("Crane", CardType.PERSON));
+		humanPlayer.updateSeen(new Card("Monkey", CardType.PERSON));
+		humanPlayer.updateSeen(new Card ("Mantis", CardType.PERSON));
+		humanPlayer.updateSeen(new Card("Kitchen", CardType.ROOM));
+		humanPlayer.updateSeen( new Card("Armory", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Bedrooms", CardType.ROOM));
+		humanPlayer.updateSeen(new Card("Meditation Room", CardType.ROOM));
+		humanPlayer.updateSeen(new Card("Dojo", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Scroll Room", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Cherry Blossom Room", CardType.ROOM));
+		humanPlayer.updateSeen(new Card ("Court Yard", CardType.ROOM));
 
 		
 		
