@@ -29,31 +29,6 @@ public class ClueGame extends JFrame{
 		controlPanel = new GameControlPanel();
 	}
 	
-	/*
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		switch(Color.color)) {
-		case("Po"):
-			g.fillOval(7, 0, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.lightGray);
-		case("Tigress"):
-			g.fillOval(6, 29, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.red);
-		case("Mantis"):
-			g.fillOval(13, 29, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.green);
-		case("Monkey"):
-			g.fillOval(13, 0, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.magenta);
-		case("Crane"):
-			g.fillOval(1, 16, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.white);
-		case("Viper"):
-			g.fillOval(24, 25, WIDTH_DOT, HEIGHT_DOT);
-			g.setColor(Color.yellow);	
-	}
-	*/
-	
 	
 	
 	public static void main(String[] args) {
