@@ -28,9 +28,10 @@ public class ComputerPlayer extends Player{
 		ArrayList<Card> weaponList = new ArrayList<Card>();
 		ArrayList<Card> personList = new ArrayList<Card>();
 
-		
-		for (Card card: Board.getInstance().getDeck()) {
-			if(card.getType() == CardType.PERSON) {
+		ArrayList<Card> deck = Board.getInstance().getDeck();
+		for (Card card: deck) {
+			CardType cardType = card.getType();
+			if(cardType == CardType.PERSON) {
 				boolean contains = false;
 				for (Card seenCard: super.getSeenCards()) {
 					if (card.equals(seenCard)) {
@@ -43,7 +44,7 @@ public class ComputerPlayer extends Player{
 				}
 				
 			}
-			if(card.getType() == CardType.WEAPON) {
+			if(cardType == CardType.WEAPON) {
 				boolean contains = false;
 				for (Card seenCard: super.getSeenCards()) {
 					if (card.equals(seenCard)) {
