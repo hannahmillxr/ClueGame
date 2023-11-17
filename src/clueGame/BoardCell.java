@@ -26,6 +26,7 @@ public class BoardCell {
 	private Boolean isRoom;
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
+	private Boolean highlight = false;
 	
 	
 	
@@ -194,6 +195,10 @@ public class BoardCell {
 	
 	public void setWalkway(boolean walkway) {
 		this.isWalkway=walkway;
+	}
+	
+	public void setHightlight(boolean highlight) {
+		this.highlight = highlight;
 	}
 	public int getRow(){
 		return this.row;

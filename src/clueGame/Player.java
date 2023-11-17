@@ -16,6 +16,7 @@ public abstract class Player {
 	int col;
 	private ArrayList<Card> hand;
 	private ArrayList<Card> seenCards;
+	protected Board board;
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -26,7 +27,8 @@ public abstract class Player {
 		colorJavaType = getColor(color);
 		hand = new ArrayList<Card>();
 		seenCards = new ArrayList<Card>();
-	}
+		board = Board.getInstance();
+		}
 
 	public abstract Solution createSuggestion();
 	public abstract BoardCell selectTarget();

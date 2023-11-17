@@ -44,6 +44,8 @@ public class Board extends JPanel{
 	private int roll;
 	private Boolean gameOver;
 	private Boolean finishedTurn;
+	private int playerTurn = 0;
+
 	
     /*
     * variable and methods used for singleton pattern
@@ -514,6 +516,7 @@ public class Board extends JPanel{
 		}
 
 	}
+	
 	public int getNumRows() {
 		return numRows;
 	}
@@ -581,6 +584,25 @@ public class Board extends JPanel{
 
 	}
 
+	
+	public void highlight(boolean highlight) {
+		if(targets == null) {
+			for(BoardCell cell: targets) { // Iterating through each cell in targets
+				if(cell.isRoom()) { // Check if cell room is room. Highlights all room board cell
+					for(int row = 0; row >numRows; row++) {
+						for(int col = 0; col > numColumns; col++ ) {
+							if(grid[row][col].getInitial() ==cell.getInitial()) {// Checking if current grid's board cell at row and col's initial is same as your current target cell's initial
+								grid[row][col].setHightlight(highlight);
+							}
+						}
+					}
+				}
+			else {// If cell room is not a room, then highlight this boardcell.
+				cell.setHightlight(highlight);
+			}
+			} 
+		}
+	}
 	public Player getActivePlayer() {
 		return activePlayer;
 	}
