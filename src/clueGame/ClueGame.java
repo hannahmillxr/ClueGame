@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ClueGame extends JFrame{
 	private static Board board;
@@ -39,11 +40,11 @@ public class ClueGame extends JFrame{
 		clueGame.add(board, BorderLayout.CENTER);
 		clueGame.add(controlPanel, BorderLayout.SOUTH);
 		clueGame.add(cardPanel, BorderLayout.EAST);
+		JOptionPane.showMessageDialog(null, "You are " + board.getPlayers().get(0).getName() + ". \n Can you find the solution \n before the Computer players?");
 		
 		
-		controlPanel.setTurn(new ComputerPlayer( "Po", "Black", 3, 2), 5);
-		controlPanel.setGuess( "I have no guess!");
-		controlPanel.setGuessResult( "So you have nothing?");
+		
+		board.singleTurn();
 		
 		clueGame.setVisible(true);
 		

@@ -144,7 +144,7 @@ public abstract class Player {
 		case "yellow":
 			return Color.YELLOW;
 			
-		case "lightgray":
+		case "light grey":
 			return Color.LIGHT_GRAY;
 
 		case "magenta":

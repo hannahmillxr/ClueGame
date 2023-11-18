@@ -1,3 +1,15 @@
+commit 3cb9f9e7768ed995159133953ef5296d630bc48b
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 16 23:50:11 2023 -0700
+
+    Created the hightlight method and loop inside
+
+commit 42c1ef854832d536d1f227a6c210d008b4cfb274
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 16 14:02:41 2023 -0700
+
+    up to date git log
+
 commit 6af842f92bd646ce2845ed2ed0c80a7c8e8c74d1
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Nov 16 13:58:40 2023 -0700

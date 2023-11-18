@@ -90,7 +90,11 @@ public class BoardCell {
 		if (this.isSecretPassage) {
 			g.setColor(Color.CYAN);
 		}
+		else if (this.getHighlight()){
+			g.setColor(Color.CYAN);
+		}
 		else if (this.isWalkway) {
+			
 			g.setColor(Color.GRAY);
 
 		}
@@ -197,7 +201,7 @@ public class BoardCell {
 		this.isWalkway=walkway;
 	}
 	
-	public void setHightlight(boolean highlight) {
+	public void setHighlight(boolean highlight) {
 		this.highlight = highlight;
 	}
 	public int getRow(){
@@ -222,6 +226,10 @@ public class BoardCell {
 
 	public char getInitial() {
 		return initial;
+	}
+
+	public Boolean getHighlight() {
+		return highlight;
 	}
 	
 }

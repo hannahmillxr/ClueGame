@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 
 
+
 public class GameControlPanel extends JPanel {
 
 	/**
@@ -54,6 +55,7 @@ public class GameControlPanel extends JPanel {
 		//Creates the buttons
 		JButton makeAccusationButton = new JButton("Accusation: ");
 		JButton NextButton = new JButton("Next!");
+		NextButton.addActionListener(new nextButtonListener());
 		panel.add(makeAccusationButton);
 		panel.add(NextButton);
 		
@@ -90,17 +92,17 @@ public class GameControlPanel extends JPanel {
 	
 	
 	private class nextButtonListener implements ActionListener {
-
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
 			if(Board.getInstance().getGameOver() == false) {
 
 				if(Board.getInstance().getFinishedTurn()) {
+					Board.getInstance().nextTurn();
 					Board.getInstance().singleTurn();
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "PLayer turn is not finished!");
+					JOptionPane.showMessageDialog(null, "Player turn is not finished!");
 				}
 			}
 			

@@ -10,6 +10,8 @@ package clueGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
@@ -45,16 +48,20 @@ public class Board extends JPanel{
 	private Boolean gameOver;
 	private Boolean finishedTurn;
 	private int playerTurn = 0;
-
+	private int cellsize;
 	
     /*
     * variable and methods used for singleton pattern
     */
     private static Board theInstance = new Board();
     
-    // constructor is private to ensure only one can be created
+    
+
+	// constructor is private to ensure only one can be created
     private Board() {
            super() ;
+           this.addMouseListener(new cellMouseListener());
+           this.gameOver = false;
     }
     
     // this method returns the only Board
@@ -108,20 +115,30 @@ public class Board extends JPanel{
 		BoardCell currentLocation = getCell(activePlayer.getRow(), activePlayer.getCol());
 		calcTargets(currentLocation, roll);
 		
-		//computer selects a target and moves to it
-		movePlayer(activePlayer.selectTarget());
+		if (activePlayer instanceof HumanPlayer) {
 		
-		//turn is over, repaint
-		finishedTurn = true;
+			highlight(true);
+			
+			// if no moves available then targets is size 0
+			if(targets.size() == 0) {
+				JOptionPane.showMessageDialog(null, "There are no moves available, turn skipped");
+			}
+		}
+		else {	
+			//computer selects a target and moves to it
+			movePlayer(activePlayer.selectTarget());
+			//turn is over, repaint
+			finishedTurn = true;
+		}	
+		
+		
 		repaint();
-		
-		nextTurn();
 	}
     
     public void nextTurn() {
     	for (int i = 0; i<players.size(); i++) {
     		if (players.get(i) == activePlayer) {
-    			activePlayer = players.get(i+1);
+    			activePlayer = players.get((i+1)%players.size());
     			break;
     		}
     	}
@@ -190,7 +207,7 @@ public class Board extends JPanel{
 		int height = this.getHeight();
 		
 		//use minimum so cells don't overflow off board
-		int cellsize = Math.min(height/numRows, width/numColumns);
+		cellsize = Math.min(height/numRows, width/numColumns);
 		
 		//have the boardcell's draw themselves
     	for(int row = 0;row < grid.length;row++) {
@@ -583,26 +600,92 @@ public class Board extends JPanel{
 		return null;
 
 	}
+	
+	private class cellMouseListener implements MouseListener {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+		}
+		
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// if it is the human players turn, then they can click on the target cells
+			
+			if(Board.getInstance().getActivePlayer() instanceof HumanPlayer) {
+				//get the clicked cell
+				int row = e.getY()/cellsize;
+				int col = e.getX()/cellsize;
+				BoardCell cellClicked = grid[row][col];
+				
+				
+				//can't click on a cell if it is not highlighted
+				if(cellClicked.getHighlight()) {
+					
+					//if the cell clicked on is a room, move to center of the room
+					if(cellClicked.isRoom()) {
+						cellClicked = roomMap.get(cellClicked.getInitial()).getCenterCell();
+					}
+					
+					//human player moves to the clicked cell
+					movePlayer(cellClicked);
+					setFinishedTurn(true);
+					clearHighlightedCells();
+					Board.getInstance().repaint();
+				} 
+				
+				//try to click on a cell thats not highlighted 
+				else {
+					JOptionPane.showMessageDialog(null, "You can not move here");
+				}
+				
+			//if it is not the players turn and they try to click, do nothing!	
+			} else return;
+		}
+		
+		
+		public void clearHighlightedCells() {
+			//loop through grid and set highlight to false
+			for(int row = 0; row < grid.length; row++) {
+				for(int col = 0; col < grid[0].length; col++) {
+					grid[row][col].setHighlight(false);
+				}
+			}
+		}
+	}
 
 	
 	public void highlight(boolean highlight) {
-		if(targets == null) {
+		if(targets != null) {
 			for(BoardCell cell: targets) { // Iterating through each cell in targets
 				if(cell.isRoom()) { // Check if cell room is room. Highlights all room board cell
 					for(int row = 0; row >numRows; row++) {
 						for(int col = 0; col > numColumns; col++ ) {
 							if(grid[row][col].getInitial() ==cell.getInitial()) {// Checking if current grid's board cell at row and col's initial is same as your current target cell's initial
-								grid[row][col].setHightlight(highlight);
+								grid[row][col].setHighlight(highlight);
 							}
 						}
 					}
 				}
-			else {// If cell room is not a room, then highlight this boardcell.
-				cell.setHightlight(highlight);
-			}
+				else {// If cell room is not a room, then highlight this boardcell.
+					cell.setHighlight(highlight);
+				}
 			} 
 		}
 	}
+	
 	public Player getActivePlayer() {
 		return activePlayer;
 	}
@@ -610,6 +693,10 @@ public class Board extends JPanel{
 	public boolean getFinishedTurn() {
 
 		return finishedTurn;
+	}
+	
+	public void setFinishedTurn(Boolean finishedTurn) {
+		this.finishedTurn = finishedTurn;
 	}
 
 	public boolean getGameOver() {
@@ -674,6 +761,8 @@ public class Board extends JPanel{
 	public Set<Card> getDealt() {
 		return dealt;
 	}
+	
+
 
 
 

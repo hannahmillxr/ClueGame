@@ -20,7 +20,5 @@ public class HumanPlayer extends Player {
 	public BoardCell selectTarget() {
 		return null;
 	}
-	public void makeMove() {
-		board.highlight(true);
-	}
+	
 }
