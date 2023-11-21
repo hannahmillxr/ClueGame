@@ -439,6 +439,13 @@ public class Board extends JPanel{
     	}	
     }
 
+    /**
+     * buildBoardCell: Based on the letter will put a cell, and set as either walkway and room.
+     * @param row
+     * @param squares
+     * @param col
+     * @param cell
+     */
 	private void buildBoardCell(int row, String[] squares, int col, BoardCell cell) {
 		cell.setInitial(squares[col].charAt(0));
 
