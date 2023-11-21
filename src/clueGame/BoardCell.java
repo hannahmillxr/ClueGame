@@ -22,7 +22,7 @@ public class BoardCell {
 	private Boolean doorway = false;
 	private Boolean occupied = false;
 	private char secretPassage;
-	public Set<BoardCell> adjacencyList;
+	private Set<BoardCell> adjacencyList;
 	private Boolean isRoom;
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
