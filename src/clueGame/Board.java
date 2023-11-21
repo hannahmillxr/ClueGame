@@ -552,37 +552,7 @@ public class Board extends JPanel{
 
 	}
 	
-	public int getNumRows() {
-		return numRows;
-	}
-
-	public int getNumColumns() {
-		return numColumns;
-	}
-
-	public Room getRoom(char initial) {
-		Room room = roomMap.get(initial);
-		return room;
-	}
-
-	public Room getRoom(BoardCell cell) {
-		char initial = cell.getInitial();
-		Room room = roomMap.get(initial);
-		return room;
-	}
-
-	public BoardCell getCell(int row, int col) {
-		return grid[row][col];
-	}
-
-	public Card getCard(String cardName) {
-		for(Card card: deck) {
-			if(card.getCardName().equals(cardName)) {
-				return card;
-			}
-		}
-		return null;
-	}
+	
 	/*
 	 * Return the true if solution input matches the correct solution
 	 */
@@ -784,7 +754,37 @@ public class Board extends JPanel{
 	public Set<Card> getDealt() {
 		return dealt;
 	}
-	
+	public int getNumRows() {
+		return numRows;
+	}
+
+	public int getNumColumns() {
+		return numColumns;
+	}
+
+	public Room getRoom(char initial) {
+		Room room = roomMap.get(initial);
+		return room;
+	}
+
+	public Room getRoom(BoardCell cell) {
+		char initial = cell.getInitial();
+		Room room = roomMap.get(initial);
+		return room;
+	}
+
+	public BoardCell getCell(int row, int col) {
+		return grid[row][col];
+	}
+
+	public Card getCard(String cardName) {
+		for(Card card: deck) {
+			if(card.getCardName().equals(cardName)) {
+				return card;
+			}
+		}
+		return null;
+	}
 
 
 
