@@ -76,6 +76,7 @@ public class BoardCell {
 		}
 	}
 	
+
 	public boolean equals(BoardCell target) {
 		if (this.row == target.getRow()) {
 			if (this.col == target.getCol()) {
@@ -85,7 +86,11 @@ public class BoardCell {
 		return false;
 		
 	}
-	
+	/**
+	 * draw: Set the Color of the SecretPasage, highlight, Walkway, Doorway,door direction, Room, and empty.
+	 * @param g
+	 * @param cellsize
+	 */
 	public void draw(Graphics g, int cellsize) {
 		if (this.isSecretPassage) {
 			g.setColor(Color.RED);
