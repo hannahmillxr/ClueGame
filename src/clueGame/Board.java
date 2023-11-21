@@ -148,7 +148,10 @@ public class Board extends JPanel{
     	}
     }
     
-    
+    /**
+     * movePlayer: Will not allow current paper to occupied spot and will set the new location of the player
+     * @param moveToCell
+     */
     public void movePlayer(BoardCell moveToCell) {
     	BoardCell moveFromCell = getCell(activePlayer.getRow(), activePlayer.getCol());
     	moveFromCell.setOccupied(false);
