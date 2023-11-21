@@ -135,11 +135,15 @@ public class Board extends JPanel{
 		repaint();
 	}
     
+    /**
+     * nextTurn: the next player will activate after previous players turn
+     * 
+     */
     public void nextTurn() {
     	for (int i = 0; i<players.size(); i++) {
     		if (players.get(i) == activePlayer) {
     			activePlayer = players.get((i+1)%players.size());
-    			break;
+    	break;
     		}
     	}
     }
@@ -155,7 +159,9 @@ public class Board extends JPanel{
     	
     }
    
-    
+    /*
+     * Deal: Giving out the person, weapon, and room card to the player
+     */
     public void deal() {
     	dealt = new HashSet<Card>();
     	solution = new Solution();
@@ -172,7 +178,7 @@ public class Board extends JPanel{
 		Card personSolution = personCards.get(rand.nextInt(personCards.size()));
 		Card weaponSolution = weaponCards.get(rand.nextInt(weaponCards.size()));
     	
-		//set solutions 
+		//set solutions for Weapon, Person, and Room
     	solution.setWeapon(weaponSolution);
     	solution.setPerson(personSolution);
     	solution.setRoom(roomSolution);
