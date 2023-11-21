@@ -55,6 +55,7 @@ public abstract class Player {
 		return suggestcard;
 	}
 	
+
 	public void draw(Graphics g, int cellSize) {
 		
 		//add color to the player tokens by filling in their ovals
@@ -120,7 +121,9 @@ public abstract class Player {
 		return seenCards;
 	}
 	
-	
+	/*
+	 * Setting the color to the words
+	 */
 	static Color getColor(String color) {
 		switch (color.toLowerCase()) {
 		case "black":

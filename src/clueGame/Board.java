@@ -665,10 +665,13 @@ public class Board extends JPanel{
 			}
 		}
 	}
-
+	/**
+	 * Creates a Highlight on the cell or room that the player can move to
+	 * @param highlight
+	 */
 	
 	public void highlight(boolean highlight) {
-		if(targets != null) {
+		if(targets != null) {//When the target is being activated
 			for(BoardCell cell: targets) { // Iterating through each cell in targets
 				if(cell.isRoom()) { // Check if cell room is room. Highlights all room board cell
 					for(int row = 0; row < numRows; row++) {
