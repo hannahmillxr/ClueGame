@@ -89,7 +89,9 @@ public class Board extends JPanel{
     
  
 
-    
+    /*
+     * calcTargets: Will call the calculateTargets to use the starting cell and path length
+     */
     public void calcTargets(BoardCell startCell, int pathlength) { 
     	
     	targets = new HashSet <BoardCell>();
