@@ -671,10 +671,11 @@ public class Board extends JPanel{
 		if(targets != null) {
 			for(BoardCell cell: targets) { // Iterating through each cell in targets
 				if(cell.isRoom()) { // Check if cell room is room. Highlights all room board cell
-					for(int row = 0; row >numRows; row++) {
-						for(int col = 0; col > numColumns; col++ ) {
-							if(grid[row][col].getInitial() ==cell.getInitial()) {// Checking if current grid's board cell at row and col's initial is same as your current target cell's initial
+					for(int row = 0; row < numRows; row++) {
+						for(int col = 0; col < numColumns; col++ ) {
+							if(grid[row][col].getInitial() == cell.getInitial()) {// Checking if current grid's board cell at row and col's initial is same as your current target cell's initial
 								grid[row][col].setHighlight(highlight);
+								grid[row][col].setRoom(true);
 							}
 						}
 					}
@@ -684,6 +685,7 @@ public class Board extends JPanel{
 				}
 			} 
 		}
+		System.out.println();
 	}
 	
 	public Player getActivePlayer() {

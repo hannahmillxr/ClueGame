@@ -88,10 +88,11 @@ public class BoardCell {
 	
 	public void draw(Graphics g, int cellsize) {
 		if (this.isSecretPassage) {
-			g.setColor(Color.CYAN);
+			g.setColor(Color.RED);
 		}
-		else if (this.getHighlight()){
+		else if (highlight){
 			g.setColor(Color.CYAN);
+		
 		}
 		else if (this.isWalkway) {
 			
