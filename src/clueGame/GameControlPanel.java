@@ -1,3 +1,8 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: GameControlPanel bottom panel and buttons listener
+
+ */
 package clueGame;
 
 import java.awt.BorderLayout;
