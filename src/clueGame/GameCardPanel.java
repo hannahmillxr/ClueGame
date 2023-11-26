@@ -1,3 +1,8 @@
+/*
+ * Author: Hannah Miller and Gillian Culberson
+ * Description: GameCardPanel creates the weapon, people, and room panel
+
+ */
 package clueGame;
 
 import java.awt.BorderLayout;

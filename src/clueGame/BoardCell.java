@@ -22,7 +22,7 @@ public class BoardCell {
 	private Boolean doorway = false;
 	private Boolean occupied = false;
 	private char secretPassage;
-	public Set<BoardCell> adjacencyList;
+	private Set<BoardCell> adjacencyList;
 	private Boolean isRoom;
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
@@ -76,6 +76,7 @@ public class BoardCell {
 		}
 	}
 	
+
 	public boolean equals(BoardCell target) {
 		if (this.row == target.getRow()) {
 			if (this.col == target.getCol()) {
@@ -85,13 +86,18 @@ public class BoardCell {
 		return false;
 		
 	}
-	
+	/**
+	 * draw: Set the Color of the SecretPasage, highlight, Walkway, Doorway,door direction, Room, and empty.
+	 * @param g
+	 * @param cellsize
+	 */
 	public void draw(Graphics g, int cellsize) {
 		if (this.isSecretPassage) {
-			g.setColor(Color.CYAN);
+			g.setColor(Color.RED);
 		}
-		else if (this.getHighlight()){
+		else if (highlight){
 			g.setColor(Color.CYAN);
+		
 		}
 		else if (this.isWalkway) {
 			

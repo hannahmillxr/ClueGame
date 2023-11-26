@@ -88,7 +88,9 @@ public class Board extends JPanel{
     
  
 
-    
+    /*
+     * calcTargets: Will call the calculateTargets to use the starting cell and path length
+     */
     public void calcTargets(BoardCell startCell, int pathlength) { 
     	
     	targets = new HashSet <BoardCell>();
@@ -134,16 +136,23 @@ public class Board extends JPanel{
 		repaint();
 	}
     
+    /**
+     * nextTurn: the next player will activate after previous players turn
+     * 
+     */
     public void nextTurn() {
     	for (int i = 0; i<players.size(); i++) {
     		if (players.get(i) == activePlayer) {
     			activePlayer = players.get((i+1)%players.size());
-    			break;
+    	break;
     		}
     	}
     }
     
-    
+    /**
+     * movePlayer: Will not allow current paper to occupied spot and will set the new location of the player
+     * @param moveToCell
+     */
     public void movePlayer(BoardCell moveToCell) {
     	BoardCell moveFromCell = getCell(activePlayer.getRow(), activePlayer.getCol());
     	moveFromCell.setOccupied(false);
@@ -154,7 +163,9 @@ public class Board extends JPanel{
     	
     }
    
-    
+    /*
+     * Deal: Giving out the person, weapon, and room card to the player
+     */
     public void deal() {
     	dealt = new HashSet<Card>();
     	solution = new Solution();
@@ -171,7 +182,7 @@ public class Board extends JPanel{
 		Card personSolution = personCards.get(rand.nextInt(personCards.size()));
 		Card weaponSolution = weaponCards.get(rand.nextInt(weaponCards.size()));
     	
-		//set solutions 
+		//set solutions for Weapon, Person, and Room
     	solution.setWeapon(weaponSolution);
     	solution.setPerson(personSolution);
     	solution.setRoom(roomSolution);
@@ -427,6 +438,13 @@ public class Board extends JPanel{
     	}	
     }
 
+    /**
+     * buildBoardCell: Based on the letter will put a cell, and set as either walkway and room.
+     * @param row
+     * @param squares
+     * @param col
+     * @param cell
+     */
 	private void buildBoardCell(int row, String[] squares, int col, BoardCell cell) {
 		cell.setInitial(squares[col].charAt(0));
 
@@ -533,37 +551,7 @@ public class Board extends JPanel{
 
 	}
 	
-	public int getNumRows() {
-		return numRows;
-	}
-
-	public int getNumColumns() {
-		return numColumns;
-	}
-
-	public Room getRoom(char initial) {
-		Room room = roomMap.get(initial);
-		return room;
-	}
-
-	public Room getRoom(BoardCell cell) {
-		char initial = cell.getInitial();
-		Room room = roomMap.get(initial);
-		return room;
-	}
-
-	public BoardCell getCell(int row, int col) {
-		return grid[row][col];
-	}
-
-	public Card getCard(String cardName) {
-		for(Card card: deck) {
-			if(card.getCardName().equals(cardName)) {
-				return card;
-			}
-		}
-		return null;
-	}
+	
 	/*
 	 * Return the true if solution input matches the correct solution
 	 */
@@ -664,16 +652,20 @@ public class Board extends JPanel{
 			}
 		}
 	}
-
+	/**
+	 * Creates a Highlight on the cell or room that the player can move to
+	 * @param highlight
+	 */
 	
 	public void highlight(boolean highlight) {
-		if(targets != null) {
+		if(targets != null) {//When the target is being activated
 			for(BoardCell cell: targets) { // Iterating through each cell in targets
 				if(cell.isRoom()) { // Check if cell room is room. Highlights all room board cell
-					for(int row = 0; row >numRows; row++) {
-						for(int col = 0; col > numColumns; col++ ) {
-							if(grid[row][col].getInitial() ==cell.getInitial()) {// Checking if current grid's board cell at row and col's initial is same as your current target cell's initial
+					for(int row = 0; row < numRows; row++) {
+						for(int col = 0; col < numColumns; col++ ) {
+							if(grid[row][col].getInitial() == cell.getInitial()) {// Checking if current grid's board cell at row and col's initial is same as your current target cell's initial
 								grid[row][col].setHighlight(highlight);
+								grid[row][col].setRoom(true);
 							}
 						}
 					}
@@ -683,6 +675,7 @@ public class Board extends JPanel{
 				}
 			} 
 		}
+		System.out.println();
 	}
 	
 	public Player getActivePlayer() {
@@ -760,7 +753,37 @@ public class Board extends JPanel{
 	public Set<Card> getDealt() {
 		return dealt;
 	}
-	
+	public int getNumRows() {
+		return numRows;
+	}
+
+	public int getNumColumns() {
+		return numColumns;
+	}
+
+	public Room getRoom(char initial) {
+		Room room = roomMap.get(initial);
+		return room;
+	}
+
+	public Room getRoom(BoardCell cell) {
+		char initial = cell.getInitial();
+		Room room = roomMap.get(initial);
+		return room;
+	}
+
+	public BoardCell getCell(int row, int col) {
+		return grid[row][col];
+	}
+
+	public Card getCard(String cardName) {
+		for(Card card: deck) {
+			if(card.getCardName().equals(cardName)) {
+				return card;
+			}
+		}
+		return null;
+	}
 
 
 
