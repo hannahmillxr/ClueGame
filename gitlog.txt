@@ -1,3 +1,9 @@
+commit 013be32d6fc8382d0db492441385629fa5d063eb
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Nov 18 15:50:19 2023 -0700
+
+    Added mouse listener and human player movement logic, assignemnt C24A done.
+
 commit 3cb9f9e7768ed995159133953ef5296d630bc48b
 Author: gcculberson <g.c.culberson@gmail.com>
 Date:   Thu Nov 16 23:50:11 2023 -0700

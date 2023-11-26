@@ -47,7 +47,6 @@ public class Board extends JPanel{
 	private int roll;
 	private Boolean gameOver;
 	private Boolean finishedTurn;
-	private int playerTurn = 0;
 	private int cellsize;
 	
     /*
@@ -98,7 +97,7 @@ public class Board extends JPanel{
 
     }
     
-    //When the player hits next, this should be called by each player until the human player is reached 
+    //When the player hits next, this should be called for active player
     public void singleTurn() {
     	// turn is not over until this is true
     	finishedTurn = false;
