@@ -180,9 +180,17 @@ public class Board extends JPanel{
      */
     public void movePlayer(BoardCell moveToCell, Player player) {
     	BoardCell moveFromCell = getCell(player.getRow(), player.getCol());
+    	if (moveFromCell.isRoomCenter()) {
+    		moveFromCell.removePlayerFromRoomCenter();
+    	}
+
+    	
+    	
     	moveFromCell.setOccupied(false);
     	moveToCell.setOccupied(true);
     	
+    	
+    	//if two players are on a room center, they need to be displayed side by side
     	player.setRow(moveToCell.getRow());
     	player.setCol(moveToCell.getCol());
     	
@@ -254,9 +262,19 @@ public class Board extends JPanel{
     	}
 
     	//have the players draw themselves
+    	
     	for(Player player : players) {
     		player.draw(g, cellsize);
     	}
+    	
+    	//have the boardcell's draw themselves
+    	for(int row = 0;row < grid.length;row++) {
+    		for(int col = 0; col < grid[0].length; col++) {
+    			grid[row][col].setOffset(0);
+
+    		}
+    	}
+    	
     	
     	//write the initials on the secret passages 
     	for(int row = 0; row < grid.length; row++) {

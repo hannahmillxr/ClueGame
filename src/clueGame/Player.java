@@ -59,14 +59,20 @@ public abstract class Player {
 	
 
 	public void draw(Graphics g, int cellSize) {
+		BoardCell currentCell = Board.getInstance().getCell(row, col);
+
+		
+		if (currentCell.isRoomCenter()) {
+			currentCell.addOffset();
+		}
 		
 		//add color to the player tokens by filling in their ovals
 		g.setColor(this.colorJavaType);
-		g.fillOval(col*cellSize, row*cellSize, cellSize, cellSize);
+		g.fillOval(col*cellSize + currentCell.getOffset()*cellSize/3, row*cellSize, cellSize, cellSize);
 		
 		//add a black border around the players 
 		g.setColor(Color.BLACK);
-		g.drawOval(col*cellSize, row*cellSize, cellSize, cellSize);
+		g.drawOval(col*cellSize + currentCell.getOffset()*cellSize/3, row*cellSize, cellSize, cellSize);
 	}
 	
 	public void updateSeen(Card seenCard) {

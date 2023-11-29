@@ -27,9 +27,14 @@ public class BoardCell {
 	private Boolean isWalkway;
 	private Boolean isSecretPassage = false;
 	private Boolean highlight = false;
+	private int offset;
 	
 	
 	
+	
+
+
+
 	public BoardCell(int row, int col) {
 		super();
 		this.row = row;
@@ -51,6 +56,7 @@ public class BoardCell {
 		}
 		else if (secondCharacter == '*') {
 			this.roomCenter = true;
+			offset = 0;
 
 		}
 		else if(secondCharacter == '^'){
@@ -237,5 +243,28 @@ public class BoardCell {
 	public Boolean getHighlight() {
 		return highlight;
 	}
+
+	public void removePlayerFromRoomCenter() {
+		if (offset!=0) {
+			offset--;
+		}
+		
+	}
+	public void addOffset() {
+		if (offset!= Board.getInstance().getPlayers().size()) {
+			offset++;
+		}
+		
+	}
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	
+
+	
+
 }
