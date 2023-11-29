@@ -94,6 +94,10 @@ public class Board extends JPanel{
     public void calcTargets(BoardCell startCell, int pathlength) { 
     	
     	targets = new HashSet <BoardCell>();
+    	if (activePlayer.getSuggestionPull()) {
+    		targets.add(startCell);
+    	}
+    	
     	visited = new HashSet <BoardCell>();
     	calculateTargets (startCell, pathlength);
 
@@ -146,6 +150,7 @@ public class Board extends JPanel{
 				for (Player player : players) {
 					if (player.getName().equals(suggestedPlayerName)) {
 						movePlayer(targetCell, player);
+						player.setSuggestionPull(true);
 						break;
 					}
 				}

@@ -1,3 +1,107 @@
+commit 77ae1578ad1913d930cbaf483dd7bd72e9a088e1
+Merge: 2644673 50a39b3
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 29 15:52:42 2023 -0700
+
+    Merge branch 'main' of https://github.com/hannahmillxr/C13A2
+
+commit 2644673957ee3cf12511c811909e977d5a0bd828
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 29 15:52:18 2023 -0700
+
+    Made it prettier when multiple players are in the room at the same time
+
+commit 50a39b300fbc87e8ecdfa14284cbd077b5162e51
+Author: GillianCulberson <144496129+GillianCulberson@users.noreply.github.com>
+Date:   Wed Nov 29 14:36:41 2023 -0700
+
+    acussation
+
+commit 6ffd86d0e90ba9342a445e8a80d9246a6e59c4a2
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 29 12:46:40 2023 -0700
+
+    Added computer player make suggestion functionality
+
+commit b68562ae3a0aba8df699a759caaef48bcc93d7e8
+Merge: 1f49ab2 879093d
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Nov 25 21:55:41 2023 -0700
+
+    Merge branch 'main' of https://github.com/hannahmillxr/C13A2
+
+commit 1f49ab21df850ca1da1c133159b5b6b0e03aab1a
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Sat Nov 25 21:55:36 2023 -0700
+
+    Cleaning up
+
+commit 879093dd8e88dd9305b5422ff51fd5e872635b9a
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:36:57 2023 -0700
+
+    Made adjacencyList to private in the BoardCell
+
+commit 47fe4371968114b19e5c0d80395d37981ce00828
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:32:42 2023 -0700
+
+    Add commits to the draw in BoardCell
+
+commit 5be45efbecccf6936f0fac6c5c5c466cb6c82da5
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:29:56 2023 -0700
+
+    Moved some gets to the bottom of Board
+
+commit 4a37b9c6120559e771588e66f0140a8012a95ce4
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:24:53 2023 -0700
+
+    Add commite to buildBoardCell in Board
+
+commit 6d19d6cc92d90badc8f7130ebe2f01cf8ffaa692
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:22:03 2023 -0700
+
+    Add commite to calTarget in Board
+
+commit 57dbbee689f2d32fbc2b7d6d539e09b76a37b7d8
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:19:52 2023 -0700
+
+    Add commite to movePlayer
+
+commit 361f40b65244a3e67874f8f9512ac19b67096da8
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 13:16:10 2023 -0700
+
+    Add commite to nextTurn
+
+commit 428f39fa235438ca89438de01f9fbf06454337d0
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 12:56:37 2023 -0700
+
+    Added commits to the highlight and statments with in highlight
+
+commit 408980027b9025ef30576a7010abc0b430cbfe47
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 12:47:14 2023 -0700
+
+    Put in author and description to the GameControlPanel
+
+commit e89e14e35518b4e5ff41cbfd0c9aebb0f722b229
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 12:45:53 2023 -0700
+
+    Put in author and description to the GameCardPanel
+
+commit 31082f9e53a0b3b2ccee8260277a54f0e4274168
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Tue Nov 21 12:40:20 2023 -0700
+
+    Fixed error to get the player in the room
+
 commit 013be32d6fc8382d0db492441385629fa5d063eb
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Sat Nov 18 15:50:19 2023 -0700

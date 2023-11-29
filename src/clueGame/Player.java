@@ -17,6 +17,7 @@ public abstract class Player {
 	private ArrayList<Card> hand;
 	private ArrayList<Card> seenCards;
 	protected Board board;
+	private Boolean suggestionPull = false;
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -175,5 +176,13 @@ public abstract class Player {
 			
 		}
 		return null;
+	}
+
+	public Boolean getSuggestionPull() {
+		return suggestionPull;
+	}
+
+	public void setSuggestionPull(Boolean suggestionPull) {
+		this.suggestionPull = suggestionPull;
 	}
 }
