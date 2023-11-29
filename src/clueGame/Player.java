@@ -52,6 +52,8 @@ public abstract class Player {
 			suggestcard = pullcard.get(rand);
 			
 		}
+		
+		
 		return suggestcard;
 	}
 	

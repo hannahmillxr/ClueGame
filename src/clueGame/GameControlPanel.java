@@ -103,6 +103,9 @@ public class GameControlPanel extends JPanel {
 			if(Board.getInstance().getGameOver() == false) {
 
 				if(Board.getInstance().getFinishedTurn()) {
+					ClueGame.getControlPanel().setGuessResult(null);
+					ClueGame.getControlPanel().setGuess(null);
+					
 					Board.getInstance().nextTurn();
 					Board.getInstance().singleTurn();
 				}

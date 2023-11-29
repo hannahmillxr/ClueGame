@@ -126,8 +126,33 @@ public class Board extends JPanel{
 			}
 		}
 		else {	
+			BoardCell targetCell = activePlayer.selectTarget();
 			//computer selects a target and moves to it
-			movePlayer(activePlayer.selectTarget());
+			movePlayer(targetCell, activePlayer);
+			// if player moves into a room, they need to make a suggestion
+			if(targetCell.isRoom()) {
+				Solution suggestion = activePlayer.createSuggestion();
+				
+				//display solution
+				String setGuessText = suggestion.getSolutionPerson().getCardName() + ", " + suggestion.getSolutionWeapon().getCardName()  + ", " + suggestion.getSolutionRoom().getCardName();
+				ClueGame.getControlPanel().setGuess(setGuessText);
+				
+				
+				Card disproveCard = handleSuggestion(suggestion, activePlayer);
+				
+	
+				
+				String suggestedPlayerName = suggestion.getSolutionPerson().getCardName();
+				for (Player player : players) {
+					if (player.getName().equals(suggestedPlayerName)) {
+						movePlayer(targetCell, player);
+						break;
+					}
+				}
+				
+				activePlayer.updateSeen(disproveCard);
+			}
+			
 			//turn is over, repaint
 			finishedTurn = true;
 		}	
@@ -153,13 +178,13 @@ public class Board extends JPanel{
      * movePlayer: Will not allow current paper to occupied spot and will set the new location of the player
      * @param moveToCell
      */
-    public void movePlayer(BoardCell moveToCell) {
-    	BoardCell moveFromCell = getCell(activePlayer.getRow(), activePlayer.getCol());
+    public void movePlayer(BoardCell moveToCell, Player player) {
+    	BoardCell moveFromCell = getCell(player.getRow(), player.getCol());
     	moveFromCell.setOccupied(false);
     	moveToCell.setOccupied(true);
     	
-    	activePlayer.setRow(moveToCell.getRow());
-    	activePlayer.setCol(moveToCell.getCol());
+    	player.setRow(moveToCell.getRow());
+    	player.setCol(moveToCell.getCol());
     	
     }
    
@@ -578,9 +603,19 @@ public class Board extends JPanel{
 			}
 
 			Card pullcard = player_ind.disproveSuggestion(suggestion);
-
+			
+			
 
 			if(pullcard != null) {
+				if (Playeraccuse instanceof HumanPlayer) {
+					String playerName = player_ind.getName();
+					ClueGame.getControlPanel().setGuessResult("Suggestion disproved by: " + playerName);
+				}
+				else {
+					String playerName = player_ind.getName();
+					ClueGame.getControlPanel().setGuessResult("Suggestion disproved by: " + playerName);
+				}
+				
 				return pullcard;
 			}
 		}
@@ -627,7 +662,7 @@ public class Board extends JPanel{
 					}
 					
 					//human player moves to the clicked cell
-					movePlayer(cellClicked);
+					movePlayer(cellClicked, Board.getInstance().getActivePlayer());
 					setFinishedTurn(true);
 					clearHighlightedCells();
 					Board.getInstance().repaint();
