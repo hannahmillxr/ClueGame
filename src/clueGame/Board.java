@@ -617,8 +617,6 @@ public class Board extends JPanel{
 
 		int currentplayer = players.indexOf(Playeraccuse);
 		
-		
-		
 		BoardCell currentLocation = getCell(Playeraccuse.getRow(), Playeraccuse.getCol());
 		if (Playeraccuse instanceof HumanPlayer && currentLocation.isRoomCenter()) {
 			movePlayer(currentLocation, getPlayer(guessDialogBox.getPerson()));

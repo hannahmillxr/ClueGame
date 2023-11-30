@@ -1,3 +1,27 @@
+commit 870a6238605741ec3e9479b31fbc79318af34077
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 30 13:26:52 2023 -0700
+
+    Suggestion is finished
+
+commit 2b9a727c9d835dd04a2bc6d66f3167a09ae75453
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Thu Nov 30 09:48:31 2023 -0700
+
+    Suggestion panel working, need to move suggested player to human players room and update card panel
+
+commit 59d9381f8ebbcf30ea98cbe0c67cd2163b95d3dd
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 29 21:58:10 2023 -0700
+
+    Added to suggsetion class, running into an erro when suggestion is submitted, going to office hours in the morning.
+
+commit 7be4435285533d07b113fdbda993b28672a04831
+Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
+Date:   Wed Nov 29 16:06:53 2023 -0700
+
+    Made it so that if a player is pulled into a room by a suggestion, they can stay in the room to make a suggestion on their turn
+
 commit 77ae1578ad1913d930cbaf483dd7bd72e9a088e1
 Merge: 2644673 50a39b3
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
