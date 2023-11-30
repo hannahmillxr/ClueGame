@@ -86,6 +86,7 @@ public abstract class Player {
 		Board.getInstance().setFinishedTurn(true);
 		// update panel
 		ClueGame.getCardPanel().repaintPanels();
+		ClueGame.getCardPanel().revalidate();
 		ClueGame.getCardPanel().setVisible(true);
 	}
 	

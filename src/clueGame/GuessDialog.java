@@ -72,14 +72,10 @@ public class GuessDialog extends JDialog {
 			Solution solution = new Solution(getRoom(), getPerson(), getWeapon());
 			Player player = Board.getInstance().getActivePlayer();
 			
-			
 			Card disproveCard = Board.getInstance().handleSuggestion(solution, player);
 			player.addDisprove(disproveCard);
 			
-			BoardCell currentLocation = Board.getInstance().getCell(player.getRow(), player.getCol());
 			
-			Board.getInstance().movePlayer(currentLocation, Board.getInstance().getPlayer(getPerson()));
-		
 			
 		}
 	}
@@ -88,7 +84,7 @@ public class GuessDialog extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//end turn?
+			//end turn
 			Board.getInstance().getGuessDialogBox().setVisible(false);
 			Board.getInstance().setFinishedTurn(true);
 		}

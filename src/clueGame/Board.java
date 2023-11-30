@@ -616,6 +616,16 @@ public class Board extends JPanel{
 	public Card handleSuggestion(Solution suggestion, Player Playeraccuse) {
 
 		int currentplayer = players.indexOf(Playeraccuse);
+		
+		
+		
+		BoardCell currentLocation = getCell(Playeraccuse.getRow(), Playeraccuse.getCol());
+		if (Playeraccuse instanceof HumanPlayer && currentLocation.isRoomCenter()) {
+			movePlayer(currentLocation, getPlayer(guessDialogBox.getPerson()));
+			Board.getInstance().repaint();
+		}
+		
+	
 
 		for (int i =0; i< players.size(); i++) {
 			currentplayer = (currentplayer+1) % players.size();
@@ -698,7 +708,7 @@ public class Board extends JPanel{
 					//if cell clicked is a room
 					if (cellClicked.isRoom()) {
 			    		String currRoom = getRoom(cellClicked).getName();
-			    		setGuessDialogBox(new GuessDialog(currRoom));
+			    		guessDialogBox = new GuessDialog(currRoom);
 			    		guessDialogBox.setVisible(true);
 			    		
 			    	}

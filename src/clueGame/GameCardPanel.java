@@ -95,18 +95,32 @@ public class GameCardPanel extends JPanel{
 	}
 	
 	public void repaintPanels() {
+		JLabel peopleHandLabel = new JLabel("In Hand");
+		JLabel peopleSeenLabel = new JLabel("Seen");
+		JLabel roomHandLabel = new JLabel("In Hand");
+		JLabel roomSeenLabel = new JLabel("Seen");
+		JLabel weaponHandLabel = new JLabel("In Hand");
+		JLabel weaponSeenLabel = new JLabel("Seen");
+		
+		
 		peoplePanel.removeAll();
+		peoplePanel.add(peopleHandLabel);
 		setPeopleInHand(peoplePanel);
+		peoplePanel.add(peopleSeenLabel);
 		setPeopleSeen(peoplePanel);
 		peoplePanel.setVisible(true);
 		
 		roomPanel.removeAll();
+		roomPanel.add(roomHandLabel);
 		setRoomInHand(roomPanel);
+		roomPanel.add(roomSeenLabel);
 		setRoomSeen(roomPanel);
 		roomPanel.setVisible(true);
 		
 		weaponPanel.removeAll();
+		weaponPanel.add(weaponHandLabel);
 		setWeaponInHand(weaponPanel);
+		weaponPanel.add(weaponSeenLabel);
 		setWeaponSeen(weaponPanel);
 		weaponPanel.setVisible(true);
 		

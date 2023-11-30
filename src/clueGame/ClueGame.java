@@ -32,8 +32,6 @@ public class ClueGame extends JFrame{
 	
 	
 
-
-
 	public static void main(String[] args) {
 	
 		ClueGame clueGame = new ClueGame();		

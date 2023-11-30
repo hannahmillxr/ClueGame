@@ -29,11 +29,6 @@ public class BoardCell {
 	private Boolean highlight = false;
 	private int offset;
 	
-	
-	
-	
-
-
 
 	public BoardCell(int row, int col) {
 		super();
