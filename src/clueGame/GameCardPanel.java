@@ -28,6 +28,10 @@ public class GameCardPanel extends JPanel{
 	private JTextField weaponSeen;
 	private ArrayList<Card> cards;
 	private ArrayList<Card> seenCards;
+	private JPanel peoplePanel;
+	private JPanel roomPanel;
+	private JPanel weaponPanel;
+	
 	
 	public GameCardPanel()  {
 		cards = Board.getInstance().getPlayers().get(0).getHand();
@@ -41,7 +45,7 @@ public class GameCardPanel extends JPanel{
 		JLabel peopleSeenLabel = new JLabel("Seen");
 		
 		// People panel
-		JPanel peoplePanel = new JPanel();
+		peoplePanel = new JPanel();
 		peoplePanel.setLayout(new GridLayout(0, 1));
 		peoplePanel.setBorder(new TitledBorder( new EtchedBorder(), "People"));
 		peoplePanel.add(peopleHandLabel);
@@ -55,9 +59,10 @@ public class GameCardPanel extends JPanel{
 		this.add(peoplePanel);
 		
 		//Room panel
+		roomPanel = new JPanel();
 		JLabel roomHandLabel = new JLabel("In Hand");
 		JLabel roomSeenLabel = new JLabel("Seen");
-		JPanel roomPanel = new JPanel();
+		
 		roomPanel.setLayout(new GridLayout(0, 1));
 		roomPanel.setBorder(new TitledBorder( new EtchedBorder(), "Rooms"));
 		roomPanel.add(roomHandLabel);
@@ -70,9 +75,10 @@ public class GameCardPanel extends JPanel{
 		
 
 		//Weapon panel
+		weaponPanel = new JPanel();
 		JLabel weaponHandLabel = new JLabel("In Hand");
 		JLabel weaponSeenLabel = new JLabel("Seen");
-		JPanel weaponPanel = new JPanel();
+		
 		weaponPanel.setLayout(new GridLayout(0, 1));
 		weaponPanel.setBorder(new TitledBorder( new EtchedBorder(), "Weapons"));
 		weaponPanel.add(weaponHandLabel);
@@ -82,7 +88,25 @@ public class GameCardPanel extends JPanel{
 		setWeaponSeen(weaponPanel);
 		
 		this.add(weaponPanel);
+		
+		
+		
 
+	}
+	
+	public void repaintPanels() {
+		peoplePanel.removeAll();
+		setPeopleInHand(peoplePanel);
+		setPeopleSeen(peoplePanel);
+		
+		roomPanel.removeAll();
+		setRoomInHand(roomPanel);
+		setRoomSeen(roomPanel);
+		
+		weaponPanel.removeAll();
+		setWeaponInHand(weaponPanel);
+		setWeaponSeen(weaponPanel);
+		
 	}
 	
 
@@ -131,6 +155,9 @@ public class GameCardPanel extends JPanel{
 		frame.setVisible(true); // make it visible
 
 	}
+	
+	
+	
 	
 	private void setWeaponSeen(JPanel weaponPanel) {
 		

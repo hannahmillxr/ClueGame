@@ -48,6 +48,8 @@ public class Board extends JPanel{
 	private Boolean gameOver;
 	private Boolean finishedTurn;
 	private int cellsize;
+	private GuessDialog guessDialogBox;
+	
 	
     /*
     * variable and methods used for singleton pattern
@@ -187,9 +189,7 @@ public class Board extends JPanel{
     	BoardCell moveFromCell = getCell(player.getRow(), player.getCol());
     	if (moveFromCell.isRoomCenter()) {
     		moveFromCell.removePlayerFromRoomCenter();
-    	}
-
-    	
+    	}    	
     	
     	moveFromCell.setOccupied(false);
     	moveToCell.setOccupied(true);
@@ -686,6 +686,17 @@ public class Board extends JPanel{
 					
 					//human player moves to the clicked cell
 					movePlayer(cellClicked, Board.getInstance().getActivePlayer());
+					
+					//if cell clicked is a room
+					if (cellClicked.isRoom()) {
+			    		String currRoom = getRoom(cellClicked).getName();
+			    		setGuessDialogBox(new GuessDialog(currRoom));
+			    		guessDialogBox.setVisible(true);
+			    		String setGuessText = guessDialogBox.getRoom() + ", " + guessDialogBox.getPerson() + ", " + guessDialogBox.getWeapon();
+						ClueGame.getControlPanel().setGuess(setGuessText);
+			    	}
+
+					
 					setFinishedTurn(true);
 					clearHighlightedCells();
 					Board.getInstance().repaint();
@@ -841,6 +852,14 @@ public class Board extends JPanel{
 			}
 		}
 		return null;
+	}
+	
+	public GuessDialog getGuessDialogBox() {
+		return guessDialogBox;
+	}
+
+	public void setGuessDialogBox(GuessDialog guessDialogBox) {
+		this.guessDialogBox = guessDialogBox;
 	}
 
 

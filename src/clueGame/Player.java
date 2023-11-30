@@ -76,6 +76,19 @@ public abstract class Player {
 		g.drawOval(col*cellSize + currentCell.getOffset()*cellSize/3, row*cellSize, cellSize, cellSize);
 	}
 	
+	
+	public void addDisprove(Card card) {
+		// add card to seen cards
+		if(card != null) {
+			updateSeen(card);
+		}
+		// set turn done to true
+		Board.getInstance().setFinishedTurn(true);
+		// update panel
+		ClueGame.getCardPanel().repaintPanels();
+		ClueGame.getCardPanel().setVisible(true);
+	}
+	
 	public void updateSeen(Card seenCard) {
 		seenCards.add(seenCard);
 	}

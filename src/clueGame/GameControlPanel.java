@@ -108,6 +108,7 @@ public class GameControlPanel extends JPanel {
 					
 					Board.getInstance().nextTurn();
 					Board.getInstance().singleTurn();
+					ClueGame.getCardPanel().repaintPanels();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Player turn is not finished!");
@@ -131,7 +132,7 @@ public class GameControlPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 		// test filling in the data
-		panel.setTurn(new ComputerPlayer( "Po", "Black", 3, 2), 5);
+		panel.setTurn(new ComputerPlayer( "Po", "grey", 3, 2), 5);
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
 	}
