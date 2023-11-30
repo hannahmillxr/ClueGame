@@ -627,12 +627,16 @@ public class Board extends JPanel{
 
 			Card pullcard = player_ind.disproveSuggestion(suggestion);
 			
-			
+		
 
 			if(pullcard != null) {
 				if (Playeraccuse instanceof HumanPlayer) {
 					String playerName = player_ind.getName();
-					ClueGame.getControlPanel().setGuessResult("Suggestion disproved by: " + playerName);
+					String setGuessText = getGuessDialogBox().getRoom().getCardName() + ", " + getGuessDialogBox().getPerson().getCardName() + ", " + getGuessDialogBox().getWeapon().getCardName();
+					
+					ClueGame.getControlPanel().setGuess(setGuessText);
+					ClueGame.getControlPanel().setGuessResult(playerName + " shows you: " + pullcard.getCardName());
+					
 				}
 				else {
 					String playerName = player_ind.getName();
@@ -640,6 +644,10 @@ public class Board extends JPanel{
 				}
 				
 				return pullcard;
+			}
+			else {
+				ClueGame.getControlPanel().setGuessResult("No new clue");
+				
 			}
 		}
 		return null;
@@ -692,8 +700,7 @@ public class Board extends JPanel{
 			    		String currRoom = getRoom(cellClicked).getName();
 			    		setGuessDialogBox(new GuessDialog(currRoom));
 			    		guessDialogBox.setVisible(true);
-			    		String setGuessText = guessDialogBox.getRoom() + ", " + guessDialogBox.getPerson() + ", " + guessDialogBox.getWeapon();
-						ClueGame.getControlPanel().setGuess(setGuessText);
+			    		
 			    	}
 
 					
@@ -860,6 +867,16 @@ public class Board extends JPanel{
 
 	public void setGuessDialogBox(GuessDialog guessDialogBox) {
 		this.guessDialogBox = guessDialogBox;
+	}
+	
+	public Player getPlayer(Card card) {
+		for (Player player : players) {
+			if (card.getCardName().equals(player.getName())) {
+				return player;
+			}
+		}
+
+		return null;
 	}
 
 

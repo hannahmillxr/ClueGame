@@ -98,14 +98,17 @@ public class GameCardPanel extends JPanel{
 		peoplePanel.removeAll();
 		setPeopleInHand(peoplePanel);
 		setPeopleSeen(peoplePanel);
+		peoplePanel.setVisible(true);
 		
 		roomPanel.removeAll();
 		setRoomInHand(roomPanel);
 		setRoomSeen(roomPanel);
+		roomPanel.setVisible(true);
 		
 		weaponPanel.removeAll();
 		setWeaponInHand(weaponPanel);
 		setWeaponSeen(weaponPanel);
+		weaponPanel.setVisible(true);
 		
 	}
 	

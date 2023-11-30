@@ -45,13 +45,14 @@ public class GuessDialog extends JDialog {
 		//if suggestion then the room needs to be the room passed in 
 		this.setTitle("Make a suggestion");
 		room.setSelectedItem(roomName);
+		//cannot modify the room
 		room.setEnabled(false);
 		
 		
 		this.setLayout(new GridLayout(0, 2));
-		this.setSize(400, 200);
+		this.setSize(450, 300);
 	
-		// add buttons
+		//submit and cancel buttons
 		JButton submitButton = new JButton("Submit");
 		JButton cancelButton = new JButton("Cancel");
 
@@ -68,10 +69,17 @@ public class GuessDialog extends JDialog {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Board.getInstance().getGuessDialogBox().setVisible(false);
+			Solution solution = new Solution(getRoom(), getPerson(), getWeapon());
 			Player player = Board.getInstance().getActivePlayer();
-			Card disproveCard = Board.getInstance().handleSuggestion(player.createSuggestion(), player);
+			
+			
+			Card disproveCard = Board.getInstance().handleSuggestion(solution, player);
 			player.addDisprove(disproveCard);
 			
+			BoardCell currentLocation = Board.getInstance().getCell(player.getRow(), player.getCol());
+			
+			Board.getInstance().movePlayer(currentLocation, Board.getInstance().getPlayer(getPerson()));
+		
 			
 		}
 	}
@@ -80,8 +88,7 @@ public class GuessDialog extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//end turn
-
+			//end turn?
 			Board.getInstance().getGuessDialogBox().setVisible(false);
 			Board.getInstance().setFinishedTurn(true);
 		}
@@ -91,17 +98,41 @@ public class GuessDialog extends JDialog {
 
 
 	
-	public String getRoom() {
-		return room.getSelectedItem().toString();
+	public Card getRoom() {
+		String selectedRoom = room.getSelectedItem().toString();
+		for (Card roomCard : Board.getInstance().getRoomCards()) {
+			if (roomCard.getCardName().equals(selectedRoom)) {
+				return roomCard;
+			}
+		}
+		
+		return null;
 	}
 
-	public String getPerson() {
-		return person.getSelectedItem().toString();
+	public Card getPerson() {
+		
+		String selectedPerson = person.getSelectedItem().toString();
+		for (Card personCard : Board.getInstance().getPersonCards()) {
+			if (personCard.getCardName().equals(selectedPerson)) {
+				return personCard;
+			}
+		}
+		
+		return null;
 	}
+	
+	public Card getWeapon() {
+		String selectedWeapon =  weapon.getSelectedItem().toString();
+		for (Card weaponCard : Board.getInstance().getWeaponCards()) {
+			if (weaponCard.getCardName().equals(selectedWeapon)) {
+				return weaponCard;
+			}
+		}
+		
+		return null;
+	}
+	
 
-	public String getWeapon() {
-		return weapon.getSelectedItem().toString();
-	}
 
 }
 
