@@ -701,6 +701,7 @@ public class Board extends JPanel{
 					}
 					
 					//human player moves to the clicked cell
+					((HumanPlayer) Board.getInstance().getActivePlayer()).setBegin_turn(true);
 					movePlayer(cellClicked, Board.getInstance().getActivePlayer());
 					
 					//if cell clicked is a room

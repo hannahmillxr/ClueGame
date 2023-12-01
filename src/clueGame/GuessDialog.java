@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class GuessDialog extends JDialog {
@@ -41,23 +42,27 @@ public class GuessDialog extends JDialog {
 		}
 		add(weapon);
 		
-		
-		//if suggestion then the room needs to be the room passed in 
-		this.setTitle("Make a suggestion");
-		room.setSelectedItem(roomName);
-		//cannot modify the room
-		room.setEnabled(false);
-		
-		
 		this.setLayout(new GridLayout(0, 2));
 		this.setSize(450, 300);
 	
 		//submit and cancel buttons
 		JButton submitButton = new JButton("Submit");
 		JButton cancelButton = new JButton("Cancel");
-
-		submitButton.addActionListener(new submitButtonListener());
-		cancelButton.addActionListener(new cancelButtonListener());
+		
+		if(roomName != null) {
+			//if suggestion then the room needs to be the room passed in 
+			this.setTitle("Make a suggestion");
+			room.setSelectedItem(roomName);
+			//cannot modify the room
+			room.setEnabled(false);
+			submitButton.addActionListener(new submitButtonListener());
+			cancelButton.addActionListener(new cancelButtonListener());
+		}else {
+			//if suggestion then the room needs to be the room passed in 
+			this.setTitle("Make a accusation");
+			submitButton.addActionListener(new submitAccuselButtonListener());
+			cancelButton.addActionListener(new cancelButtonListener());
+		}
 
 		this.add(submitButton);
 		this.add(cancelButton);
@@ -89,6 +94,25 @@ public class GuessDialog extends JDialog {
 			Board.getInstance().setFinishedTurn(true);
 		}
 	}
+	
+	private class submitAccuselButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Solution solution = new Solution(getRoom(), getPerson(), getWeapon());
+			boolean correct = Board.getInstance().checkAccusation(solution);
+			if (correct == true) {
+				JOptionPane.showMessageDialog(null, "You are correct!");
+				// end game
+			} else {
+				JOptionPane.showMessageDialog(null, "You are incorrect :(");
+				// end game
+
+			}
+		}
+	}
+	
+	
 
 
 

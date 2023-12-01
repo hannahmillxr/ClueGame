@@ -29,6 +29,7 @@ public class GameControlPanel extends JPanel {
 	private JTextField guessResult;
 	private JTextField numRolls;
 	private GameControlPanel gui;
+	private JButton makeAccusationButton;
 
 
 	
@@ -58,9 +59,11 @@ public class GameControlPanel extends JPanel {
 		panel.add(createRollPanel);
 		
 		//Creates the buttons
-		JButton makeAccusationButton = new JButton("Accusation: ");
+		makeAccusationButton = new JButton("Accusation: ");
 		JButton NextButton = new JButton("Next!");
 		NextButton.addActionListener(new nextButtonListener());
+		makeAccusationButton.addActionListener(new nextButtonListener());
+
 		panel.add(makeAccusationButton);
 		panel.add(NextButton);
 		
@@ -100,20 +103,26 @@ public class GameControlPanel extends JPanel {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(Board.getInstance().getGameOver() == false) {
-
-				if(Board.getInstance().getFinishedTurn()) {
-					ClueGame.getControlPanel().setGuessResult(null);
-					ClueGame.getControlPanel().setGuess(null);
+			if (e.getSource() == makeAccusationButton) {
+				GuessDialog accuse_dialog = new GuessDialog(null);
+				accuse_dialog.setVisible(true);
+			} else {
+				if(Board.getInstance().getGameOver() == false) {
 					
-					Board.getInstance().nextTurn();
-					Board.getInstance().singleTurn();
-					ClueGame.getCardPanel().repaintPanels();
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Player turn is not finished!");
+					if(Board.getInstance().getFinishedTurn()) {
+						ClueGame.getControlPanel().setGuessResult(null);
+						ClueGame.getControlPanel().setGuess(null);
+						
+						Board.getInstance().nextTurn();
+						Board.getInstance().singleTurn();
+						ClueGame.getCardPanel().repaintPanels();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Player turn is not finished!");
+					}
 				}
 			}
+
 			
 		}
 
