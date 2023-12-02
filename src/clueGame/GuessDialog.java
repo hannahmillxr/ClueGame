@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 public class GuessDialog extends JDialog {
 	private JComboBox<String> person, room, weapon;
+	private static boolean errormess = false;
 	GuessDialog guessDialog;
 	
 	public GuessDialog(String roomName) {
@@ -48,7 +49,7 @@ public class GuessDialog extends JDialog {
 		//submit and cancel buttons
 		JButton submitButton = new JButton("Submit");
 		JButton cancelButton = new JButton("Cancel");
-		
+		setErrormess(false);
 		if(roomName != null) {
 			//if suggestion then the room needs to be the room passed in 
 			this.setTitle("Make a suggestion");
@@ -57,13 +58,20 @@ public class GuessDialog extends JDialog {
 			room.setEnabled(false);
 			submitButton.addActionListener(new submitButtonListener());
 			cancelButton.addActionListener(new cancelButtonListener());
-		}else {
+		}else{
+			if(Board.getInstance().getActivePlayer() instanceof HumanPlayer) {
 			//if suggestion then the room needs to be the room passed in 
 			this.setTitle("Make a accusation");
 			submitButton.addActionListener(new submitAccuselButtonListener());
 			cancelButton.addActionListener(new cancelButtonListener());
+			}else {
+				//guessDialog.setVisible(false);
+				setErrormess(true);
+				JOptionPane.showMessageDialog(null,"NOT YOUR TURN!!!!");
+				
+			}
 		}
-
+		
 		this.add(submitButton);
 		this.add(cancelButton);
 
@@ -92,7 +100,9 @@ public class GuessDialog extends JDialog {
 			//end turn
 			Board.getInstance().getGuessDialogBox().setVisible(false);
 			Board.getInstance().setFinishedTurn(true);
+		
 		}
+		
 	}
 	
 	private class submitAccuselButtonListener implements ActionListener{
@@ -104,9 +114,11 @@ public class GuessDialog extends JDialog {
 			if (correct == true) {
 				JOptionPane.showMessageDialog(null, "You are correct!");
 				// end game
+				System.exit(0);
 			} else {
 				JOptionPane.showMessageDialog(null, "You are incorrect :(");
 				// end game
+				System.exit(0);
 
 			}
 		}
@@ -150,6 +162,14 @@ public class GuessDialog extends JDialog {
 		}
 		
 		return null;
+	}
+
+	public static boolean getErrormess() {
+		return errormess;
+	}
+
+	public static void setErrormess(boolean errormess) {
+		GuessDialog.errormess = errormess;
 	}
 	
 

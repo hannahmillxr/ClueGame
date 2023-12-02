@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import clueGame.Board;
 import clueGame.Card;
 import clueGame.CardType;
+import clueGame.ClueGame;
+import clueGame.GameControlPanel;
 import clueGame.HumanPlayer;
 import clueGame.Player;
 import clueGame.Solution;
@@ -32,13 +34,15 @@ public class GameSolutionTest {
 
 	@BeforeEach
 	public void setUp() {
+		
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
+		
 		// set the file names to use my config files
 		board.setConfigFiles("newClueBoardcsv.csv", "ClueSetup.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
-
+		ClueGame.setPanel(new GameControlPanel());
 		//six people
 		poCard = new Card("Po", CardType.PERSON);
 		tigressCard = new Card("Tigress", CardType.PERSON);
@@ -157,7 +161,7 @@ public class GameSolutionTest {
 		Card solutionRoom = board.solution.getSolutionRoom();
 		
 		//Suggestion no one can disprove returns null
-		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon), players.get(0))== null);
+		assertTrue(board.handleSuggestion(new Solution(solutionRoom, solutionPerson, solutionWeapon), players.get(0),true)== null);
 		
 		
 		board.solution.setWeapon(chopStickCard);
@@ -195,14 +199,14 @@ public class GameSolutionTest {
 		solutionRoom = kitchenCard;
 		
 		//Suggestion only suggesting player can disprove returns null
-		assertTrue(board.handleSuggestion(new Solution(dojoCard, solutionPerson, solutionWeapon), players.get(1))== null);
+		assertTrue(board.handleSuggestion(new Solution(dojoCard, solutionPerson, solutionWeapon), players.get(1),true)== null);
 		
 		//Suggestion only human can disprove returns answer (i.e., card that disproves suggestion)
 		assertTrue(players.get(0) instanceof HumanPlayer);
-		assertTrue(board.handleSuggestion(new Solution(meditationCard, solutionPerson, solutionWeapon), players.get(2))== meditationCard);
+		assertTrue(board.handleSuggestion(new Solution(meditationCard, solutionPerson, solutionWeapon), players.get(2),true)== meditationCard);
 		
 		//Suggestion that two players can disprove, correct player (based on starting with next player in list) returns answer
-		assertTrue((board.handleSuggestion(new Solution(dojoCard, mantisCard, solutionWeapon), players.get(0))== dojoCard));
+		assertTrue((board.handleSuggestion(new Solution(dojoCard, mantisCard, solutionWeapon), players.get(0), true)== dojoCard));
 
 
 	}

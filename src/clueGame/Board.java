@@ -614,7 +614,10 @@ public class Board extends JPanel{
 	 * handles the suggestion through each of the player
 	 */
 	public Card handleSuggestion(Solution suggestion, Player Playeraccuse) {
-
+		return handleSuggestion(suggestion,Playeraccuse, false);
+	}
+	public Card handleSuggestion(Solution suggestion, Player Playeraccuse,Boolean skip_panel) {
+		
 		int currentplayer = players.indexOf(Playeraccuse);
 		
 		BoardCell currentLocation = getCell(Playeraccuse.getRow(), Playeraccuse.getCol());
@@ -635,9 +638,10 @@ public class Board extends JPanel{
 
 			Card pullcard = player_ind.disproveSuggestion(suggestion);
 			
-		
-
 			if(pullcard != null) {
+				if(skip_panel == true) {
+					return pullcard;
+				}
 				if (Playeraccuse instanceof HumanPlayer) {
 					String playerName = player_ind.getName();
 					String setGuessText = getGuessDialogBox().getRoom().getCardName() + ", " + getGuessDialogBox().getPerson().getCardName() + ", " + getGuessDialogBox().getWeapon().getCardName();
@@ -658,9 +662,11 @@ public class Board extends JPanel{
 				
 			}
 		}
+		
 		return null;
 
 	}
+
 	
 	private class cellMouseListener implements MouseListener {
 		@Override
@@ -877,6 +883,8 @@ public class Board extends JPanel{
 	public void setGuessDialogBox(GuessDialog guessDialogBox) {
 		this.guessDialogBox = guessDialogBox;
 	}
+	
+
 	
 	public Player getPlayer(Card card) {
 		for (Player player : players) {

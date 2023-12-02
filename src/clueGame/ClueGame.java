@@ -53,7 +53,9 @@ public class ClueGame extends JFrame{
 	public static GameControlPanel getControlPanel() {
 		return controlPanel;
 	}
-	
+	public static void setPanel(GameControlPanel panel) {
+		controlPanel = panel;
+	}
 	
 	public static GameCardPanel getCardPanel() {
 		return cardPanel;

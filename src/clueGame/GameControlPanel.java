@@ -103,9 +103,12 @@ public class GameControlPanel extends JPanel {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == makeAccusationButton) {
+			if (e.getSource() == makeAccusationButton ) {
+				if(GuessDialog.getErrormess() == false) {
 				GuessDialog accuse_dialog = new GuessDialog(null);
+				Board.getInstance().setGuessDialogBox(accuse_dialog);
 				accuse_dialog.setVisible(true);
+				}
 			} else {
 				if(Board.getInstance().getGameOver() == false) {
 					
