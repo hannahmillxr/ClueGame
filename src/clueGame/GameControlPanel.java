@@ -124,6 +124,7 @@ public class GameControlPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "Player turn is not finished!");
 					}
 				}
+				
 			}
 
 			
