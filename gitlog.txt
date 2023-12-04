@@ -1,3 +1,27 @@
+commit 7033b85984a51ca2e33a92fa70040da8881b11ae (HEAD -> main, origin/main, origin/HEAD)
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Sun Dec 3 22:43:52 2023 -0700
+
+    Fixed some small things
+
+commit 21d23d431c404a5b7ecc2f772f915feb59674afd
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Dec 1 18:57:00 2023 -0700
+
+    Fixed a lot of errors, like handleSuggestion test, accusation and guess button, actionPerformed, handleSuggestion method, GuessDialog construsctor, and some small fixs noted inside code
+
+commit 5d00e8cf391c95cad30ad31e3f526f0470aa2952
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Fri Dec 1 18:53:05 2023 -0700
+
+    Made the accusation button and accusation button and suggestion work at correct time
+
+commit 1c4ef32284f626fbcfb38562b9656f95742c3165
+Author: gcculberson <g.c.culberson@gmail.com>
+Date:   Thu Nov 30 18:11:32 2023 -0700
+
+    Made the accusation button and accusation button and suggestion work at correct time
+
 commit 870a6238605741ec3e9479b31fbc79318af34077
 Author: hannahmillxr <[hannah.millertexas17@gmail.com]>
 Date:   Thu Nov 30 13:26:52 2023 -0700
